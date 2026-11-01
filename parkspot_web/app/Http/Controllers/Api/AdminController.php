@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Services\ExportService;
 use App\Services\FirebaseService;
 use App\Services\ParkingService;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -223,6 +225,76 @@ class AdminController extends Controller
                 'total_omzet' => $totalOmzet,
             ],
             'data' => $filtered,
+        ]);
+    }
+
+    /**
+     * Ekspor detail transaksi parkir (CSV / JSON) untuk Owner.
+     */
+    public function exportTransactions(Request $request, ExportService $export): Response|JsonResponse
+    {
+        $filters = [
+            'start_date' => $request->query('start_date'),
+            'end_date' => $request->query('end_date'),
+            'status' => $request->query('status'),
+            'jenis_kendaraan' => $request->query('jenis_kendaraan'),
+            'metode_bayar' => $request->query('metode_bayar'),
+        ];
+
+        $format = strtolower($request->query('format', 'csv'));
+        $transactions = $export->getFilteredTransactions($filters);
+        $metrics = $export->calculateMetrics($transactions);
+
+        if ($format === 'json') {
+            return response()->json($export->generateReportJson($transactions, $metrics, $filters));
+        }
+
+        $csv = $export->generateTransactionsCsv($transactions, $metrics);
+        $filename = 'laporan_transaksi_parkspot_' . date('Ymd_His') . '.csv';
+
+        return response($csv, 200, [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+            'Content-Disposition' => "attachment; filename=\"{$filename}\"",
+            'Pragma' => 'no-cache',
+            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
+            'Expires' => '0',
+        ]);
+    }
+
+    /**
+     * Ekspor ringkasan eksekutif finansial (CSV / JSON) untuk Owner.
+     */
+    public function exportFinancialSummary(Request $request, ExportService $export): Response|JsonResponse
+    {
+        $filters = [
+            'start_date' => $request->query('start_date'),
+            'end_date' => $request->query('end_date'),
+        ];
+
+        $format = strtolower($request->query('format', 'csv'));
+        $transactions = $export->getFilteredTransactions($filters);
+        $metrics = $export->calculateMetrics($transactions);
+
+        if ($format === 'json') {
+            return response()->json([
+                'success' => true,
+                'metadata' => [
+                    'generated_at' => Carbon::now()->toIso8601String(),
+                    'filters' => $filters,
+                ],
+                'summary' => $metrics,
+            ]);
+        }
+
+        $csv = $export->generateFinancialSummaryCsv($metrics, $filters);
+        $filename = 'ringkasan_finansial_parkspot_' . date('Ymd_His') . '.csv';
+
+        return response($csv, 200, [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+            'Content-Disposition' => "attachment; filename=\"{$filename}\"",
+            'Pragma' => 'no-cache',
+            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
+            'Expires' => '0',
         ]);
     }
 }

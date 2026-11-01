@@ -52,4 +52,6 @@ Route::prefix('admin')->group(function () {
 Route::prefix('owner')->group(function () {
     Route::get('/summary', [AdminController::class, 'getOwnerSummary']);
     Route::get('/reports', [AdminController::class, 'getReports']);
+    Route::get('/export/transactions', [AdminController::class, 'exportTransactions']);
+    Route::get('/export/financial-summary', [AdminController::class, 'exportFinancialSummary']);
 });
