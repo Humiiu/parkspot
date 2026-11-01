@@ -27,6 +27,7 @@ Route::prefix('parking')->group(function () {
     Route::get('/ticket/{kodeTiket}', [ParkingController::class, 'getTicketStatus']);
     Route::post('/gate-out', [ParkingController::class, 'gateOut']);
     Route::post('/booking', [ParkingController::class, 'bookSlot']);
+    Route::post('/check-bookings', [ParkingController::class, 'checkBookings']);
 });
 
 // --- Modul Pembayaran QRIS Midtrans ---

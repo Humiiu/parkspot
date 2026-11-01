@@ -52,3 +52,4 @@ class MidtransPaymentTest extends TestCase
         $outResponse->assertStatus(200);
     }
 }
+

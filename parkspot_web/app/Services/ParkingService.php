@@ -36,7 +36,6 @@ class ParkingService
             return null;
         }
 
-        // Urutkan berdasarkan urutan_jarak terendah (paling dekat)
         usort($candidates, function ($a, $b) {
             return ($a['urutan_jarak'] ?? 999) <=> ($b['urutan_jarak'] ?? 999);
         });
@@ -45,7 +44,31 @@ class ParkingService
     }
 
     /**
+     * Cari apakah plat nomor memiliki reservasi/booking aktif yang belum masuk.
+     */
+    public function findActiveBookingByPlate(string $platNomor): ?array
+    {
+        $cleanPlate = strtoupper(str_replace(' ', '', $platNomor));
+        $transactions = $this->firebase->get('tb_transaksi') ?? [];
+
+        foreach ($transactions as $key => $trx) {
+            if (
+                ($trx['status'] ?? '') === 'booking' &&
+                empty($trx['waktu_masuk'])
+            ) {
+                $trxPlate = strtoupper(str_replace(' ', '', $trx['plat_nomor'] ?? ''));
+                if ($trxPlate === $cleanPlate) {
+                    return array_merge($trx, ['key' => $key]);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * Proses Masuk Kendaraan (Gate In)
+     * Otomatis membedakan apakah kendaraan memiliki reservasi (booking) atau reguler.
      */
     public function processGateIn(
         string $platNomor,
@@ -54,6 +77,53 @@ class ParkingService
         int|string $idArea = 1,
         ?string $idUser = null
     ): array {
+        $now = Carbon::now();
+        $waktuMasukStr = $now->toDateTimeString();
+
+        // 1. Cek apakah ada booking aktif untuk plat nomor ini
+        $activeBooking = $this->findActiveBookingByPlate($platNomor);
+
+        if ($activeBooking) {
+            $kodeSlot = $activeBooking['id_slot'];
+            $kodeTiket = $activeBooking['id_parkir'];
+            $idArea = $activeBooking['id_area'] ?? $idArea;
+
+            // Ubah lampu dari ORANYE menjadi MERAH
+            $this->firebase->update("tb_slot_parkir/{$kodeSlot}", [
+                'status_lampu' => 'merah',
+                'plat_nomor' => strtoupper($platNomor),
+            ]);
+
+            // Tambah kuota terisi pada area
+            $area = $this->firebase->get("tb_area_parkir/area_{$idArea}");
+            $terisiSaatIni = $area['terisi'] ?? 0;
+            $this->firebase->update("tb_area_parkir/area_{$idArea}", [
+                'terisi' => $terisiSaatIni + 1,
+            ]);
+
+            // Update transaksi booking menjadi aktif
+            $updateData = [
+                'waktu_masuk' => $waktuMasukStr,
+                'status' => 'aktif',
+            ];
+            $this->firebase->update("tb_transaksi/{$kodeTiket}", $updateData);
+
+            $this->logActivity(
+                $idUser ?? 'petugas',
+                "Kendaraan reservasi {$platNomor} tiba dan masuk ke slot {$kodeSlot}. Tiket: {$kodeTiket}"
+            );
+
+            return [
+                'success' => true,
+                'is_booking' => true,
+                'message' => "Kendaraan reservasi terverifikasi. Masuk ke slot {$kodeSlot}.",
+                'data' => array_merge($activeBooking, $updateData, [
+                    'nama_area' => $area['nama_area'] ?? "Lantai {$idArea}",
+                ]),
+            ];
+        }
+
+        // 2. Jika bukan booking, cari slot kosong (hijau) terdekat
         $slot = $this->findNearestAvailableSlot($idArea);
 
         if (!$slot) {
@@ -64,31 +134,29 @@ class ParkingService
         }
 
         $kodeSlot = $slot['kode_slot'] ?? $slot['key'];
-        $now = Carbon::now();
-        $waktuMasukStr = $now->toDateTimeString();
 
-        // 1. Ambil tarif yang sesuai
+        // Ambil tarif
         $tarifKey = 'tarif_' . strtolower($jenisKendaraan) . '_' . strtolower($kategori);
         $tarifData = $this->firebase->get("tb_tarif/{$tarifKey}");
         $tarifPerJam = $tarifData['tarif_per_jam'] ?? ($jenisKendaraan === 'motor' ? 2000 : 5000);
 
-        // 2. Generate kode tiket unik
+        // Generate kode tiket unik
         $kodeTiket = 'TRX-' . $now->format('Ymd') . '-' . strtoupper(Str::random(5));
 
-        // 3. Update status slot menjadi MERAH
+        // Ubah lampu menjadi MERAH
         $this->firebase->update("tb_slot_parkir/{$kodeSlot}", [
             'status_lampu' => 'merah',
             'plat_nomor' => strtoupper($platNomor),
         ]);
 
-        // 4. Update kapasitas terisi pada area
+        // Tambah kuota terisi
         $area = $this->firebase->get("tb_area_parkir/area_{$idArea}");
         $terisiSaatIni = $area['terisi'] ?? 0;
         $this->firebase->update("tb_area_parkir/area_{$idArea}", [
             'terisi' => $terisiSaatIni + 1,
         ]);
 
-        // 5. Simpan data transaksi
+        // Simpan data transaksi
         $transaksiData = [
             'id_parkir' => $kodeTiket,
             'kode_qr' => $kodeTiket,
@@ -101,7 +169,7 @@ class ParkingService
             'id_tarif' => $tarifKey,
             'tarif_per_jam' => $tarifPerJam,
             'durasi' => 0,
-            'biaya' => $tarifPerJam, // Tarif jam pertama
+            'biaya' => $tarifPerJam,
             'status' => 'aktif',
             'status_bayar' => 'belum',
             'id_user' => $idUser ?? 'guest',
@@ -109,14 +177,14 @@ class ParkingService
 
         $this->firebase->set("tb_transaksi/{$kodeTiket}", $transaksiData);
 
-        // 6. Catat log aktivitas
         $this->logActivity(
             $idUser ?? 'petugas',
-            "Kendaraan {$platNomor} ({$jenisKendaraan}) masuk ke slot {$kodeSlot}. Tiket: {$kodeTiket}"
+            "Kendaraan reguler {$platNomor} ({$jenisKendaraan}) masuk ke slot {$kodeSlot}. Tiket: {$kodeTiket}"
         );
 
         return [
             'success' => true,
+            'is_booking' => false,
             'data' => array_merge($transaksiData, [
                 'nama_area' => $area['nama_area'] ?? "Lantai {$idArea}",
             ]),
@@ -128,12 +196,10 @@ class ParkingService
      */
     public function calculateCurrentBill(array $transaksi): array
     {
-        $waktuMasuk = Carbon::parse($transaksi['waktu_masuk']);
+        $waktuMasuk = Carbon::parse($transaksi['waktu_masuk'] ?? now());
         $waktuSekarang = Carbon::now();
 
-        // Selisih dalam menit
         $totalMenit = max(1, $waktuMasuk->diffInMinutes($waktuSekarang));
-        // Hitung jam dengan pembulatan ke atas (min 1 jam)
         $durasiJam = (int)ceil($totalMenit / 60);
 
         $tarifPerJam = $transaksi['tarif_per_jam'] ?? 5000;
@@ -201,7 +267,6 @@ class ParkingService
 
         $this->firebase->update("tb_transaksi/{$kodeTiket}", $updateData);
 
-        // 4. Catat log aktivitas
         $this->logActivity(
             $idPetugas ?? 'petugas',
             "Kendaraan {$transaksi['plat_nomor']} keluar dari slot {$kodeSlot}. Biaya: Rp" . number_format($bill['total_biaya'])
@@ -254,6 +319,7 @@ class ParkingService
             'id_slot' => $kodeSlot,
             'id_area' => $slot['id_area'] ?? 1,
             'jam_booking' => $jamBooking,
+            'created_at' => $now->toDateTimeString(),
             'waktu_masuk' => null,
             'waktu_keluar' => null,
             'id_tarif' => $tarifKey,
@@ -280,6 +346,82 @@ class ParkingService
     }
 
     /**
+     * LOGIKA PENGAWAS: Otomatis membatalkan reservasi (booking) yang melewati batas toleransi 15 menit.
+     * Mengembalikan lampu dari ORANYE kembali ke HIJAU.
+     */
+    public function checkAndCancelExpiredBookings(int $toleranceMinutes = 15): array
+    {
+        $transactions = $this->firebase->get('tb_transaksi') ?? [];
+        $cancelled = [];
+        $now = Carbon::now();
+
+        foreach ($transactions as $key => $trx) {
+            if (
+                ($trx['status'] ?? '') === 'booking' &&
+                empty($trx['waktu_masuk'])
+            ) {
+                // Tentukan waktu target booking
+                $targetTimeStr = $trx['jam_booking'] ?? $trx['created_at'] ?? null;
+                if (!$targetTimeStr) continue;
+
+                try {
+                    if (str_contains($targetTimeStr, '-')) {
+                        $targetTime = Carbon::parse($targetTimeStr);
+                    } else {
+                        $targetTime = Carbon::parse($now->toDateString() . ' ' . $targetTimeStr);
+                    }
+                } catch (\Throwable $e) {
+                    $targetTime = Carbon::parse($trx['created_at'] ?? now());
+                }
+
+                // Cek apakah waktu saat ini melebihi target waktu + batas toleransi (15 menit)
+                $deadline = $targetTime->copy()->addMinutes($toleranceMinutes);
+
+                if ($now->greaterThan($deadline)) {
+                    $kodeSlot = $trx['id_slot'] ?? '';
+                    $idParkir = $trx['id_parkir'] ?? $key;
+                    $platNomor = $trx['plat_nomor'] ?? '';
+
+                    // 1. Kembalikan lampu slot dari ORANYE -> HIJAU
+                    if (!empty($kodeSlot)) {
+                        $this->firebase->update("tb_slot_parkir/{$kodeSlot}", [
+                            'status_lampu' => 'hijau',
+                            'plat_nomor' => '',
+                        ]);
+                    }
+
+                    // 2. Update status transaksi menjadi dibatalkan_otomatis
+                    $this->firebase->update("tb_transaksi/{$idParkir}", [
+                        'status' => 'dibatalkan_otomatis',
+                        'waktu_batal' => $now->toDateTimeString(),
+                        'alasan_batal' => "Melewati batas waktu toleransi kedatangan {$toleranceMinutes} menit.",
+                    ]);
+
+                    // 3. Catat ke log aktivitas
+                    $this->logActivity(
+                        'system',
+                        "Booking {$idParkir} (slot {$kodeSlot}, plat {$platNomor}) dibatalkan otomatis karena melewati toleransi {$toleranceMinutes} menit."
+                    );
+
+                    $cancelled[] = [
+                        'id_parkir' => $idParkir,
+                        'plat_nomor' => $platNomor,
+                        'kode_slot' => $kodeSlot,
+                        'jam_booking' => $targetTimeStr,
+                        'deadline' => $deadline->toDateTimeString(),
+                    ];
+                }
+            }
+        }
+
+        return [
+            'success' => true,
+            'total_cancelled' => count($cancelled),
+            'cancelled_items' => $cancelled,
+        ];
+    }
+
+    /**
      * Catat audit trail aktivitas ke node tb_log_aktivitas.
      */
     public function logActivity(string|int $idUser, string $aktivitas): void
@@ -294,4 +436,3 @@ class ParkingService
         ]);
     }
 }
-

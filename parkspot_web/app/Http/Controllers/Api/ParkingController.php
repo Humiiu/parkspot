@@ -97,7 +97,8 @@ class ParkingController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Kendaraan berhasil masuk dan slot telah dialokasikan.',
+            'is_booking' => $res['is_booking'] ?? false,
+            'message' => $res['message'] ?? 'Kendaraan berhasil masuk dan slot telah dialokasikan.',
             'data' => $res['data'],
         ], 201);
     }
@@ -194,6 +195,17 @@ class ParkingController extends Controller
             'success' => true,
             'data' => $tariffs,
         ]);
+    }
+
+    /**
+     * Periksa dan batalkan otomatis booking yang melewati batas toleransi waktu.
+     */
+    public function checkBookings(Request $request): JsonResponse
+    {
+        $tolerance = (int)($request->query('tolerance', 15));
+        $result = $this->parking->checkAndCancelExpiredBookings($tolerance);
+
+        return response()->json($result);
     }
 }
 
