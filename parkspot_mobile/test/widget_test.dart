@@ -1,30 +1,44 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:parkspot_mobile/main.dart';
+import 'package:parkspot_mobile/models/slot_model.dart';
+import 'package:parkspot_mobile/models/area_model.dart';
+import 'package:parkspot_mobile/models/tarif_model.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  test('SlotModel mapping test', () {
+    final slot = SlotModel.fromMap('A-01', {
+      'id_slot': 'A-01',
+      'id_area': 1,
+      'kode_slot': 'A-01',
+      'urutan_jarak': 1,
+      'status_lampu': 'hijau',
+      'plat_nomor': '',
+    });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(slot.kodeSlot, 'A-01');
+    expect(slot.isAvailable, true);
+    expect(slot.isBooked, false);
+    expect(slot.isOccupied, false);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  test('AreaModel capacity test', () {
+    final area = AreaModel.fromMap('1', {
+      'id_area': 1,
+      'nama_area': 'Lantai 1',
+      'kapasitas': 20,
+      'terisi': 5,
+    });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(area.tersedia, 15);
+  });
+
+  test('TarifModel mapping test', () {
+    final tarif = TarifModel.fromMap('tarif_mobil_reguler', {
+      'id_tarif': 1,
+      'jenis_kendaraan': 'mobil',
+      'kategori': 'reguler',
+      'tarif_per_jam': 5000,
+    });
+
+    expect(tarif.tarifPerJam, 5000);
   });
 }

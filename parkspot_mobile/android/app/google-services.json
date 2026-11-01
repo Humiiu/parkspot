@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "176049377073",
+    "firebase_url": "https://parkspot-f925f-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "parkspot-f925f",
+    "storage_bucket": "parkspot-f925f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176049377073:android:f1c3e71feecde80ba4aa10",
+        "android_client_info": {
+          "package_name": "com.parkspot.parkspot_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCc6W8CC4j8afu_T7ZexcESKtrEaZ7RBGQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
