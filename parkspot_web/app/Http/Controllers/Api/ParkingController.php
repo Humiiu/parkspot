@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Services\FirebaseService;
 use App\Services\ParkingService;
+use App\Services\ReceiptService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -206,6 +207,49 @@ class ParkingController extends Controller
         $result = $this->parking->checkAndCancelExpiredBookings($tolerance);
 
         return response()->json($result);
+    }
+
+    /**
+     * Format Karcis Masuk (58mm) siap kirim ke printer thermal.
+     */
+    public function getEntryReceipt(string $idParkir, ReceiptService $receiptService): JsonResponse
+    {
+        $transaksi = $this->firebase->get("tb_transaksi/{$idParkir}");
+
+        if (!$transaksi) {
+            return response()->json(['success' => false, 'message' => 'Tiket tidak ditemukan.'], 404);
+        }
+
+        $idArea = $transaksi['id_area'] ?? 1;
+        $area = $this->firebase->get("tb_area_parkir/area_{$idArea}");
+        $namaArea = $area['nama_area'] ?? "Lantai {$idArea}";
+
+        $receipt = $receiptService->formatEntryTicket($transaksi, $namaArea);
+
+        return response()->json([
+            'success' => true,
+            'data' => $receipt,
+        ]);
+    }
+
+    /**
+     * Format Struk Pembayaran Keluar (58mm) siap kirim ke printer thermal.
+     */
+    public function getExitReceipt(string $idParkir, Request $request, ReceiptService $receiptService): JsonResponse
+    {
+        $transaksi = $this->firebase->get("tb_transaksi/{$idParkir}");
+
+        if (!$transaksi) {
+            return response()->json(['success' => false, 'message' => 'Tiket tidak ditemukan.'], 404);
+        }
+
+        $petugas = $request->query('petugas', 'Petugas 1');
+        $receipt = $receiptService->formatExitReceipt($transaksi, $petugas);
+
+        return response()->json([
+            'success' => true,
+            'data' => $receipt,
+        ]);
     }
 }
 

@@ -28,6 +28,8 @@ Route::prefix('parking')->group(function () {
     Route::post('/gate-out', [ParkingController::class, 'gateOut']);
     Route::post('/booking', [ParkingController::class, 'bookSlot']);
     Route::post('/check-bookings', [ParkingController::class, 'checkBookings']);
+    Route::get('/receipt/entry/{idParkir}', [ParkingController::class, 'getEntryReceipt']);
+    Route::get('/receipt/exit/{idParkir}', [ParkingController::class, 'getExitReceipt']);
 });
 
 // --- Modul Pembayaran QRIS Midtrans ---

@@ -59,3 +59,4 @@ class CheckBookingsCommand extends Command
         return Command::SUCCESS;
     }
 }
+
