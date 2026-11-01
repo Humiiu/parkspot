@@ -1,0 +1,14 @@
+# Temporary files
+~$*
+*.tmp
+
+# Scratch scripts
+scratch/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
