@@ -54,3 +54,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'parkspot-f925f.firebasestorage.app',
   );
 }
+

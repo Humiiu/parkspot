@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ParkingController;
+use App\Http\Controllers\Api\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,13 @@ Route::prefix('parking')->group(function () {
     Route::get('/ticket/{kodeTiket}', [ParkingController::class, 'getTicketStatus']);
     Route::post('/gate-out', [ParkingController::class, 'gateOut']);
     Route::post('/booking', [ParkingController::class, 'bookSlot']);
+});
+
+// --- Modul Pembayaran QRIS Midtrans ---
+Route::prefix('payment')->group(function () {
+    Route::post('/create-qris', [PaymentController::class, 'createQris']);
+    Route::post('/midtrans-callback', [PaymentController::class, 'handleCallback']);
+    Route::post('/simulate-success/{idParkir}', [PaymentController::class, 'simulateSuccess']);
 });
 
 // --- Modul Master Data & Log Audit (Admin) ---
