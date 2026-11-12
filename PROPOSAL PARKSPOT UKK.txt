@@ -1,0 +1,1200 @@
+       UJIAN KOMPETENSI KEAHLIAN
+PENGEMBANGAN APLIKASI PARKIR (PAKET 2)
+"Pembuatan Aplikasi Parkir ParkSpot Berbasis Web dan Mobile sebagai Sistem Pengelolaan Parkir Terpadu"
+Laporan ini dibuat untuk memenuhi persyaratan kelulusan dari
+SMK Bina Informatika
+                                       
+              Disusun oleh:
+Jundi Faiq Mahbubillah
+NIS. 24183041
+Program Keahlian: Rekayasa Perangkat Lunak
+Kompetensi Keahlian: Teknik Komputer dan Informatika
+  SMK BINA INFORMATIKA BINTARO
+School of Information Technology and Art
+2026
+
+LEMBAR PERSETUJUAN
+Nama
+: SMK Bina Informatika Bintaro
+Program Keahlian
+: Rekayasa Perangkat Lunak
+Kompetensi Keahlian
+: Teknik Komputer dan Informatika
+
+Nomor Induk Siswa (NIS)           :       
+
+2
+4
+1
+8
+3
+0
+4
+1
+
+Nama Peserta Didik
+: Jundi Faiq Mahbubillah
+Judul Proyek
+: Pembuatan Aplikasi Parkir ParkSpot Berbasis Web dan Mobile sebagai Sistem Pengelolaan Parkir Terpadu
+                                                
+                                                
+                                                
+                                    Bintaro, 05 November 2026
+          Menyetujui,
+Kepala Bidang Teknik Komputer dan Informatika
+
+
+                
+
+Muhammad Iqbal Akbar, S.T.
+NIK. 13.19.13.155
+                       Mengetahui,
+Guru Pembimbing UKK
+
+
+                                       
+               
+
+Santosa WIjayanto, S.T, M.Kom
+NIK. 13.09.03.051
+                                       
+                                       
+
+KATA PENGANTAR
+Puji syukur penulis panjatkan ke hadirat Tuhan Yang Maha Esa atas rahmat-Nya, sehingga Buku Desain Produksi berjudul "Pembuatan Aplikasi Parkir ParkSpot Berbasis Web dan Mobile sebagai Sistem Pengelolaan Parkir Terpadu" ini dapat diselesaikan untuk memenuhi persyaratan kelulusan Uji Kompetensi Keahlian (UKK) Rekayasa Perangkat Lunak SMK Bina Informatika Bintaro.
+Penulis menyampaikan terima kasih yang sebesar-besarnya kepada:
+ Tuhan Yang Maha Esa atas kelancaran yang senantiasa dilimpahkan.
+ Ibu Sinta Dewi, S.Pd., M.Kom., selaku Kepala SMK Bina Informatika Bintaro.
+ Bapak Ahmad Ridhwan Hanafi, Lc., selaku Wakasek Bidang Kependidikan.
+ Bapak Rizam Nuruzzaman, M.Pd., selaku Wakasek Bidang Kewirausahaan dan Industri.
+ Bapak Muhammad Iqbal Akbar, S.T., selaku Kepala Bidang TKI.
+ Bapak Santosa W, S.T., M.Kom., selaku Guru Pembimbing UKK atas segala bimbingannya.
+ Bapak Bagus, selaku Penguji UKK, beserta segenap Guru Rekayasa Perangkat Lunak.
+ Orang tua dan teman-teman atas doa serta dukungan moral yang tak terhingga.
+  Penulis menyadari dokumen ini masih memiliki kekurangan, sehingga kritik dan saran yang membangun sangat diharapkan. Semoga karya ini bermanfaat.
+  
+ Bintaro, 5 November 2026
+Peserta Didik,
+
+
+Jundi Faiq Mahbubillah
+NIS. 24183041
+DAFTAR ISI
+LEMBAR PERSETUJUAN	i
+KATA PENGANTAR	ii
+DAFTAR ISI	iii
+DAFTAR TABEL	vi
+DAFTAR GAMBAR	vi
+DAFTAR LAMPIRAN	vii
+BAB I PENDAHULUAN	1
+A. Latar Belakang	1
+B. Rumusan Masalah	2
+C. Tujuan	2
+D. Manfaat dan Keunggulan Produk	3
+E. Pesaing / Kompetitor	4
+BAB II TINJAUAN PUSTAKA	5
+A. Metodologi Perancangan	5
+B. Kebutuhan Software	6
+BAB III PERANCANGAN	8
+A. Spesifikasi Software dan Hardware	8
+B. Pembagian Hak Akses Pengguna	9
+C. Diagram Use Case	10
+D. Diagram Activity	11
+1. Diagram Activity Login dan Logout	11
+2. Diagram Activity CRUD Data User (Admin)	12
+3. Diagram Activity CRUD Tarif Parkir (Admin)	13
+4. Diagram Activity CRUD Area dan Slot Parkir (Admin)	14
+5. Diagram Activity CRUD Data Kendaraan (Admin & Member)	15
+6. Diagram Activity Akses Log Aktivitas	16
+7. Diagram Activity Input Pelat Nomor Masuk dan Penempatan Slot Terdekat (Petugas)	17
+8. Diagram Activity Booking Parkir dan Pengecekan Batas Waktu (Member & Petugas)	18
+9. Diagram Activity Lihat Lokasi Slot dan Cek Tagihan Berjalan (Member & Guest)	19
+10. Diagram Activity Bayar Parkir Non-Tunai QRIS (Member & Guest)	20
+11. Diagram Activity Transaksi Palang Keluar dan Cetak Struk (Petugas)	21
+12. Diagram Activity Rekap Transaksi (Owner)	22
+E. Diagram Sequence	23
+1. Diagram Sequence Login dan Logout	24
+2. Diagram Sequence CRUD Data User (Admin)	24
+3. Diagram Sequence CRUD Tarif Parkir (Admin)	25
+4. Diagram Sequence CRUD Area dan Slot Parkir (Admin)	26
+5. Diagram Sequence CRUD Data Kendaraan (Admin & Pelanggan)	27
+6. Diagram Sequence Akses Log Aktivitas (Admin)	29
+7. Diagram Sequence Input Pelat Masuk dan Pencarian Slot	30
+8. Diagram Sequence Booking Parkir dan Pengecekan Petugas	30
+9. Diagram Sequence Lihat Lokasi Slot dan Cek Tagihan Berjalan	31
+10. Diagram Sequence Bayar Parkir QRIS	31
+11. Diagram Sequence Transaksi Palang Keluar dan Cetak Struk	31
+12. Diagram Sequence Rekap Transaksi Sesuai Waktu (Owner)	32
+Diagram Konteks (DFD Level 0)	33
+G. Pseudocode Logika Proses Utama	34
+1. Pseudocode Proses Login	34
+2. Pseudocode Proses Transaksi Parkir	35
+3. Pseudocode Proses Cetak Struk Parkir	37
+H. Skema ERD Realtime Database Firebase	38
+I. Dokumentasi Modul Program (Input, Proses, Output)	40
+J. Rancangan Wireframe dan Struktur Struk Parkir	41
+1. Rancangan Wireframe Pos Gerbang Masuk dan Kasir Keluar (Petugas)	42
+2. Rancangan Wireframe Web Administrator	44
+3. Rancangan Wireframe Web Owner	47
+4. Rancangan Wireframe Aplikasi Pelanggan Member (Mobile)	48
+5. Rancangan Wireframe Pengunjung Tamu (Web Mobile)	51
+6. Rancangan Struktur Karcis dan Struk Thermal Parkir (58mm)	53
+K. Rencana Pengujian Sistem	54
+L. Jadwal Pelaksanaan	56
+BAB IV SIMPULAN DAN SARAN	58
+A. SIMPULAN	58
+B. SARAN	58
+DAFTAR PUSTAKA	59
+LAMPIRAN	60
+Lampiran 1. Rancangan Struktur Data JSON pada Firebase Database	60
+
+DAFTAR TABEL
+Tabel 1.1 Perbandingan Fitur Sistem Parkir dengan Kompetitor	4
+Tabel 3.1 Spesifikasi Software dan Hardware	8
+Tabel 3.2 Pembagian Hak Akses Pengguna	9
+Tabel 3.3 Skema Data Firebase Realtime Database	39
+Tabel 3.4 Dokumentasi Input, Proses, dan Output Program	40
+Tabel 3.5 Rencana Pengujian Sistem	54
+Tabel 3.6 Jadwal Pelaksanaan Proyek	56
+
+DAFTAR GAMBAR
+Gambar 2.1 Tahapan Metode Pengembangan Waterfall	5
+Gambar 3.1 Diagram Use Case Aplikasi ParkSpot	10
+Gambar 3.2 Diagram Activity Login dan Logout	11
+Gambar 3.3 Diagram Activity CRUD Data User (Admin)	12
+Gambar 3.4 Diagram Activity CRUD Tarif Parkir (Admin)	13
+Gambar 3.5 Diagram Activity CRUD Area dan Slot Parkir (Admin)	14
+Gambar 3.6 Diagram Activity CRUD Data Kendaraan (Admin & Member)	15
+Gambar 3.7 Diagram Activity Akses Log Aktivitas (Admin)	16
+Gambar 3.8 Diagram Activity Input Pelat Masuk dan Penempatan Slot (Petugas)	17
+Gambar 3.9 Diagram Activity Booking Parkir dan Pengecekan Petugas (Member & Petugas)	18
+Gambar 3.10 Diagram Activity Lihat Lokasi Slot dan Cek Argo Berjalan (Member & Guest)	19
+Gambar 3.11 Diagram Activity Bayar Parkir Non-Tunai QRIS Midtrans (Member & Guest)	20
+Gambar 3.12 Diagram Activity Transaksi Palang Keluar dan Cetak Struk (Petugas)	21
+Gambar 3.13 Diagram Activity Rekap Transaksi Sesuai Waktu (Owner)	22
+Gambar 3.14 Diagram Sequence Login dan Logout	24
+Gambar 3.15 Diagram Sequence CRUD Data User (Admin)	25
+Gambar 3.16 Diagram Sequence CRUD Tarif Parkir (Admin)	26
+Gambar 3.17 Diagram Sequence CRUD Area dan Slot Parkir (Admin)	27
+Gambar 3.18 Diagram Sequence CRUD Data Kendaraan (Admin & Member)	28
+Gambar 3.19 Diagram Sequence Akses Log Aktivitas (Admin)	29
+Gambar 3.20 Diagram Sequence Input Pelat Masuk dan Penempatan Slot	30
+Gambar 3.21 Diagram Sequence Booking Parkir dan Pengecekan Petugas	30
+Gambar 3.22 Diagram Sequence Lihat Lokasi Slot dan Cek Argo Berjalan	31
+Gambar 3.23 Diagram Sequence Bayar Parkir Non-Tunai QRIS Midtrans	31
+Gambar 3.24 Diagram Sequence Transaksi Palang Keluar dan Cetak Struk	32
+Gambar 3.25 Diagram Sequence Rekap Transaksi Sesuai Waktu (Owner)	32
+Gambar 3.26 Diagram Konteks (DFD Level 0) Sistem ParkSpot	33
+Gambar 3.27 Skema ERD NoSQL Firebase Realtime Database	38
+Gambar 3.28 Rancangan Wireframe Pos Gerbang Masuk dan Penempatan Slot (Petugas)	42
+Gambar 3.29 Rancangan Wireframe Kasir Pembayaran Keluar dan Cetak Struk (Petugas)	43
+Gambar 3.30 Rancangan Wireframe Visualisasi Denah Slot Parkir 3 Warna (Admin)	44
+Gambar 3.31 Rancangan Wireframe Master Area dan Titik Slot Parkir (Admin)	45
+Gambar 3.32 Rancangan Wireframe Akses Log Aktivitas Sistem dan Audit Trail (Admin)	46
+Gambar 3.33 Rancangan Wireframe Dashboard Eksekutif dan Laporan Finansial (Owner)	47
+Gambar 3.34 Rancangan Wireframe Beranda Member dan Status Parkir Aktif (Mobile)	48
+Gambar 3.35 Rancangan Wireframe Form Pemesanan Slot Parkir Terdekat (Mobile)	49
+Gambar 3.36 Rancangan Wireframe Pembayaran Pre-Exit QRIS Midtrans (Mobile)	50
+Gambar 3.37 Rancangan Wireframe Karcis Digital dan Billing Tamu (Web Mobile)	51
+Gambar 3.38 Rancangan Wireframe Panduan Denah dan Petunjuk Arah Tamu (Web Mobile)	52
+
+DAFTAR LAMPIRAN
+Lampiran 1. Struktur Data JSON pada Firebase Realtime Database	60
+
+BAB I
+PENDAHULUAN
+A. Latar Belakang
+  Sistem parkir yang ada di pusat perbelanjaan (mal) saat ini masih sering menyulitkan pengendara maupun pengelola parkir. Pengendara sering kesulitan mencari tempat parkir yang kosong karena tidak adanya petunjuk lokasi yang jelas sejak masuk gerbang. Di sisi lain, penggunaan sensor fisik di setiap tempat parkir membutuhkan biaya pemasangan dan perawatan alat yang mahal bagi pihak gedung.
+  Selain itu, pengunjung mal umumnya terbagi menjadi dua tipe. Tipe pertama adalah pengunjung rutin yang mau mengunduh aplikasi di ponsel untuk memesan tempat parkir (booking). Tipe kedua adalah pengunjung biasa (guest) yang jarang datang dan enggan mengunduh aplikasi hanya untuk parkir sekali. Proses pembayaran yang menumpuk di palang pintu keluar juga sering menyebabkan antrean kendaraan yang panjang.
+  Untuk mengatasi masalah tersebut sekaligus memenuhi tugas Uji Kompetensi Keahlian (UKK) Paket 2 Rekayasa Perangkat Lunak, penulis merancang aplikasi bernama ParkSpot berbasis Web (Laravel) dan Mobile (Flutter) dengan basis data Firebase. Pada sistem ini, tempat parkir terdekat langsung ditentukan oleh sistem saat nomor pelat kendaraan diinput di gerbang masuk, sehingga lampu indikator langsung berubah menjadi merah tanpa perlu sensor fisik. Untuk pengunjung yang tidak memiliki aplikasi, disediakan karcis parkir mini berisi kode QR yang dapat dipindai untuk melihat lokasi parkir, mengecek tagihan berjalan, serta membayar parkir melalui QRIS Midtrans Sandbox.
+
+B. Rumusan Masalah
+1.	Pengendara kesulitan mengetahui lokasi slot parkir kosong terdekat saat baru melewati gerbang masuk, sementara pemasangan sensor di tiap slot memakan biaya besar.
+2.	Pengunjung yang jarang datang ke mal (guest) enggan mengunduh aplikasi khusus hanya untuk melihat arah tempat parkir dan mengecek tagihan parkirnya.
+3.	Adanya pengguna yang memesan tempat parkir (booking) tetapi belum keluar saat waktu reservasinya sudah habis, sehingga mengganggu giliran pengguna lain.
+4.	Terjadinya antrean di palang pintu keluar karena proses pengecekan dan pembayaran masih bertumpu di gerbang keluar.
+5.	Pengelola parkir (Owner dan Admin) membutuhkan sistem yang dapat mencatat data kendaraan, tarif, area, transaksi, serta rekap pendapatan secara langsung dan sinkron.
+C. Tujuan
+1.	Membuat sistem penempatan parkir otomatis yang langsung mengarahkan kendaraan ke slot kosong terdekat saat nomor pelat dimasukkan di gerbang masuk tanpa menggunakan sensor.
+2.	Menyediakan karcis parkir ber-QR yang menghubungkan pengunjung non-aplikasi (guest) ke halaman web untuk melihat lokasi parkir, mengecek tagihan berjalan, dan membayar parkir tanpa harus membuat akun.
+3.	Menyediakan fitur booking tempat parkir di aplikasi Flutter untuk pelanggan tetap, lengkap dengan fitur pengecekan oleh petugas jika pengguna melewati batas waktu booking.
+4.	Menambahkan simulasi pembayaran non-tunai menggunakan QRIS Midtrans Sandbox agar pengguna dapat membayar tagihan parkir dari dalam mal sebelum menuju pintu keluar.
+5.	Membangun sistem pengelolaan parkir dengan 3 hak akses pengelola (Admin, Petugas, dan Owner) serta pengguna umum yang datanya tersinkronisasi melalui Firebase.
+D. Manfaat dan Keunggulan Produk
+1.	Indikator Slot 3 Warna Tanpa Sensor
+  Status slot parkir ditampilkan dengan tiga warna lampu, yaitu Hijau (kosong), Oranye (sudah di-booking), dan Merah (sedang ditempati). Perubahan warna ini diatur langsung oleh sistem saat kendaraan masuk atau melakukan booking, sehingga tidak memerlukan sensor fisik.
+2.	Karcis QR dan Halaman Web Khusus Tamu (Guest)
+  Pengunjung yang tidak mengunduh aplikasi tetap bisa melihat petunjuk lokasi parkirnya pada cetakan karcis mini, lalu memindai kode QR di karcis tersebut untuk memantau tagihan berjalan dan membayar lewat web.
+3.	Pengawasan Slot Booking dan Perhitungan Lewat Waktu
+  Slot yang sudah di-booking akan berwarna oranye dan dijaga oleh petugas. Jika waktu booking habis namun mobil belum keluar, petugas dapat memperbarui status slot tersebut agar tagihan pengguna terus bertambah sampai mobil keluar di palang pintu.
+4.	Simulasi Pembayaran QRIS dari Dalam Mal
+  Pengguna dapat melunasi biaya parkir lebih awal menggunakan QRIS Midtrans Sandbox saat masih berada di dalam gedung mal, sehingga saat di palang keluar petugas cukup memindai struk dan membuka palang.
+5.	Sinkronisasi Data Langsung Antara Web dan Mobile
+  Penggunaan Firebase sebagai basis data membuat perubahan status tempat parkir dan data transaksi langsung diperbarui secara bersamaan di aplikasi web maupun aplikasi mobile.
+
+E. Pesaing / Kompetitor
+  Aplikasi serupa yang sudah digunakan di berbagai tempat parkir saat ini contohnya adalah Parkee dan Secure Parking. Perbandingan fitur antara sistem parkir biasa, kompetitor, dan rancangan aplikasi ParkSpot dapat dilihat pada tabel berikut:
+Tabel 1.1 Perbandingan Fitur Sistem Parkir dengan Kompetitor
+                                     Fitur
+                                 Parkir Biasa
+                            Parkee / Secure Parking
+                              Rancangan ParkSpot
+Pencarian Slot Kosong
+Mencari manual keliling area parkir
+Hanya menampilkan sisa kuota lantai atau memakai sensor
+Ditentukan otomatis ke slot terdekat oleh sistem + indikator 3 warna
+Akses Pengunjung Tanpa Aplikasi
+Karcis kertas biasa tanpa info tagihan
+Harus mengecek tarif di mesin kasir
+Karcis mini ber-QR untuk buka web lokasi parkir dan cek tagihan berjalan
+Fitur Booking dan Batas Waktu
+Tidak ada
+Terbatas
+Bisa pilih jam mulai-selesai (lampu oranye), dijaga petugas, tagihan lanjut jika lewat jam
+Cara Pembayaran
+Bayar di gerbang keluar
+Non-tunai di gerbang keluar
+Bisa bayar QRIS dari dalam mal (Midtrans Sandbox) atau di kasir keluar
+
+BAB II
+TINJAUAN PUSTAKA
+A. Metodologi Perancangan
+  Perancangan dan pembuatan aplikasi ParkSpot menggunakan metode Waterfall yang dikerjakan secara bertahap:
+                                       
+               Gambar 2.1 Tahapan Metode Pengembangan Waterfall
+1.	Analisis Kebutuhan
+  Menentukan kebutuhan fitur untuk masing-masing pengguna yaitu Admin, Petugas, Owner, serta pelanggan (pengguna aplikasi mobile dan pengguna web via QR struk).
+2.	Desain Sistem
+  Membuat rancangan struktur data berdasarkan skema soal UKK, menyusun diagram Use Case, Activity Diagram, Sequence Diagram, DFD Level 0, Flowchart, serta merancang tampilan layar aplikasi.
+3.	Implementasi Kode
+  Menulis kode program untuk bagian web menggunakan Laravel dan Tailwind CSS yang dijalankan melalui XAMPP, membuat aplikasi mobile menggunakan Flutter, serta menghubungkan keduanya ke Firebase dan Midtrans Sandbox.
+4.	Pengujian
+  Menguji seluruh fitur aplikasi mulai dari login, pengelolaan data oleh Admin, input kendaraan masuk dan keluar oleh Petugas, booking slot, hingga cetak struk dan laporan Owner.
+5.	Dokumentasi
+  Menyusun buku desain produksi dan laporan hasil pengerjaan proyek aplikasi parkir.
+B. Kebutuhan Software
+  Perangkat lunak dan teknologi yang digunakan untuk membangun aplikasi ParkSpot ini meliputi:
+1.	XAMPP dan PHP
+  Paket aplikasi server lokal yang digunakan untuk menjalankan layanan web server Apache dan bahasa pemrograman PHP selama proses pengembangan aplikasi web.
+2.	Laravel
+  Framework pengembangan web berbasis PHP yang digunakan untuk membangun halaman pengelolaan Admin, halaman operasional Petugas, halaman laporan Owner, serta halaman web untuk pengunjung tamu (guest).
+3.	Tailwind CSS
+  Framework CSS berbasis utility-first yang dipakai untuk mengatur tampilan halaman web dan format cetakan struk parkir agar rapi dan responsif.
+4.	Flutter dan Dart
+  Framework dan bahasa pemrograman dari Google yang digunakan untuk membuat aplikasi mobile ParkSpot bagi pelanggan tetap yang ingin mendaftarkan kendaraannya dan memesan tempat parkir.
+5.	Firebase
+  Layanan basis data berbasis cloud dari Google yang digunakan sebagai penyimpanan utama seluruh data aplikasi. Penggunaan Firebase membuat data di web Laravel dan aplikasi mobile Flutter selalu tersinkronisasi secara langsung.
+6.	Midtrans Sandbox
+  Layanan simulasi payment gateway yang digunakan untuk menguji coba fitur pembayaran parkir non-tunai menggunakan kode QRIS.
+7.	PlantUML dan Figma
+  Aplikasi bantu yang digunakan untuk membuat diagram alur sistem (Use Case, Activity, Sequence, DFD, dan Flowchart) serta merancang desain tampilan layar aplikasi.
+
+BAB III
+PERANCANGAN
+A. Spesifikasi Software dan Hardware
+  Perangkat keras dan perangkat lunak yang digunakan penulis untuk merancang dan mengerjakan proyek UKK ini adalah sebagai berikut:
+Tabel 3.1 Spesifikasi Software dan Hardware
+                                   Komponen
+                         Spesifikasi Minimal Soal UKK
+                          Spesifikasi yang Digunakan
+Komputer / Laptop
+Processor setara 2,0 GHz, RAM 4 GB
+PC Desktop (AMD Ryzen 5 7500F, MSI PRO A620M-E) & Laptop ASUS Vivobook Go E1404FA
+Perangkat Uji Mobile
+Sesuai Kebutuhan
+Smartphone Android Samsung Galaxy A54
+Sistem Operasi
+Sesuai Kebutuhan
+Windows 11
+Text Editor & IDE
+Sesuai Kebutuhan
+Visual Studio Code dan Android Studio
+Local Web Server
+Sesuai Kebutuhan
+XAMPP (Apache / PHP)
+Basis Data
+Aplikasi Server Basis Data
+Firebase Realtime Database
+
+B. Pembagian Hak Akses Pengguna
+  Sesuai ketentuan soal UKK Paket 2, aplikasi memiliki 3 hak akses pengelola (Admin, Petugas, dan Owner) serta ditambah akses untuk Pelanggan (pengguna aplikasi mobile dan pengguna web struk QR):
+Tabel 3.2 Pembagian Hak Akses Pengguna
+                                      No
+                                Fitur Aplikasi
+                                     Admin
+                                    Petugas
+                                     Owner
+                                    Member
+                                       1
+Login dan Logout
+                                       V
+                                       V
+                                       V
+                                       V
+                                       2
+CRUD Data User
+                                       V
+                                       -
+                                       -
+                                       -
+                                       3
+CRUD Tarif Parkir (Reguler & Booking)
+                                       V
+                                       -
+                                       -
+                                       -
+                                       4
+CRUD Area dan Slot Parkir
+                                       V
+                                       -
+                                       -
+                                       -
+                                       5
+CRUD Data Kendaraan
+                                       V
+                                       -
+                                       -
+                                 V (Miliknya)
+                                       6
+Akses Log Aktivitas
+                                       V
+                                       -
+                                       -
+                                       -
+                                       7
+Input Pelat Nomor Masuk & Penempatan Slot
+                                       -
+                                       V
+                                       -
+                                       -
+                                       8
+Cetak Struk Parkir (Karcis Masuk & Struk Keluar)
+                                       -
+                                       V
+                                       -
+                                       -
+                                       9
+Menjaga Slot Booking & Update Jika Belum Keluar
+                                       -
+                                       V
+                                       -
+                                       -
+                                      10
+Transaksi Palang Keluar (Scan Struk)
+                                       -
+                                       V
+                                       -
+                                       -
+                                      11
+Rekap Transaksi Sesuai Waktu yang Diminta
+                                       -
+                                       -
+                                       V
+                                       -
+                                      12
+Booking Parkir, Cek Lokasi, & Bayar QRIS
+                                       -
+                                       -
+                                       -
+                                       V
+
+C. Diagram Use Case
+  Diagram Use Case digunakan untuk menggambarkan seluruh hak akses setiap aktor pengguna (Admin, Petugas, Owner, Pelanggan Member, dan Pengunjung Guest) pada sistem ParkSpot:
+                                        
+                                       
+                 Gambar 3.1 Diagram Use Case Aplikasi ParkSpot
+
+D. Diagram Activity 
+  Berikut adalah penjabaran Diagram Activity untuk seluruh fitur yang terdapat pada Diagram Use Case aplikasi ParkSpot:
+1. Diagram Activity Login dan Logout
+  Menggambarkan alur autentikasi pengguna saat masuk ke dalam sistem sesuai perannya (Admin, Petugas, Owner, atau Pelanggan Member) serta pencatatan ke log aktivitas.
+                                       
+                 Gambar 3.2 Diagram Activity Login dan Logout
+
+2. Diagram Activity CRUD Data User (Admin)
+  Menggambarkan alur pengelolaan data akun pengguna (tambah, lihat, ubah, dan hapus data user) yang dilakukan oleh Admin pada Firebase.
+                                        
+                  Gambar 3.3 Diagram Activity CRUD Data User
+
+3. Diagram Activity CRUD Tarif Parkir (Admin)
+  Menggambarkan alur pengelolaan harga tarif parkir per jam untuk kategori Reguler maupun Booking berdasarkan jenis kendaraan oleh Admin.
+                                        
+                 Gambar 3.4 Diagram Activity CRUD Tarif Parkir
+
+4. Diagram Activity CRUD Area dan Slot Parkir (Admin)
+  Menggambarkan alur pengelolaan data area lantai parkir beserta titik slot parkir dan pemantauan indikator lampu tiga warna oleh Admin.
+                                        
+             Gambar 3.5 Diagram Activity CRUD Area dan Slot Parkir
+
+5. Diagram Activity CRUD Data Kendaraan (Admin & Member)
+  Menggambarkan alur pendaftaran dan pengelolaan data nomor pelat kendaraan oleh Admin maupun oleh Pelanggan Member pada akunnya.
+                                        
+  
+                Gambar 3.6 Diagram Activity CRUD Data Kendaraan
+
+6. Diagram Activity Akses Log Aktivitas 
+  Menggambarkan alur pemantauan riwayat aktivitas sistem yang tercatat di Firebase oleh Admin.
+                                        
+                Gambar 3.7 Diagram Activity Akses Log Aktivitas
+
+7. Diagram Activity Input Pelat Nomor Masuk dan Penempatan Slot Terdekat (Petugas)
+  Menggambarkan alur saat kendaraan masuk, Petugas menginput nomor pelat, sistem memilihkan slot kosong terdekat (lampu berubah dari Hijau menjadi Merah), memulai billing, serta mencetak karcis QR untuk pengunjung tamu.
+  
+       Gambar 3.8 Diagram Activity Input Pelat Masuk dan Penempatan Slot
+
+8. Diagram Activity Booking Parkir dan Pengecekan Batas Waktu (Member & Petugas)
+  Menggambarkan alur pemesanan slot parkir oleh Pelanggan Member (lampu berubah menjadi Oranye), penjagaan slot oleh Petugas, hingga pembaruan status apabila waktu booking habis namun kendaraan belum keluar.
+                                       
+       Gambar 3.9 Diagram Activity Booking Parkir dan Pengecekan Petugas
+
+9. Diagram Activity Lihat Lokasi Slot dan Cek Tagihan Berjalan (Member & Guest)
+  Menggambarkan alur saat Pelanggan Member membuka aplikasi Flutter atau Pengunjung Guest memindai kode QR pada karcis masuk untuk melihat denah lokasi slot parkir dan memantau tagihan berjalan.
+  
+    Gambar 3.10 Diagram Activity Lihat Lokasi Slot dan Cek Tagihan Berjalan
+
+10. Diagram Activity Bayar Parkir Non-Tunai QRIS (Member & Guest)
+  Menggambarkan alur simulasi pembayaran biaya parkir secara non-tunai dari dalam mal menggunakan QRIS Midtrans Sandbox sebelum pengendara menuju gerbang keluar.
+                                        
+       Gambar 3.11 Diagram Activity Bayar Parkir Non-Tunai QRIS Midtrans
+
+11. Diagram Activity Transaksi Palang Keluar dan Cetak Struk (Petugas)
+  Menggambarkan alur saat kendaraan tiba di palang keluar, Petugas memindai kode QR struk, sistem menghitung durasi dan biaya akhir, memverifikasi pelunasan, mencetak struk bukti bayar, serta mengembalikan lampu indikator slot menjadi Hijau.
+  
+     Gambar 3.12 Diagram Activity Transaksi Palang Keluar dan Cetak Struk
+
+12. Diagram Activity Rekap Transaksi (Owner)
+  Menggambarkan alur pembuatan dan pencetakan laporan rekap pendapatan parkir berdasarkan periode tanggal yang dipilih oleh Owner.
+                                        
+                                        
+             Gambar 3.13 Diagram Activity Rekap Transaksi (Owner)
+
+E. Diagram Sequence 
+  Setelah perancangan Diagram Activity selesai, berikut adalah Diagram Sequence untuk menggambarkan urutan interaksi antar komponen sistem pada setiap fitur:
+1. Diagram Sequence Login dan Logout
+
+                 Gambar 3.14 Diagram Sequence Login dan Logout
+2. Diagram Sequence CRUD Data User (Admin)
+
+                  Gambar 3.15 Diagram Sequence CRUD Data User
+3. Diagram Sequence CRUD Tarif Parkir (Admin)
+
+                Gambar 3.16 Diagram Sequence CRUD Tarif Parkir
+4. Diagram Sequence CRUD Area dan Slot Parkir (Admin)
+
+            Gambar 3.17 Diagram Sequence CRUD Area dan Slot Parkir
+5. Diagram Sequence CRUD Data Kendaraan (Admin & Pelanggan)
+
+               Gambar 3.18 Diagram Sequence CRUD Data Kendaraan
+
+6. Diagram Sequence Akses Log Aktivitas (Admin)
+
+               Gambar 3.19 Diagram Sequence Akses Log Aktivitas
+                                       
+                                       
+7. Diagram Sequence Input Pelat Masuk dan Pencarian Slot
+
+       Gambar 3.20 Diagram Sequence Input Pelat Masuk dan Pencarian Slot
+8. Diagram Sequence Booking Parkir dan Pengecekan Petugas
+
+      Gambar 3.21 Diagram Sequence Booking Parkir dan Pengecekan Petugas
+                                       
+                                       
+9. Diagram Sequence Lihat Lokasi Slot dan Cek Tagihan Berjalan
+
+    Gambar 3.22 Diagram Sequence Lihat Lokasi Slot dan Cek Tagihan Berjalan
+10. Diagram Sequence Bayar Parkir QRIS 
+
+                Gambar 3.23 Diagram Sequence Bayar Parkir QRIS
+11. Diagram Sequence Transaksi Palang Keluar dan Cetak Struk
+
+     Gambar 3.24 Diagram Sequence Transaksi Palang Keluar dan Cetak Struk
+12. Diagram Sequence Rekap Transaksi Sesuai Waktu (Owner)
+
+           Gambar 3.25 Diagram Sequence Rekap Transaksi Sesuai Waktu
+
+Diagram Konteks (DFD Level 0)
+  Diagram Konteks (DFD Level 0) digunakan untuk menggambarkan aliran data secara garis besar antara seluruh entitas pengguna (Admin, Petugas, Owner, Pelanggan Member, dan Pengunjung Guest) dengan Sistem Pengelolaan Parkir ParkSpot:
+                                       
+           Gambar 3.26 Diagram Konteks (DFD Level 0) Sistem ParkSpot
+
+G. Pseudocode Logika Proses Utama
+  Berdasarkan pedoman teknis langkah kerja UKK Paket 2, berikut adalah perancangan logika dan algoritma pseudocode untuk proses utama aplikasi:
+1. Pseudocode Proses Login
+MULAI Proses_Login
+    INPUT username, password
+    AMBIL data_user DARI data Firebase "tb_user" BERDASARKAN username
+    JIKA data_user ditemukan DAN password sesuai MAKA
+        JIKA data_user.status_aktif == 1 MAKA
+            SIMPAN session login (id_user, role)
+            TAMBAH catatan baru ke data Firebase "tb_log_aktivitas"
+            ARAHKAN ke halaman dashboard sesuai role
+        SELAIN ITU
+            TAMPILKAN pesan "Akun tidak aktif"
+        AKHIR JIKA
+    SELAIN ITU
+        TAMPILKAN pesan "Username atau password salah"
+    AKHIR JIKA
+SELESAI
+
+2. Pseudocode Proses Transaksi Parkir
+MULAI Proses_Transaksi
+
+// A. Saat Kendaraan Masuk
+    INPUT plat_nomor, jenis_kendaraan (diinput oleh Petugas)
+    CEK plat_nomor pada Firebase "tb_kendaraan"
+    JIKA plat_nomor terdaftar MAKA
+        SET id_user = pemilik kendaraan
+    SELAIN ITU
+        SET id_user = kosong // Tamu tanpa akun
+    AKHIR JIKA
+
+    CARI slot kosong terdekat:
+        AMBIL data "tb_slot_parkir" dengan status_lampu == "hijau"
+        URUTKAN berdasarkan urutan_jarak dari yang terkecil
+        JIKA tidak ada slot kosong MAKA
+            TAMPILKAN pesan "Slot parkir penuh"
+            SELESAI
+        AKHIR JIKA
+        SET slot_terpilih = slot dengan jarak terdekat
+
+    UBAH status_lampu slot_terpilih menjadi "merah"
+    TAMBAH jumlah terisi (+1) pada Firebase "tb_area_parkir"
+    SIMPAN data transaksi baru ke "tb_transaksi" dan MULAI pencatatan waktu masuk
+    JIKA id_user kosong MAKA
+        CETAK karcis masuk mini berisi nomor slot dan kode QR unik
+    AKHIR JIKA
+
+// B. Saat Kendaraan Keluar di Palang Keluar
+    INPUT kode_tiket_qr (dari pemindaian karcis oleh Petugas)
+    AMBIL data transaksi dari Firebase "tb_transaksi"
+    SET waktu_keluar = sekarang
+    HITUNG durasi_jam = PEMBULATAN KE ATAS((waktu_keluar - waktu_masuk) / 60 menit)
+    JIKA durasi_jam < 1 MAKA
+        SET durasi_jam = 1 // Ketentuan minimum parkir 1 jam
+    AKHIR JIKA
+    AMBIL tarif_per_jam dari Firebase "tb_tarif" sesuai jenis kendaraan
+    HITUNG biaya_total = durasi_jam * tarif_per_jam
+
+    JIKA status_bayar == "lunas" MAKA
+        HITUNG selisih_menit = waktu_keluar - waktu_pembayaran
+        JIKA selisih_menit > 15 MAKA
+            HITUNG biaya_tambahan = PEMBULATAN KE ATAS(selisih_menit / 60) * tarif_per_jam
+            TERIMA pembayaran biaya tambahan di kasir Petugas
+        AKHIR JIKA
+    SELAIN ITU
+        TERIMA pembayaran tunai sebesar biaya_total di kasir Petugas
+    AKHIR JIKA
+
+    UPDATE Firebase "tb_transaksi" (waktu_keluar, durasi_jam, biaya_total, status = "selesai", status_bayar = "lunas")
+    UBAH kembali status_lampu slot menjadi "hijau"
+    KURANGI jumlah terisi (-1) pada Firebase "tb_area_parkir"
+    CETAK struk bukti pembayaran keluar
+    BERIKAN izin keluar dan buka palang parkir
+SELESAI
+
+3. Pseudocode Proses Cetak Struk Parkir
+
+MULAI Cetak_Struk_Keluar
+
+    INPUT kode_tiket_qr  (dari scan struk oleh Petugas)
+
+    AMBIL data transaksi dari Firebase "tb_transaksi" BERDASARKAN kode_qr
+    AMBIL data slot dari Firebase "tb_slot_parkir" BERDASARKAN id_slot
+    AMBIL data area dari Firebase "tb_area_parkir" BERDASARKAN id_area
+    AMBIL data kendaraan dari Firebase "tb_kendaraan" BERDASARKAN id_kendaraan
+
+    TAMPILKAN pratinjau struk pada layar kasir:
+        - Nomor tiket (kode_qr)
+        - Plat nomor kendaraan
+        - Nomor slot parkir (kode_slot) dan nama area (nama_area)
+        - Waktu masuk (waktu_masuk)
+        - Waktu keluar (waktu_keluar)
+        - Durasi parkir (durasi_jam jam)
+        - Total biaya (biaya_total)
+        - Metode pembayaran (QRIS / Tunai)
+        - Nama Petugas
+
+    CETAK struk ke printer thermal 58mm
+
+SELESAI
+
+H. Skema ERD Realtime Database Firebase
+  Meskipun penyimpanan aplikasi menggunakan Firebase sepenuhnya agar sinkron antara web dan mobile, penamaan struktur data pada Firebase Realtime Database tetap disusun mengikuti 6 struktur tabel yang ada pada lembar soal UKK Paket 2 ditambah 1 struktur data untuk slot parkir:
+                                       
+            Gambar 3.27 Skema ERD NoSQL Firebase Realtime Database
+
+                                       
+Tabel 3.3 Skema Data Firebase Realtime Database
+                               Nama Data / Tabel
+                                Kunci Identitas
+                      Atribut / Field Data yang Disimpan
+tb_user
+id_user
+id_user, nama_lengkap, username, password_hash, role (admin, petugas, owner, member), status_aktif
+tb_area_parkir
+id_area
+id_area, nama_area (lantai/zona), kapasitas, terisi
+tb_slot_parkir
+id_slot
+id_slot, id_area, kode_slot (contoh: A-04), urutan_jarak, status_lampu (hijau, oranye, merah)
+tb_tarif
+id_tarif
+id_tarif, jenis_kendaraan (motor, mobil, lainnya), kategori (reguler, booking), tarif_per_jam
+tb_kendaraan
+id_kendaraan
+id_kendaraan, plat_nomor, jenis_kendaraan, warna, pemilik, id_user (kosong jika tamu)
+tb_transaksi
+id_parkir
+id_parkir, kode_qr, id_kendaraan, id_slot, jam_booking, waktu_masuk, waktu_keluar, id_tarif, durasi, biaya, status, status_bayar, id_user, id_area
+tb_log_aktivitas
+id_log
+id_log, id_user, aktivitas, waktu_aktivitas
+
+I. Dokumentasi Modul Program (Input, Proses, Output)
+  Sesuai langkah kerja poin 8 pada soal UKK, pembagian input, proses, dan output pada setiap modul aplikasi yang akan dibuat adalah sebagai berikut:
+Tabel 3.4 Dokumentasi Input, Proses, dan Output Program
+                                  Nama Modul
+                                     Input
+                                    Proses
+                                    Output
+Modul Login & Logout
+Username dan password
+Mencocokkan data akun di Firebase tb_user dan mencatat waktu login ke tb_log_aktivitas.
+Masuk ke halaman sesuai hak akses.
+Modul Kelola Data Master (Admin)
+Data user, tarif, area, slot, dan kendaraan
+Menambah, mengubah, atau menghapus data master pada Firebase.
+Data tersimpan dan terbarui di Firebase.
+Modul Masuk Parkir (Petugas)
+Nomor pelat dan jenis kendaraan
+Mengecek akun pelat nomor, memilih slot hijau terdekat, mengubah lampu jadi merah, dan memulai tagihan.
+Lokasi parkir di aplikasi atau cetakan karcis QR untuk tamu.
+Modul Booking & Cek Batas Waktu
+Pilihan lantai, slot, jam mulai & selesai
+Mengubah lampu slot jadi oranye. Jika jam habis dan mobil belum pergi, petugas mengupdate status agar tagihan lanjut.
+Slot terpesan (oranye) dan tagihan terhitung sesuai waktu keluar.
+Modul Web Tamu & Bayar QRIS
+Scan kode QR pada karcis masuk
+Menampilkan lokasi slot, tagihan berjalan, dan memproses simulasi bayar QRIS Midtrans Sandbox.
+Halaman informasi parkir tamu dan status pembayaran lunas.
+Modul Keluar & Cetak Struk
+Scan QR struk di palang keluar
+Menghitung total biaya akhir, mengubah status transaksi selesai, mengembalikan lampu slot jadi hijau.
+Struk bukti bayar tercetak dan indikator slot kembali hijau.
+Modul Riwayat Aktivitas (Admin)
+Tidak ada (hanya membaca data)
+Mengambil dan menampilkan seluruh catatan dari tb_log_aktivitas meliputi login, perubahan tarif, perubahan data, dan aktivitas lainnya.
+Tabel riwayat aktivitas yang dapat difilter berdasarkan waktu atau pengguna.
+Modul Rekap Transaksi (Owner)
+Rentang tanggal yang dipilih
+Mengambil data dari tb_transaksi sesuai periode yang dipilih, menghitung total pendapatan, jumlah kendaraan, dan perbandingan metode pembayaran.
+Tabel rekap transaksi dan ringkasan pendapatan.
+
+J. Rancangan Wireframe dan Struktur Struk Parkir
+Rancangan tampilan layar (wireframe) sistem ParkSpot dirancang menggunakan susunan halaman, letak tombol, informasi yang ditampilkan, dan alur penggunaan aplikasi sebelum tahap pengkodean (Laravel dan Flutter) dilaksanakan. Rancangan tampilan dikelompokkan ke dalam 5 bagian hak akses aktor sebagai berikut:
+
+1. Rancangan Wireframe Pos Gerbang Masuk dan Kasir Keluar (Petugas)
+Halaman Petugas dirancang untuk operasional di pos gerbang masuk dan kasir keluar. Halaman ini menyediakan fungsi input nomor pelat secara manual, pemindaian kode QR karcis, serta perhitungan tagihan parkir secara otomatis.
+                                       
+Gambar 3.28 Rancangan Wireframe Pos Gerbang Masuk dan Penempatan Slot (Petugas)
+Halaman ini digunakan oleh Petugas Gerbang Masuk untuk menginput nomor pelat kendaraan dan jenis kendaraan. Sistem secara otomatis menunjuk slot kosong terdekat berdasarkan algoritma jarak tanpa membutuhkan sensor fisik, lalu mencetak karcis masuk mini dengan kode QR.
+                                       
+Gambar 3.29 Rancangan Wireframe Kasir Pembayaran Keluar dan Cetak Struk (Petugas)
+Jendela kasir ini muncul saat kendaraan tiba di gerbang keluar. Petugas memindai kode QR tiket, lalu sistem menghitung total durasi dan biaya parkir. Setelah pembayaran selesai diverifikasi, Petugas memberikan izin keluar kepada pengendara dan mencetak struk bukti bayar.
+
+Catatan: Pembukaan palang fisik dilakukan secara manual oleh Petugas berdasarkan konfirmasi sistem. Integrasi palang otomatis merupakan rencana pengembangan berikutnya.
+
+2. Rancangan Wireframe Web Administrator
+Halaman Admin berfungsi sebagai halaman pusat untuk mengelola seluruh data utama sistem, mengatur hak akses pengguna, memantau denah visual slot parkir secara langsung, mengatur tarif, dan melihat riwayat aktivitas.
+                                       
+ Gambar 3.30 Rancangan Wireframe Visualisasi Denah Slot Parkir 3 Warna (Admin)
+Menampilkan denah visual interaktif per lantai/zona. Setiap titik slot menampilkan indikator 3 warna: Hijau (Kosong/Tersedia), Oranye (Dipesan/Booking oleh Member), dan Merah (Terisi). Admin dapat memantau perubahan status slot secara langsung karena data diperbarui otomatis melalui Firebase Realtime Database.
+                                       
+      Gambar 3.31 Rancangan Wireframe Area dan Titik Slot Parkir (Admin)
+Digunakan oleh Administrator untuk menambah lantai/area baru, mengatur kapasitas maksimum, serta mendaftarkan kode titik slot parkir lengkap dengan nilai urutan jarak dari pintu gerbang masuk.
+                                       
+Gambar 3.32 Rancangan Wireframe Akses Log Aktivitas Sistem dan Audit Trail (Admin)
+Menampilkan riwayat aktivitas seluruh pengguna (Admin, Petugas, Owner, Member), termasuk login, perubahan tarif, perubahan data, dan aktivitas lainnya di dalam aplikasi.
+3. Rancangan Wireframe Web Owner
+Halaman Owner menampilkan informasi pendapatan parkir, jumlah slot yang terisi, perbandingan pembayaran tunai dan QRIS, serta rangkuman transaksi yang dapat diunduh dalam format PDF atau Excel.
+                                       
+    Gambar 3.33 Rancangan Wireframe Dashboard dan Laporan Finansial (Owner)
+Menampilkan ringkasan pendapatan harian/bulanan, tingkat keterisian slot parkir, dan daftar transaksi yang dapat difilter berdasarkan rentang tanggal atau shift operasional. Data transaksi juga dapat diunduh dalam format PDF atau Excel sebagai laporan tercetak.
+4. Rancangan Wireframe Aplikasi Pelanggan Member (Mobile)
+Aplikasi mobile Flutter dirancang untuk pelanggan terdaftar (Member). Fitur utamanya mencakup pemantauan ketersediaan slot sebelum tiba di lokasi, pemesanan slot terdekat secara otomatis, tiket QR digital, serta pembayaran via QRIS Midtrans sebelum menuju gerbang keluar.
+                                       
+    Gambar 3.34 Rancangan Wireframe Beranda Member dan Status Parkir Aktif 
+Menampilkan status tagihan parkir berjalan secara langsung jika Member sedang parkir, estimasi biaya sementara, denah ketersediaan slot 3 status, dan menu navigasi cepat.
+                                       
+     Gambar 3.35 Rancangan Wireframe Form Pemesanan Slot Parkir Terdekat 
+Form pemesanan di mana member memilih jenis kendaraan dan estimasi kedatangan. Sistem secara otomatis memilihkan slot kosong terdekat. Member memiliki toleransi kedatangan selama 15 menit dari waktu pemesanan. Jika melewati batas waktu dan Member belum tiba, Petugas dapat melepas kembali slot ke status kosong.
+                                       
+           Gambar 3.36 Rancangan Wireframe Pembayaran Pre-Exit QRIS 
+Halaman pembayaran non-tunai menggunakan kode QRIS Midtrans Sandbox sebelum pengendara menuju gerbang keluar. Setelah pembayaran berhasil, Member memiliki toleransi 15 menit untuk sampai ke gerbang keluar.
+
+5. Rancangan Wireframe Pengunjung Tamu (Web Mobile) 
+Pengunjung tamu (pengendara tanpa aplikasi) dapat langsung mengakses halaman web responsif dengan memindai kode QR pada karcis kertas mini menggunakan kamera smartphone.
+                                       
+                                       
+          Gambar 3.37 Rancangan Wireframe Karcis Digital dan Billing 
+Halaman web tamu yang memuat nomor tiket, lokasi lantai slot parkir, waktu kedatangan masuk, durasi parkir berjalan, dan tombol pembayaran mandiri QRIS tanpa perlu login akun.
+                                       
+       Gambar 3.38 Rancangan Wireframe Panduan Denah dan Petunjuk Arah 
+Menampilkan denah statis parkir dari gerbang masuk menuju slot parkir yang telah dialokasikan, memudahkan pengendara menemukan titik parkir dengan cepat.
+6. Rancangan Struktur Karcis dan Struk Thermal Parkir (58mm)
+  Struk parkir dirancang menggunakan ukuran kertas mini seperti karcis parkir mal agar ringkas dan cepat dicetak:
+                  Rancangan Karcis Masuk (Berisi QR Web Tamu)
+                    Rancangan Struk Bukti Pembayaran Keluar
+--------------------------------
+   PARKSPOT - TIKET MASUK       
+     28/10/2026 | 19:15 WIB     
+--------------------------------
+   PLAT : B 1945 RI (MOBIL)     
+   SLOT : LANTAI 1 -> [ A-04 ]  
+--------------------------------
+        [  KODE QR UNIK  ]      
+  Scan QR untuk lihat denah,    
+  cek tagihan & bayar QRIS      
+         #TRX-261028-0084       
+--------------------------------
+--------------------------------
+     PARKSPOT - BUKTI BAYAR     
+--------------------------------
+No. Tiket   : #TRX-261028-0084
+Plat / Slot : B 1945 RI / A-04
+Masuk       : 28/10/26 19:15
+Keluar      : 28/10/26 21:40
+Durasi      : 3 Jam
+--------------------------------
+TOTAL BAYAR : Rp 15.000 (LUNAS)
+Metode      : QRIS / Tunai
+--------------------------------
+  Petugas: Budi | Terima Kasih  
+--------------------------------
+
+K. Rencana Pengujian Sistem
+  Setelah tahap penulisan kode program selesai, aplikasi akan diuji menggunakan tabel rencana pengujian berikut untuk memastikan semua fitur berjalan sesuai rancangan:
+Tabel 3.5 Rencana Pengujian Sistem
+                                   Kode Uji
+                             Fitur yang Akan Diuji
+                             Hasil yang Diharapkan
+                                    UJI-01
+Login dan Logout untuk Admin, Petugas, Owner, dan Member
+Pengguna berhasil masuk ke halaman sesuai perannya dan tercatat di log aktivitas.
+                                    UJI-02
+Kelola data User, Tarif, Area/Slot, dan Kendaraan oleh Admin
+Data berhasil ditambahkan, diubah, dan dihapus pada Firebase.
+                                    UJI-03
+Input pelat nomor masuk oleh Petugas & penempatan slot terdekat
+Sistem menunjuk slot kosong terdekat, mengubah indikator jadi merah, dan mencetak karcis QR.
+                                    UJI-04
+Akses halaman web dari QR karcis & simulasi bayar QRIS Midtrans
+Halaman web menampilkan lokasi slot, tagihan berjalan, dan pembayaran Midtrans Sandbox berhasil.
+                                    UJI-05
+Booking slot parkir & update petugas jika mobil belum keluar saat waktu habis
+Indikator slot berubah oranye saat dipesan, dan tagihan terus bertambah jika lewat batas waktu.
+                                    UJI-06
+Scan struk di palang keluar, cetak struk bukti bayar, & rekap transaksi Owner
+Transaksi selesai, lampu slot kembali hijau, struk tercetak, dan masuk ke laporan Owner.
+UJI-07
+Semua slot penuh saat kendaraan baru mencoba masuk
+Sistem menampilkan pesan "Parkir penuh" dan kendaraan tidak dapat dialokasikan slot.
+UJI-08
+Pemesanan melebihi batas waktu tanpa kedatangan Member
+Petugas melepas slot kembali ke status kosong (hijau) secara manual.
+UJI-09
+Simulasi QRIS gagal atau pembayaran tidak terdeteksi
+Status transaksi tetap "belum lunas", kendaraan tidak diizinkan keluar.
+UJI-10
+Member mencoba login dengan akun yang dinonaktifkan
+Muncul pesan "Akun tidak aktif", pengguna tidak dapat masuk ke sistem.
+UJI-11
+Scan QR karcis yang sudah selesai atau tidak valid
+Sistem menampilkan pesan error, transaksi tidak diproses.
+
+
+L. Jadwal Pelaksanaan
+Tabel 3.6 Jadwal Pelaksanaan Proyek
+No
+Rencana Kegiatan
+Agustus
+September
+Oktober
+November
+Desember
+
+
+1
+2
+3
+4
+1
+2
+3
+4
+1
+2
+3
+4
+1
+2
+3
+4
+1
+2
+3
+4
+1
+Analisis Kebutuhan Sistem dan Penyusunan Proposal Proyek
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2
+Studi Literatur & Pemilihan Arsitektur Teknologi (Laravel, Flutter, Firebase)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3
+Perancangan Alur Sistem (Use Case, Activity, Sequence, DFD Level 0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4
+Perancangan Skema Basis Data Firebase Realtime Database (RTDB)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5
+Desain Wireframe UI/UX Web (Petugas/Admin) dan Mobile (Member)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6
+Pengembangan Backend REST API Laravel & Logika 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7
+Pembuatan Tampilan Web Petugas 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8
+Pembuatan Dashboard Admin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9
+Pengembangan Aplikasi Mobile Member 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10
+Implementasi Reservasi Booking Slot & Logika 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11
+Integrasi Payment Gateway QRIS Midtrans Dinamis & Webhook Callback
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+12
+Pengujian Fungsional Sistem
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+13
+Evaluasi Sistem, Perbaikan Bug (Bug Fixing), dan Optimalisasi Performa
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+14
+Finalisasi Buku Desain Produksi 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BAB IV
+SIMPULAN DAN SARAN
+A. SIMPULAN
+  Berdasarkan perancangan sistem pengelolaan parkir ParkSpot yang telah disusun dalam buku desain produksi ini, dapat diambil simpulan sementara sebagai berikut:
+1.	Aplikasi ParkSpot dirancang menggunakan kombinasi Laravel untuk web dan Flutter untuk mobile dengan basis data terpusat pada Firebase, sehingga perubahan status slot parkir dan data transaksi diharapkan dapat tersinkronisasi secara langsung antara kedua platform.
+2.	Sistem penempatan tempat parkir terdekat secara otomatis dengan indikator lampu tiga warna (Hijau, Oranye, Merah) diharapkan dapat memberikan solusi yang lebih hemat biaya karena tidak memerlukan pemasangan sensor fisik di setiap slot parkir.
+3.	Pengunjung yang tidak mengunduh aplikasi tetap dimudahkan melalui karcis parkir mini ber-QR untuk melihat petunjuk arah parkir, mengecek tagihan berjalan, dan membayar menggunakan QRIS Midtrans Sandbox, sedangkan pelanggan tetap (Member) dapat melakukan pemesanan tempat parkir melalui aplikasi mobile.
+B. SARAN
+  
+
+
+
+DAFTAR PUSTAKA
+ Kemendikdasmen. (2025). Soal Praktik Kejuruan (SPK) Uji Kompetensi Keahlian Tahun Pelajaran 2025/2026 Paket 2: Pengembangan Aplikasi Parkir (Kode KM25.4.1.1).
+ SMK Bina Informatika Bintaro. (2026). Pedoman Penyusunan Buku Desain Produksi Uji Kompetensi Keahlian (UKK) Tahun Pelajaran 2026/2027.
+ Laravel LLC. (2024). Laravel Documentation. Diakses pada 28 Oktober 2026 dari https://laravel.com/docs
+ Dokumentasi Resmi Flutter dan Firebase. Diakses melalui https://docs.flutter.dev dan https://firebase.google.com/docs 
+ Dokumentasi Midtrans Sandbox. Diakses melalui 
+  https://docs.midtrans.com 
+ Figma, Inc. (2026). Desain ParkSpot Wireframe UI. Diakses Melalui 
+  https://www.figma.com/design/6B0yigqQKXH6VAybDnFswT/tes?node-id=0-1&t=Y00yrDjmtX6AHIxE-1
+ JGraph Ltd. (2026). Diagram Arsitektur Sistem ParkSpot (Draw.io). Diakses pada 28 Oktober 2026 dari https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Diagram%20ParkSpot%20UKK.drawio&dark=auto#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1yoHirknsmJoVT1evd25at8Is6xJzMbfQ%26export%3Ddownload [HYPERLINK: https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Diagram%20ParkSpot%20UKK.drawio&dark=auto]a
+ 
+
+
+LAMPIRAN
+Lampiran 1. Rancangan Struktur Data JSON pada Firebase Database
+{
+  "tb_area_parkir": {
+    "area_1": {
+      "id_area": 1,
+      "nama_area": "Lantai 1 - Zona A",
+      "kapasitas": 20,
+      "terisi": 2
+    }
+  },
+  "tb_slot_parkir": {
+    "A-01": { "id_area": 1, "kode_slot": "A-01", "urutan_jarak": 1, "status_lampu": "merah",  "plat_nomor": "B 1234 JFM" },
+    "A-02": { "id_area": 1, "kode_slot": "A-02", "urutan_jarak": 2, "status_lampu": "oranye", "plat_nomor": "B 8899 UKK" },
+    "A-03": { "id_area": 1, "kode_slot": "A-03", "urutan_jarak": 3, "status_lampu": "hijau",  "plat_nomor": "" }
+  },
+  "tb_tarif": {
+    "tarif_mobil_reguler": { "id_tarif": 1, "jenis_kendaraan": "mobil", "kategori": "reguler", "tarif_per_jam": 5000 },
+    "tarif_mobil_booking": { "id_tarif": 2, "jenis_kendaraan": "mobil", "kategori": "booking", "tarif_per_jam": 8000 }
+  }
