@@ -4,8 +4,8 @@ Dokumen ini adalah **konsensus arsitektur final 99% bulletproof** hasil sidang d
 
 ---
 
-## FONDASI UTAMA: 11 ENTITAS STANDAR SISTEM
-Seluruh proposal, diagram, dan kode program menggunakan penamaan 11 entitas standar berikut (menggantikan awalan lama `tb_*` menjadi `master_*`, `trx_*`, dan `log_*`):
+## FONDASI UTAMA: 12 ENTITAS STANDAR SISTEM
+Seluruh proposal, diagram, dan kode program menggunakan penamaan 12 entitas standar berikut (menggantikan awalan lama `tb_*` menjadi `master_*`, `trx_*`, dan `log_*`):
 
 1. **`master_lokasi`**: Data mall/cabang (`id_lokasi`, `nama_lokasi`, `alamat`, `buffer_booking_menit`, `status_aktif`).
 2. **`master_user`**: Data akun (`id_user`, `nama_lengkap`, `email`, `username`, `password_hash`, `role`, `assigned_id_lokasi`, `status_aktif`, serta indeks cepat `idx_email/{md5_email}`).

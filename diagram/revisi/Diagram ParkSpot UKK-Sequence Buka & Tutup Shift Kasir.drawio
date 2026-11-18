@@ -1,0 +1,210 @@
+<mxfile host="app.diagrams.net" agent="ParkSpot" version="24.0.0">
+  <diagram id="d3_seq_shift_065f954d" name="Diagram ParkSpot UKK-Sequence Buka &amp; Tutup Shift Kasir">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="alt_jadwal" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=50;height=25;fillColor=none;" value="alt" vertex="1">
+          <mxGeometry x="40" y="410" width="1140" height="306" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_selisih" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=50;height=25;fillColor=none;" value="alt" vertex="1">
+          <mxGeometry x="40" y="1250" width="1140" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_petugas" parent="1" style="shape=umlLifeline;participant=umlActor;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;" value="Petugas" vertex="1">
+          <mxGeometry x="180" y="60" width="20" height="1570" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_pos" parent="1" style="shape=umlLifeline;participant=umlBoundary;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;" value="Halaman Pos Kasir" vertex="1">
+          <mxGeometry x="465" y="60" width="50" height="1570" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_sistem" parent="1" style="shape=umlLifeline;participant=umlControl;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;" value="Sistem" vertex="1">
+          <mxGeometry x="770" y="60" width="40" height="1570" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_firebase" parent="1" style="shape=umlLifeline;whiteSpace=wrap;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=50;" value="Firebase" vertex="1">
+          <mxGeometry x="1030" y="60" width="120" height="1570" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_jadwal_guard_0" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=#FFFFFF;" value="[Jadwal Tidak Sesuai]" vertex="1">
+          <mxGeometry x="102" y="413" width="180" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_jadwal_div_1" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="40" y="534" as="sourcePoint"/>
+            <mxPoint x="1180" y="534" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt_jadwal_guard_1" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=#FFFFFF;" value="[Jadwal Sesuai]" vertex="1">
+          <mxGeometry x="52" y="538" width="180" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_selisih_guard_0" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=#FFFFFF;" value="[selisih_kas != 0]" vertex="1">
+          <mxGeometry x="102" y="1253" width="180" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_selisih_div_1" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="40" y="1342" as="sourcePoint"/>
+            <mxPoint x="1180" y="1342" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt_selisih_guard_1" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=#FFFFFF;" value="[selisih_kas == 0]" vertex="1">
+          <mxGeometry x="52" y="1346" width="180" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="msg_1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="1. Pilih Metode Absensi (Tempel Kartu NFC HP /&lt;br&gt;Scan Barcode Kartu / Input 6 Digit PIN)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="180" as="sourcePoint"/>
+            <mxPoint x="490" y="180" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="2. Kirim Kredensial Absensi &amp; id_lokasi">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="490" y="222" as="sourcePoint"/>
+            <mxPoint x="790" y="222" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_3" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="3. Mengambil Data &quot;master_user&quot; &amp;&lt;br&gt;&quot;master_jadwal_shift/{id_lokasi}&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="790" y="278" as="sourcePoint"/>
+            <mxPoint x="1090" y="278" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_4" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="4. Data Profil Petugas &amp; Jadwal Aktif">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1090" y="320" as="sourcePoint"/>
+            <mxPoint x="790" y="320" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_5" edge="1" parent="1" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;curved=0;labelBackgroundColor=#FFFFFF;" value="5. Validasi Cabang (assigned_id_lokasi)&lt;br&gt;&amp; Kecocokan Jadwal Shift">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="835" y="344"/>
+              <mxPoint x="835" y="384"/>
+            </Array>
+            <mxPoint x="790" y="344" as="sourcePoint"/>
+            <mxPoint x="790" y="384" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_6" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="6. Pesan &quot;Tidak sesuai jadwal shift&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="790" y="472" as="sourcePoint"/>
+            <mxPoint x="490" y="472" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_7" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="7. Menampilkan Penolakan Buka Shift">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="490" y="514" as="sourcePoint"/>
+            <mxPoint x="190" y="514" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_8" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="8. Simpan Shift Baru ke &quot;trx_shift_petugas/{id_lokasi}&quot;&lt;br&gt;(status_shift=&quot;aktif&quot;, metode_absen_buka,&lt;br&gt;total_tunai_sistem=0, total_qris_sistem=0)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="790" y="612" as="sourcePoint"/>
+            <mxPoint x="1090" y="612" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_9" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="9. ID Shift Aktif Tersimpan">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1090" y="654" as="sourcePoint"/>
+            <mxPoint x="790" y="654" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_10" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="10. Buka Akses Halaman Pos Kasir">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="790" y="696" as="sourcePoint"/>
+            <mxPoint x="490" y="696" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_11" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="11. Proses Transaksi Keluar (Tunai / QRIS)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="764" as="sourcePoint"/>
+            <mxPoint x="490" y="764" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_12" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="12. Catat Transaksi pada Shift Aktif (id_shift_keluar)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="490" y="806" as="sourcePoint"/>
+            <mxPoint x="790" y="806" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_13" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="13. Ikat id_shift_keluar di &quot;trx_parkir&quot; &amp; Tambah&lt;br&gt;total_transaksi_keluar serta total_tunai_sistem /&lt;br&gt;total_qris_sistem di &quot;trx_shift_petugas&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="790" y="878" as="sourcePoint"/>
+            <mxPoint x="1090" y="878" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_14" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="14. Klik &quot;Tutup Shift&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="922" as="sourcePoint"/>
+            <mxPoint x="490" y="922" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_15" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="15. Tampilkan Form Setoran (Nominal&lt;br&gt;total_tunai_sistem Disembunyikan)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="490" y="978" as="sourcePoint"/>
+            <mxPoint x="190" y="978" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_16" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="16. Input uang_fisik_setor &amp; catatan_berita_acara">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="1020" as="sourcePoint"/>
+            <mxPoint x="490" y="1020" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_17" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="17. Kirim Data Tutup Shift">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="490" y="1062" as="sourcePoint"/>
+            <mxPoint x="790" y="1062" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_18" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="18. Mengambil total_tunai_sistem dari&lt;br&gt;&quot;trx_shift_petugas&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="790" y="1118" as="sourcePoint"/>
+            <mxPoint x="1090" y="1118" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_19" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="19. Nominal total_tunai_sistem">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1090" y="1160" as="sourcePoint"/>
+            <mxPoint x="790" y="1160" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_20" edge="1" parent="1" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;curved=0;labelBackgroundColor=#FFFFFF;" value="20. Hitung selisih_kas =&lt;br&gt;uang_fisik_setor - total_tunai_sistem">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="835" y="1184"/>
+              <mxPoint x="835" y="1224"/>
+            </Array>
+            <mxPoint x="790" y="1184" as="sourcePoint"/>
+            <mxPoint x="790" y="1224" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_21" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="21. Set status_shift=&quot;flag_selisih&quot; &amp; Tulis&lt;br&gt;DISCREPANCY_ALERT ke &quot;log_aktivitas&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="790" y="1322" as="sourcePoint"/>
+            <mxPoint x="1090" y="1322" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_22" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="22. Set status_shift=&quot;selesai&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="790" y="1400" as="sourcePoint"/>
+            <mxPoint x="1090" y="1400" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_23" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="23. Perbarui &quot;trx_shift_petugas&quot; (waktu_tutup,&lt;br&gt;uang_fisik_setor, selisih_kas, status_shift)&lt;br&gt;&amp; Tulis CLOSE_SHIFT ke &quot;log_aktivitas&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="790" y="1494" as="sourcePoint"/>
+            <mxPoint x="1090" y="1494" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_24" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="24. Kembalikan Ringkasan Tutup Shift">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="790" y="1536" as="sourcePoint"/>
+            <mxPoint x="490" y="1536" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_25" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=#FFFFFF;" value="25. Tampilkan &amp; Cetak Ringkasan&lt;br&gt;Tutup Shift (Serah Terima Kas)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="490" y="1592" as="sourcePoint"/>
+            <mxPoint x="190" y="1592" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

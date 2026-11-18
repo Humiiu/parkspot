@@ -13,14 +13,47 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 
 | No | Poin Revisi Penguji | Status Diskusi / Konsep | Status Proposal | Status Kode Web (Laravel) | Status Kode Mobile (Flutter) |
 | :---: | :--- | :---: | :---: | :---: | :---: |
-| **1** | Format Cetak Struk PDF 58mm & Direct Print | 🟢 Disepakati (Konsensus Final) | 🔴 Pending | 🔴 Pending | 🔴 Pending |
-| **2** | Pematangan Fitur Cetak Struk (Backend & Frontend) | 🟢 Disepakati (Konsensus Final) | 🔴 Pending | 🔴 Pending | 🔴 Pending |
-| **3** | Antisipasi Bentrok Booking Slot (Buffer Time 30 Menit) | 🟢 Disepakati (Konsensus Final) | 🔴 Pending | 🔴 Pending | 🔴 Pending |
-| **4** | Layout Parkir Statis Konsisten (Maksimal 12 Slot / Zona) | 🟢 Disepakati (Konsensus Final) | 🔴 Pending | 🔴 Pending | 🔴 Pending |
-| **5** | Registrasi Member, Composite Key & Anti-Troll | 🟢 Disepakati (Konsensus Final) | 🔴 Pending | 🔴 Pending | 🔴 Pending |
-| **6** | Rekap Shift Petugas, Master Jadwal, Absensi Kartu & Audit Kas | 🟢 Disepakati (Konsensus Final) | 🔴 Pending | 🔴 Pending | 🔴 Pending |
-| **7** | Final ERD 3 Zona Warna & Sinkronisasi Diagram | 🟢 Disepakati (Konsensus Final) | 🔴 Pending | 🔴 Pending | 🔴 Pending |
-| **8** | Arsitektur Multi-Lokasi / Multi-Mall | 🟢 Disepakati (Konsensus Final) | 🔴 Pending | 🔴 Pending | 🔴 Pending |
+| **1** | Format Cetak Struk PDF 58mm & Direct Print | 🟢 Disepakati (Konsensus Final) | 🟡 Teks/Tabel/Pseudocode Selesai (Tinggal Tempel Diagram) | 🔴 Pending | 🔴 Pending |
+| **2** | Pematangan Fitur Cetak Struk (Backend & Frontend) | 🟢 Disepakati (Konsensus Final) | 🟡 Teks/Tabel/Pseudocode Selesai (Tinggal Tempel Diagram) | 🔴 Pending | 🔴 Pending |
+| **3** | Antisipasi Bentrok Booking Slot (Buffer Time 30 Menit) | 🟢 Disepakati (Konsensus Final) | 🟡 Teks/Tabel/Pseudocode Selesai (Tinggal Tempel Diagram) | 🔴 Pending | 🔴 Pending |
+| **4** | Layout Parkir Statis Konsisten (Maksimal 12 Slot / Zona) | 🟢 Disepakati (Konsensus Final) | 🟡 Teks/Tabel/Pseudocode Selesai (Tinggal Tempel Diagram) | 🔴 Pending | 🔴 Pending |
+| **5** | Registrasi Member, Composite Key & Anti-Troll | 🟢 Disepakati (Konsensus Final) | 🟡 Teks/Tabel/Pseudocode Selesai (Tinggal Tempel Diagram) | 🔴 Pending | 🔴 Pending |
+| **6** | Rekap Shift Petugas, Master Jadwal, Absensi Kartu & Audit Kas | 🟢 Disepakati (Konsensus Final) | 🟡 Teks/Tabel/Pseudocode Selesai (Tinggal Tempel Diagram) | 🔴 Pending | 🔴 Pending |
+| **7** | Final Logical ERD (12 Entitas) & Sinkronisasi Diagram | 🟢 Disepakati (Konsensus Final) | 🟡 ERD Final Tertempel (Tinggal Tempel Diagram UML) | 🔴 Pending | 🔴 Pending |
+| **8** | Arsitektur Multi-Lokasi / Multi-Mall | 🟢 Disepakati (Konsensus Final) | 🟡 Teks/Tabel/Pseudocode Selesai (Tinggal Tempel Diagram) | 🔴 Pending | 🔴 Pending |
+
+---
+
+## Status Pelacakan 17 Diagram UKK di `diagram/revisi/`
+*(Aturan: Eksekusi wajib 1 per 1 diagram dan WAJIB menunggu ACC pengguna sebelum lanjut ke diagram berikutnya)*
+
+| No | Nama Diagram | Status PNG | Status .drawio | Status ACC Pengguna | Keterangan |
+| :---: | :--- | :---: | :---: | :---: | :--- |
+| **1** | `Diagram ParkSpot UKK-DFD LEVEL 0 (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | 6 Entitas, layout simetris persis diagram asli |
+| **2** | `Diagram ParkSpot UKK-Activity Buka & Tutup Shift Kasir` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | Swimlane Petugas & Sistem, 3 opsi absen, blind closing |
+| **3** | `Diagram ParkSpot UKK-Sequence Buka & Tutup Shift Kasir` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | Kasir POS, Sistem, Firebase, loop & alt selisih kas |
+| **4** | `Diagram ParkSpot UKK-Activity CRUD Area & Slot (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🟡 **Menunggu Review/ACC** | Struktur 3 cabang `Pilih Aksi?` persis milik pengguna |
+| **5** | `Diagram ParkSpot UKK-Sequence CRUD Area & Slot (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Menunggu Diagram 4 di-ACC |
+| **6** | `Diagram ParkSpot UKK-Activity CRUD Data Kendaraan (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Struktur 3 cabang (Tambah kode keluarga, edit, reset plat) |
+| **7** | `Diagram ParkSpot UKK-Sequence CRUD Kendaraan (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Menunggu Diagram 6 di-ACC |
+| **8** | `Diagram ParkSpot UKK-Activity CRUD Master Lokasi & Jadwal Shift` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Struktur 3 cabang (Tambah, edit, nonaktifkan shift/mall) |
+| **9** | `Diagram ParkSpot UKK-Sequence CRUD Master Lokasi & Jadwal Shift` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Menunggu Diagram 8 di-ACC |
+| **10** | `Diagram ParkSpot UKK-Activity Input Pelat & Pencarian Slot Terdekat (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **11** | `Diagram ParkSpot UKK-Sequence Input Pelat & Pencarian Slot (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **12** | `Diagram ParkSpot UKK-Activity Pengecekan & Booking (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **13** | `Diagram ParkSpot UKK-Sequence Pengecekan & Booking (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **14** | `Diagram ParkSpot UKK-Activity Keluar Gerbang & Print Struk (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **15** | `Diagram ParkSpot UKK-Sequence Keluar Gerbang & Cetak Struk (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **16** | `Diagram ParkSpot UKK-Activity Rekap (OWNER) (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **17** | `Diagram ParkSpot UKK-Sequence Rekap (OWNER) (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Antre giliran |
+
+---
+
+## Catatan Subagent & Safety State
+- Subagent teamwork (`15741e8f-084c-4b8f-bf42-ef1787791374`) telah ditutup dengan aman setelah terkena kuota API.
+- Seluruh artefak, log transkrip, dan prompt pipeline tersimpan aman di direktori `.system_generated/logs/` dan brain session.
+- File asli milik pengguna di folder `diagram/` tetap utuh dan terisolasi dari folder `diagram/revisi/`.
+- Sesi dapat dilanjutkan kapan saja dengan fokus pertama: me-review Diagram 4 (`Diagram ParkSpot UKK-Activity CRUD Area & Slot (Revisi)`).
 
 ---
 

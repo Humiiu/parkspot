@@ -1,0 +1,207 @@
+// ============================================================
+// LOGICAL ERD PARKSPOT - 3 ZONA WARNA (12 ENTITAS)
+// Tipe Data Murni JSON / NoSQL (Firebase Realtime Database)
+// Copy-paste langsung ke https://dbdiagram.io/d
+// ============================================================
+
+Project ParkSpot_Logical_ERD {
+  database_type: 'Firebase RTDB (NoSQL)'
+  Note: '''
+    Logical ERD ParkSpot (12 Entitas, 3 Zona Warna).
+    Implementasi Fisik: Firebase Realtime Database (JSON Tree - Flatten Data Structure).
+    - PK = Node Key unik pada JSON Tree
+    - CK = Composite Node Key ({id_user}__{plat_nomor_clean})
+    - FK = Logical Reference ID (validasi server Laravel + Soft Delete status_aktif)
+  '''
+}
+
+// --- ZONA 1: MASTER DATA (BIRU) ---
+Table master_lokasi [headercolor: #1565C0] {
+  id_lokasi string [pk, not null, note: 'Node Key (PK), misal: LOC_BXC']
+  nama_lokasi string [not null]
+  alamat string [not null]
+  buffer_booking_menit number [not null, default: 30, note: 'Jeda pengaman antar booking']
+  status_aktif boolean [not null, default: true, note: 'Soft delete']
+}
+
+Table master_user [headercolor: #1565C0] {
+  id_user string [pk, not null, note: 'Node Key (PK)']
+  nama_lengkap string [not null]
+  email string [unique, not null, note: 'Candidate Key / idx_email']
+  username string [unique, not null]
+  password_hash string [not null]
+  pin_kasir string [note: '6 digit PIN cadangan absen shift']
+  kartu_uid_nfc string [note: 'UID Kartu Siswa untuk NFC HP']
+  role string [not null, note: 'admin | petugas | owner | member']
+  assigned_id_lokasi string [note: 'Ref ID -> master_lokasi (kunci cabang tugas petugas)']
+  status_aktif boolean [not null, default: true]
+}
+
+Table master_area_parkir [headercolor: #1565C0] {
+  id_area string [pk, not null, note: 'Node Key (PK)']
+  id_lokasi string [not null, note: 'Ref ID -> master_lokasi']
+  nama_area string [not null, note: 'Contoh: Basement 1, Lantai 2']
+  status_aktif boolean [not null, default: true]
+}
+
+Table master_zona_parkir [headercolor: #1565C0] {
+  id_zona string [pk, not null, note: 'Node Key (PK)']
+  id_area string [not null, note: 'Ref ID -> master_area_parkir']
+  nama_zona string [not null, note: 'Contoh: Zona A - Dekat Lobby']
+  prioritas_jarak_lobby number [not null, note: '1 = paling dekat lobby']
+  maks_slot number [not null, default: 12]
+  status_aktif boolean [not null, default: true]
+}
+
+Table master_slot_parkir [headercolor: #1565C0] {
+  id_slot string [pk, not null, note: 'Node Key (PK)']
+  id_zona string [not null, note: 'Ref ID -> master_zona_parkir']
+  kode_slot string [not null, note: 'A-01 s/d A-12']
+  posisi_grid number [not null, note: '1..12 (Grid 2x6)']
+  urutan_jarak number [not null, note: '1..12']
+  status_lampu string [not null, default: 'hijau', note: 'hijau | oranye | merah']
+  plat_nomor_terisi string [note: 'Kosong jika status hijau']
+  status_aktif boolean [not null, default: true]
+}
+
+Table master_tarif [headercolor: #1565C0] {
+  id_tarif string [pk, not null, note: 'Node Key (PK)']
+  id_lokasi string [not null, note: 'Ref ID -> master_lokasi']
+  jenis_kendaraan string [not null, note: 'mobil | motor']
+  tarif_per_jam number [not null]
+  tarif_booking_awal number [not null, note: 'DP jam pertama non-refundable']
+  tarif_overstay_per_jam number [not null]
+  status_aktif boolean [not null, default: true]
+}
+
+Table master_kendaraan [headercolor: #1565C0] {
+  plat_nomor_clean string [pk, not null, note: 'Node Key (PK), tanpa spasi & huruf kapital']
+  jenis_kendaraan string [not null, note: 'mobil | motor']
+  warna string
+  id_owner_utama string [note: 'Ref ID -> master_user (kosong jika tamu guest)']
+  kode_keluarga string [note: 'Kode 6 karakter untuk sharing maks 2 akun']
+}
+
+Table master_user_kendaraan [headercolor: #1565C0, note: 'Composite Node Key: {id_user}__{plat_nomor_clean}'] {
+  id_user string [not null, note: 'Bagian CK + Ref ID -> master_user']
+  plat_nomor_clean string [not null, note: 'Bagian CK + Ref ID -> master_kendaraan']
+  peran_akses string [not null, note: 'owner | family']
+  status_aktif boolean [not null, default: true]
+
+  indexes {
+    (id_user, plat_nomor_clean) [pk]
+  }
+}
+
+Table master_jadwal_shift [headercolor: #1565C0] {
+  id_jadwal string [pk, not null, note: 'Node Key (PK)']
+  id_lokasi string [not null, note: 'Ref ID -> master_lokasi']
+  id_petugas string [not null, note: 'Ref ID -> master_user']
+  nama_shift string [not null, note: 'Shift 1 Pagi | Shift 2 Siang']
+  jam_mulai string [not null, note: 'Format HH:mm, misal 07:00']
+  jam_selesai string [not null, note: 'Format HH:mm, misal 15:00']
+  tanggal_tugas string [not null, note: 'Format YYYY-MM-DD']
+  status_aktif boolean [not null, default: true]
+}
+
+// --- ZONA 2: TRANSAKSI OPERASIONAL (HIJAU) ---
+Table trx_shift_petugas [headercolor: #2E7D32] {
+  id_shift string [pk, not null, note: 'Node Key (PK)']
+  id_jadwal string [note: 'Ref ID -> master_jadwal_shift']
+  id_petugas string [not null, note: 'Ref ID -> master_user']
+  id_lokasi string [not null, note: 'Ref ID -> master_lokasi']
+  waktu_buka string [not null, note: 'ISO-8601 timestamp']
+  metode_absen_buka string [not null, note: 'nfc | barcode | pin']
+  waktu_tutup string [note: 'ISO-8601 timestamp']
+  metode_absen_tutup string [note: 'nfc | barcode | pin']
+  total_transaksi_keluar number [not null, default: 0]
+  total_tunai_sistem number [not null, default: 0]
+  total_qris_sistem number [not null, default: 0]
+  uang_fisik_setor number [note: 'Input Blind Cash Closing kasir']
+  selisih_kas number [note: 'uang_fisik_setor - total_tunai_sistem']
+  catatan_berita_acara string
+  status_shift string [not null, default: 'aktif', note: 'aktif | selesai | flag_selisih']
+}
+
+Table trx_parkir [headercolor: #2E7D32] {
+  id_parkir string [pk, not null, note: 'Node Key (PK)']
+  id_lokasi string [not null, note: 'Ref ID -> master_lokasi (partisi path)']
+  id_slot string [not null, note: 'Ref ID -> master_slot_parkir']
+  plat_nomor_clean string [not null, note: 'Ref ID -> master_kendaraan']
+  guest_token string [not null, note: 'Token acak 32 char URL karcis Anti-IDOR']
+  waktu_booking_mulai string [note: 'ISO-8601 timestamp']
+  waktu_booking_selesai string [note: 'ISO-8601 timestamp']
+  buffer_selesai string [note: 'ISO-8601 (waktu_booking_selesai + 30 menit)']
+  waktu_masuk string [note: 'ISO-8601 timestamp']
+  waktu_keluar string [note: 'ISO-8601 timestamp']
+  durasi_jam number [default: 0]
+  biaya_total number [default: 0, note: 'Snapshot terkunci saat keluar']
+  denda_overstay number [default: 0]
+  status_bayar string [not null, default: 'belum_bayar', note: 'belum_bayar | lunas_qris | lunas_tunai']
+  metode_bayar string [note: 'tunai | qris | booking_qris']
+  id_shift_masuk string [note: 'Ref ID -> trx_shift_petugas']
+  id_shift_keluar string [note: 'Ref ID -> trx_shift_petugas']
+  status_parkir string [not null, note: 'booked | parkir | selesai | batal']
+  reprint_count number [not null, default: 0, note: '>0 otomatis cap [CETAK ULANG]']
+  is_snapshot_locked boolean [not null, default: false]
+}
+
+// --- ZONA 3: AUDIT LOG (UNGU / ABU) ---
+Table log_aktivitas [headercolor: #6A1B9A] {
+  id_log string [pk, not null, note: 'Node Key (PK)']
+  id_lokasi string [not null, note: 'Ref ID -> master_lokasi']
+  id_user string [note: 'Ref ID -> master_user']
+  jenis_aksi string [not null, note: 'LOGIN | GATE_IN | GATE_OUT | CLOSE_SHIFT | RESET_PLAT | DISCREPANCY_ALERT']
+  detail_payload string [note: 'JSON string detail audit']
+  ip_address string
+  created_at string [not null, note: 'ISO-8601 timestamp']
+}
+
+// --- PENGELOMPOKAN 3 ZONA WARNA ---
+TableGroup Zona_Master_Data [color: #1565C0] {
+  master_lokasi
+  master_user
+  master_area_parkir
+  master_zona_parkir
+  master_slot_parkir
+  master_tarif
+  master_kendaraan
+  master_user_kendaraan
+  master_jadwal_shift
+}
+
+TableGroup Zona_Transaksi [color: #2E7D32] {
+  trx_shift_petugas
+  trx_parkir
+}
+
+TableGroup Zona_Audit_Log [color: #6A1B9A] {
+  log_aktivitas
+}
+
+// --- RELASI LOGIKA ANTAR ENTITAS (LOGICAL REF ID) ---
+Ref: master_area_parkir.id_lokasi > master_lokasi.id_lokasi
+Ref: master_tarif.id_lokasi > master_lokasi.id_lokasi
+Ref: master_user.assigned_id_lokasi > master_lokasi.id_lokasi
+Ref: master_jadwal_shift.id_lokasi > master_lokasi.id_lokasi
+Ref: trx_shift_petugas.id_lokasi > master_lokasi.id_lokasi
+Ref: trx_parkir.id_lokasi > master_lokasi.id_lokasi
+Ref: log_aktivitas.id_lokasi > master_lokasi.id_lokasi
+
+Ref: master_zona_parkir.id_area > master_area_parkir.id_area
+Ref: master_slot_parkir.id_zona > master_zona_parkir.id_zona
+
+Ref: master_kendaraan.id_owner_utama > master_user.id_user
+Ref: master_user_kendaraan.id_user > master_user.id_user
+Ref: master_user_kendaraan.plat_nomor_clean > master_kendaraan.plat_nomor_clean
+
+Ref: master_jadwal_shift.id_petugas > master_user.id_user
+Ref: trx_shift_petugas.id_petugas > master_user.id_user
+Ref: trx_shift_petugas.id_jadwal > master_jadwal_shift.id_jadwal
+
+Ref: trx_parkir.id_slot > master_slot_parkir.id_slot
+Ref: trx_parkir.plat_nomor_clean > master_kendaraan.plat_nomor_clean
+Ref: trx_parkir.id_shift_masuk > trx_shift_petugas.id_shift
+Ref: trx_parkir.id_shift_keluar > trx_shift_petugas.id_shift
+
+Ref: log_aktivitas.id_user > master_user.id_user

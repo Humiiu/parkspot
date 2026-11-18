@@ -1,0 +1,234 @@
+<mxfile host="app.diagrams.net" agent="ParkSpot" version="24.0.0">
+  <diagram id="parkspot-activity-shift-kasir" name="Activity Buka &amp; Tutup Shift Kasir">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="lane_petugas" value="Petugas" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="880" height="2140" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_sistem" value="Sistem" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="880" y="0" width="640" height="2140" as="geometry"/>
+        </mxCell>
+        <mxCell id="start" value="" style="ellipse;fillColor=strokeColor;html=1;" vertex="1" parent="lane_petugas">
+          <mxGeometry x="425" y="75" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="p1" value="Membuka Halaman Pos Kasir" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_petugas">
+          <mxGeometry x="320" y="145" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="d1" value="Pilih Metode Absensi?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lane_petugas">
+          <mxGeometry x="300" y="245" width="280" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2a" value="Menempelkan Kartu Identitas ke NFC HP" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_petugas">
+          <mxGeometry x="40" y="415" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2b" value="Memindai Barcode / QR Kartu Siswa" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_petugas">
+          <mxGeometry x="320" y="415" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2c" value="Menginput 6 Digit PIN Kasir" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_petugas">
+          <mxGeometry x="600" y="415" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="Memvalidasi &quot;master_user&quot; &amp;&lt;br&gt;&quot;master_jadwal_shift&quot; (assigned_id_lokasi)&lt;br&gt;Shift 1 Pagi (07:00-15:00) /&lt;br&gt;Shift 2 Siang (15:00-23:00)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="200" y="535" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="d2" value="Sesuai Jadwal Shift &amp;&lt;br&gt;Belum Ada Shift Aktif?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="180" y="635" width="280" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="s2_yes" value="Membuat Catatan &quot;trx_shift_petugas&quot;&lt;br&gt;(status_shift=&quot;aktif&quot;) &amp;&lt;br&gt;Membuka Kasir POS" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="30" y="785" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="s2_no" value="Menampilkan Pesan&lt;br&gt;&quot;Tidak Sesuai Jadwal Shift&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="370" y="785" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="end1" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="475" y="900" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3" value="Melayani Transaksi Kendaraan Keluar&lt;br&gt;Selama Shift" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_petugas">
+          <mxGeometry x="320" y="905" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3" value="Mengikat &quot;id_shift_keluar&quot; pada &quot;trx_parkir&quot;&lt;br&gt;(Lintas Shift) &amp; Memisah&lt;br&gt;Total Tunai vs QRIS" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="200" y="1015" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4" value="Menekan Tombol &quot;Tutup Shift&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_petugas">
+          <mxGeometry x="320" y="1125" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="s4" value="Menampilkan Form Setoran&lt;br&gt;(Menyembunyikan Nominal Kas Sistem)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="200" y="1235" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="p5" value="Menghitung Uang Laci, Menginput&lt;br&gt;&quot;uang_fisik_setor&quot; &amp; &quot;catatan_berita_acara&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_petugas">
+          <mxGeometry x="320" y="1345" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="s5" value="Menghitung selisih_kas =&lt;br&gt;uang_fisik_setor - total_tunai_sistem" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="200" y="1455" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="d3" value="Apakah selisih_kas != 0?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="180" y="1555" width="280" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="s6a" value="Menetapkan status_shift=&quot;flag_selisih&quot;&lt;br&gt;(Baris Merah) &amp; Mencatat&lt;br&gt;&quot;DISCREPANCY_ALERT&quot; ke &quot;log_aktivitas&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="30" y="1715" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="s6b" value="Menetapkan status_shift=&quot;selesai&quot;&lt;br&gt;(Status Normal)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="370" y="1715" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="s7" value="Menyimpan waktu_tutup, Mencatat&lt;br&gt;&quot;CLOSE_SHIFT&quot; ke &quot;log_aktivitas&quot; &amp;&lt;br&gt;Mencetak Ringkasan Shift" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="200" y="1835" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="p6" value="Menerima Ringkasan Tutup Shift &amp;&lt;br&gt;Menyerahkan Kas ke Owner" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_petugas">
+          <mxGeometry x="320" y="1945" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="end2" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="lane_petugas">
+          <mxGeometry x="425" y="2060" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_start_p1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="start" target="p1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_p1_d1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="p1" target="d1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_d1_p2a" value="Tempel Kartu NFC HP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="d1" target="p2a">
+          <mxGeometry relative="1" as="geometry" x="0.5529">
+            <Array as="points">
+              <mxPoint x="160" y="300"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_d1_p2b" value="Scan Barcode Kartu" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="d1" target="p2b">
+          <mxGeometry relative="1" as="geometry" x="0.0"/>
+        </mxCell>
+        <mxCell id="e_d1_p2c" value="Input 6 Digit PIN" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="d1" target="p2c">
+          <mxGeometry relative="1" as="geometry" x="0.5529">
+            <Array as="points">
+              <mxPoint x="720" y="300"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_p2a_s1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="p2a" target="s1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="160" y="570"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_p2b_s1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="p2b" target="s1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="510"/>
+              <mxPoint x="1200" y="510"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_p2c_s1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="p2c" target="s1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1360" y="450"/>
+              <mxPoint x="1360" y="570"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_s1_d2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s1" target="d2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_d2_yes" value="Ya" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="d2" target="s2_yes">
+          <mxGeometry relative="1" as="geometry" x="0.248">
+            <Array as="points">
+              <mxPoint x="1030" y="690"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_d2_no" value="Tidak" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="d2" target="s2_no">
+          <mxGeometry relative="1" as="geometry" x="0.248">
+            <Array as="points">
+              <mxPoint x="1370" y="690"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_s2no_end1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s2_no" target="end1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_s2yes_p3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s2_yes" target="p3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="940"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_p3_s3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="p3" target="s3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="1050"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_s3_p4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s3" target="p4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1200" y="1160"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_p4_s4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="p4" target="s4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="1270"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_s4_p5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s4" target="p5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1200" y="1380"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_p5_s5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="p5" target="s5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="1490"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_s5_d3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s5" target="d3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_d3_yes" value="Ya (Ada Selisih)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="d3" target="s6a">
+          <mxGeometry relative="1" as="geometry" x="0.2148">
+            <Array as="points">
+              <mxPoint x="1030" y="1610"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_d3_no" value="Tidak (Klop / 0)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="d3" target="s6b">
+          <mxGeometry relative="1" as="geometry" x="0.2148">
+            <Array as="points">
+              <mxPoint x="1370" y="1610"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_s6a_s7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s6a" target="s7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="1870"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_s6b_s7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s6b" target="s7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1370" y="1870"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_s7_p6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s7" target="p6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1200" y="1980"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_p6_end2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="p6" target="end2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
