@@ -1,0 +1,128 @@
+<mxfile host="app.diagrams.net" agent="ParkSpot" version="24.0.0" compressed="false">
+  <diagram id="d11_seq_gate_in" name="Diagram ParkSpot UKK-Sequence Input Pelat &amp; Pencarian Slot (Revisi)">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="alt_slot" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=50;height=25;fillColor=none;" value="alt" vertex="1">
+          <mxGeometry x="40" y="525" width="1510" height="550" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_pengguna" parent="1" style="shape=umlLifeline;participant=umlActor;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Pengguna&lt;br&gt;(Member / Guest)" vertex="1">
+          <mxGeometry x="170" y="60" width="20" height="1120" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_petugas" parent="1" style="shape=umlLifeline;participant=umlActor;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Petugas" vertex="1">
+          <mxGeometry x="490" y="60" width="20" height="1120" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_halaman" parent="1" style="shape=umlLifeline;participant=umlBoundary;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Halaman Pos&lt;br&gt;Masuk" vertex="1">
+          <mxGeometry x="795" y="60" width="50" height="1120" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_sistem" parent="1" style="shape=umlLifeline;participant=umlControl;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Sistem" vertex="1">
+          <mxGeometry x="1120" y="60" width="40" height="1120" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_firebase" parent="1" style="shape=umlLifeline;whiteSpace=wrap;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=50;" value="Firebase" vertex="1">
+          <mxGeometry x="1400" y="60" width="120" height="1120" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_slot_guard_0" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Pelat Bersih &amp; Slot Booking / Slot &quot;hijau&quot; Tersedia]" vertex="1">
+          <mxGeometry x="102" y="528" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_slot_div_1" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="40" y="908" as="sourcePoint"/>
+            <mxPoint x="1550" y="908" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt_slot_guard_1" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Pelat Sedang Parkir Aktif / Parkir Penuh]" vertex="1">
+          <mxGeometry x="52" y="913" width="290" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="msg_1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="1. Tiba di Gerbang Masuk">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="185" as="sourcePoint"/>
+            <mxPoint x="500" y="185" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="2. Input Pelat Nomor &amp; Jenis Kendaraan">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="235" as="sourcePoint"/>
+            <mxPoint x="820" y="235" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_3" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="3. Kirim Data Pelat &amp; id_lokasi">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="820" y="285" as="sourcePoint"/>
+            <mxPoint x="1140" y="285" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_4" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="4. Cek &quot;idx_active_plate&quot;, Booking &quot;trx_parkir&quot;&lt;br&gt;&amp; Slot &quot;master_slot_parkir/{id_lokasi}&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="350" as="sourcePoint"/>
+            <mxPoint x="1460" y="350" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_5" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="5. Status Pelat, Data Booking &amp;&lt;br&gt;Daftar Slot per Zona">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1460" y="410" as="sourcePoint"/>
+            <mxPoint x="1140" y="410" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_6" edge="1" parent="1" style="html=1;align=left;spacingLeft=4;endArrow=block;rounded=0;curved=0;labelBackgroundColor=default;" value="6. Cek Pelat Aktif, Status Booking&lt;br&gt;(Relokasi jika Overstay) atau&lt;br&gt;Hitung Skor Slot Terdekat">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1180" y="435"/>
+              <mxPoint x="1180" y="495"/>
+            </Array>
+            <mxPoint x="1140" y="435" as="sourcePoint"/>
+            <mxPoint x="1140" y="495" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_7" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="7. Update Lampu Slot -&gt; &quot;merah&quot; pada&lt;br&gt;&quot;master_slot_parkir/{id_lokasi}&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="605" as="sourcePoint"/>
+            <mxPoint x="1460" y="605" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_8" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="8. Simpan &quot;trx_parkir&quot; (guest_token), Kunci&lt;br&gt;&quot;idx_active_plate&quot; &amp; Catat &quot;log_aktivitas&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="670" as="sourcePoint"/>
+            <mxPoint x="1460" y="670" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_9" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="9. Kirim Info Lokasi Slot &amp; Format&lt;br&gt;Karcis 58mm ber-QR (Tamu) /&lt;br&gt;Info Aplikasi (Member)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="745" as="sourcePoint"/>
+            <mxPoint x="820" y="745" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_10" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="10. Cetak / Unduh PDF Karcis 58mm&lt;br&gt;(Tamu) &amp; Buka Palang Masuk">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="820" y="810" as="sourcePoint"/>
+            <mxPoint x="500" y="810" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_11" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="11. Serahkan Karcis / Info Slot &amp;&lt;br&gt;Kendaraan Masuk Parkir">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="875" as="sourcePoint"/>
+            <mxPoint x="180" y="875" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_12" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="12. Kirim Pesan Penolakan&lt;br&gt;(&quot;Pelat Aktif / Parkir Penuh&quot;)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="990" as="sourcePoint"/>
+            <mxPoint x="820" y="990" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_13" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="13. Menampilkan Penolakan ke Petugas">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="820" y="1045" as="sourcePoint"/>
+            <mxPoint x="500" y="1045" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_14" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="14. Siap Menerima Kendaraan Berikutnya">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="820" y="1135" as="sourcePoint"/>
+            <mxPoint x="500" y="1135" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
