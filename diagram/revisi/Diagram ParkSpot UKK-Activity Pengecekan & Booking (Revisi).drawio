@@ -1,0 +1,169 @@
+<mxfile host="app.diagrams.net" agent="ParkSpot" version="24.0.0" compressed="false">
+  <diagram id="d12_act_booking" name="Diagram ParkSpot UKK-Activity Pengecekan &amp; Booking (Revisi)">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="lane_member" value="Pelanggan Member" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="360" height="1805" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_petugas" value="Petugas" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="360" y="0" width="340" height="1805" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_sistem" value="Sistem" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="700" y="0" width="780" height="1805" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_start" value="" style="ellipse;fillColor=strokeColor;html=1;" vertex="1" parent="lane_member">
+          <mxGeometry x="165" y="65" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_mem_time" value="Memilih Lokasi Mal, Pelat Mobil,&lt;br&gt;Tanggal, Jam Datang &amp;&lt;br&gt;Durasi Parkir" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_member">
+          <mxGeometry x="35" y="135" width="290" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_filter" value="On-Demand Sync (Hangus &gt;15m),&lt;br&gt;Cek &quot;idx_active_plate&quot; &amp; 1 Booking Aktif,&lt;br&gt;Hitung Jeda 30m (buffer_selesai) &amp;&lt;br&gt;Filter Slot Tanpa Bentrok" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="225" y="255" width="330" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_mem_select" value="Memilih Slot pada Denah Zona&lt;br&gt;(Maks. 12 Slot) atau 1-Klik Slot&lt;br&gt;Terdekat &amp; Bayar DP QRIS" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_member">
+          <mxGeometry x="35" y="395" width="290" height="86" as="geometry"/>
+        </mxCell>
+        <mxCell id="dec_pay" value="Pembayaran DP QRIS&lt;br&gt;Berhasil (Lunas)?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="225" y="535" width="330" height="114" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_book_ok" value="Menyimpan &quot;trx_parkir&quot; (buffer_selesai),&lt;br&gt;Aktivasi Slot &quot;oranye&quot; (H-30m) &amp;&lt;br&gt;Catat &quot;log_aktivitas&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="30" y="715" width="310" height="94" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_book_fail" value="Membatalkan Pesanan &amp;&lt;br&gt;Melepas Kunci Slot" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="440" y="715" width="310" height="74" as="geometry"/>
+        </mxCell>
+        <mxCell id="end_fail" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="580" y="830" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_mem_arrive" value="Menerima Tiket QR Booking &amp;&lt;br&gt;Tiba di Gerbang pada Jam Pesan" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_member">
+          <mxGeometry x="35" y="865" width="290" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_petugas_scan" value="Memindai QR Booking Member&lt;br&gt;di Pos Gerbang Masuk" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_petugas">
+          <mxGeometry x="35" y="985" width="270" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="dec_overstay" value="Slot Pesanan Masih Terisi&lt;br&gt;Mobil Sebelumnya&lt;br&gt;(Telat Keluar)?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="215" y="1115" width="350" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_reloc" value="Memindahkan Otomatis ke Slot&lt;br&gt;Kosong Terdekat di Zona Sama &amp;&lt;br&gt;Tampilkan Info Slot Baru" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="30" y="1305" width="310" height="96" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_keep" value="Mengonfirmasi Slot Sesuai&lt;br&gt;Pesanan Awal Member" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="440" y="1305" width="310" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_park" value="Mengubah Lampu Slot -&gt; &quot;merah&quot;,&lt;br&gt;Kunci &quot;idx_active_plate&quot; &amp;&lt;br&gt;Status &quot;trx_parkir&quot; -&gt; &quot;parkir&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="225" y="1465" width="330" height="86" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_mem_park" value="Masuk &amp; Parkir pada Slot&lt;br&gt;yang Ditetapkan" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_member">
+          <mxGeometry x="35" y="1605" width="290" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_end" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="lane_member">
+          <mxGeometry x="165" y="1725" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_start" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="node_start" target="act_mem_time">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_time_filter" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_mem_time" target="act_sys_filter">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="304"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_filter_select" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_filter" target="act_mem_select">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1090" y="438"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_select_pay" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_mem_select" target="dec_pay">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="508"/>
+              <mxPoint x="1090" y="508"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_pay_ok" value="Berhasil" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_pay" target="act_sys_book_ok">
+          <mxGeometry relative="1" as="geometry" x="0.245">
+            <Array as="points">
+              <mxPoint x="885" y="592"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_pay_fail" value="Gagal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_pay" target="act_sys_book_fail">
+          <mxGeometry relative="1" as="geometry" x="0.245">
+            <Array as="points">
+              <mxPoint x="1295" y="592"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_fail_end" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_book_fail" target="end_fail">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_ok_arrive" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_book_ok" target="act_mem_arrive">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="885" y="904"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_arrive_scan" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_mem_arrive" target="act_petugas_scan">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="1024"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_scan_overstay" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_petugas_scan" target="dec_overstay">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="530" y="1089"/>
+              <mxPoint x="1090" y="1089"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_overstay_ya" value="Ya (Overstay)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_overstay" target="act_sys_reloc">
+          <mxGeometry relative="1" as="geometry" x="0.188">
+            <Array as="points">
+              <mxPoint x="885" y="1175"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_overstay_tidak" value="Tidak (Bersih)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_overstay" target="act_sys_keep">
+          <mxGeometry relative="1" as="geometry" x="0.188">
+            <Array as="points">
+              <mxPoint x="1295" y="1175"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_reloc_park" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_reloc" target="act_sys_park">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="885" y="1508"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_keep_park" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_keep" target="act_sys_park">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1295" y="1508"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_park_mem" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_park" target="act_mem_park">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1090" y="1644"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_mem_end" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_mem_park" target="node_end">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
