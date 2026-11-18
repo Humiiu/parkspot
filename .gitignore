@@ -1,6 +1,8 @@
 # Temporary files
 ~$*
 *.tmp
+PPT_PARKSPOT_OUTPUT_TMP.pptx
+diagram/revisi.zip
 
 # Scratch scripts
 scratch/

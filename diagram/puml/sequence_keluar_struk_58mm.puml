@@ -1,0 +1,73 @@
+@startuml Sequence_Keluar_Struk_58mm
+!theme plain
+autonumber
+skinparam roundCorner 8
+skinparam shadowing false
+skinparam responseMessageBelowArrow true
+
+actor "Petugas Kasir" as Kasir
+boundary "Web POS Kasir (Blade)" as WebPOS
+control "GateOutController" as Controller
+entity "TariffService" as TariffService
+entity "ReceiptPdfService" as PdfService
+database "Firebase RTDB" as DB
+boundary "Hidden Iframe / Printer" as Printer
+
+Kasir -> WebPOS: Scan Barcode Tiket / Input Plat
+activate WebPOS
+
+WebPOS -> Controller: validateExitTicket(id_parkir, guest_token)
+activate Controller
+
+Controller -> DB: get /trx_parkir/{id_parkir}
+activate DB
+DB --> Controller: parkingData
+deactivate DB
+
+Controller -> TariffService: calculateTotal(waktu_masuk, waktu_booking, waktu_sekarang)
+activate TariffService
+TariffService --> Controller: durasi_jam, biaya_pokok, denda_overstay, total_tagihan
+deactivate TariffService
+
+Controller --> WebPOS: renderExitBillingModal(detailTagihan)
+deactivate Controller
+
+Kasir -> WebPOS: Konfirmasi Pembayaran Tunai / Cek QRIS
+activate WebPOS
+
+WebPOS -> Controller: processPaymentAndLock(id_parkir, id_shift_aktif, metode)
+activate Controller
+
+Controller -> DB: update /trx_parkir: \n- is_snapshot_locked=TRUE \n- biaya_total=total \n- waktu_keluar=NOW \n- status_bayar='lunas' \n- id_shift_keluar=id_shift
+activate DB
+DB --> Controller: success
+deactivate DB
+
+Controller -> DB: update /master_slot_parkir/{id_slot} (status_lampu='hijau', plat_nomor_terisi=null)
+activate DB
+DB --> Controller: success
+deactivate DB
+
+Controller --> WebPOS: paymentSuccess(id_parkir)
+deactivate Controller
+
+alt Opsi Direct Print 58mm
+    WebPOS -> Printer: Load /receipt/out/{id}/print ke <iframe hidden> & print()
+    activate Printer
+    Printer --> Kasir: Kertas Struk 58mm Tercetak Otomatis
+    deactivate Printer
+else Opsi Unduh PDF 58mm
+    WebPOS -> Controller: downloadReceiptPdf(id_parkir)
+    activate Controller
+    Controller -> PdfService: generateDynamicHeightPdf58mm(parkingData)
+    activate PdfService
+    PdfService --> Controller: return receipt.pdf stream
+    deactivate PdfService
+    Controller --> WebPOS: downloadFile(receipt.pdf)
+    deactivate Controller
+end
+
+WebPOS --> Kasir: Palang Keluar Terbuka & Siap Tiket Berikutnya
+deactivate WebPOS
+
+@enduml

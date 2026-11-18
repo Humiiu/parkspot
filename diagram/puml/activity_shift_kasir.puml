@@ -1,0 +1,77 @@
+@startuml Activity_Shift_Kasir
+!theme plain
+skinparam roundCorner 8
+skinparam shadowing false
+
+|Petugas Kasir (Web POS)|
+start
+:Buka Halaman Login Kasir POS ParkSpot;
+:Pilih Metode Otentikasi Buka Shift;
+
+if (Metode Buka Shift?) then (Opsi Utama: Tempel Kartu Siswa ke NFC HP)
+    :Tempel Kartu Identitas ke NFC HP Samsung A54;
+    :Kirim UID Kartu via Webhook/API ke Web POS;
+elseif (Opsi Cadangan 1: Scan Barcode Kartu)
+    :Pindai Barcode/QR Kartu Siswa via Webcam;
+else (Opsi Cadangan 2: Input PIN)
+    :Ketik 6-Digit PIN Kasir Pribadi;
+endif
+
+|Sistem Backend (Laravel)|
+:Validasi UID / Barcode / PIN di master_user;
+:Cek Plotting di master_jadwal_shift
+(Sesuai Lokasi Mall & Rentang Jam Tugas);
+if (Jadwal Valid & Belum Ada Shift Aktif?) then (Ya)
+    :Buat Record Baru di trx_shift_petugas:
+    - waktu_buka = NOW()
+    - status_shift = 'aktif'
+    - total_tunai_sistem = 0;
+    :Buka Akses Dashboard Kasir Keluar;
+else (Tidak Valid / Diluar Jam)
+    :Tolak Buka Shift & Tampilkan Peringatan;
+    stop
+endif
+
+|Petugas Kasir (Web POS)|
+:Melayani Transaksi Kendaraan Keluar Selama Jam Kerja;
+note right: Menerima Uang Tunai / Memvalidasi QRIS
+
+|Sistem Backend (Laravel)|
+:Catat Tiap Transaksi Keluar:
+- id_shift_keluar = id_shift aktif
+- Tambah Akumulasi total_tunai_sistem (jika tunai)
+- Tambah Akumulasi total_qris_sistem (jika QRIS);
+
+|Petugas Kasir (Web POS)|
+:Jam Shift Berakhir, Klik Tombol "Tutup Shift";
+
+|Sistem Backend (Laravel)|
+:Tampilkan Form Blind Cash Closing;
+note right: Nominal uang tunai di sistem DISEMBUNYIKAN
+
+|Petugas Kasir (Web POS)|
+:Hitung Fisik Uang Tunai di Laci Kasir;
+:Input Nominal 'uang_fisik_setor';
+:Input Berita Acara / Catatan Shift (Opsional);
+:Konfirmasi Tutup Shift;
+
+|Sistem Backend (Laravel)|
+:Hitung Selisih Kas:
+selisih_kas = uang_fisik_setor - total_tunai_sistem;
+:Kunci Status Shift:
+- waktu_tutup = NOW()
+- status_shift = 'selesai';
+if (selisih_kas != 0?) then (Ada Selisih (Minus/Plus))
+    :Tandai Record dengan Status 'flag_selisih';
+    :Kirim Alert Selisih ke Log Audit (log_aktivitas);
+    :Dashboard Owner & Admin Menyala Merah;
+else (Cocok / Klop)
+    :Shift Berakhir Normal (Hijau);
+endif
+:Cetak Ringkasan Struk Tutup Shift Kasir;
+
+|Petugas Kasir (Web POS)|
+:Serahkan Uang Fisik dan Struk Tutup Shift ke Supervisor/Owner;
+stop
+
+@enduml

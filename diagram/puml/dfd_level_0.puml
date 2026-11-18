@@ -1,0 +1,41 @@
+@startuml DFD_Level_0_ParkSpot
+!theme plain
+left to right direction
+skinparam shadowing false
+skinparam roundCorner 6
+skinparam defaultFontName "Segoe UI"
+skinparam defaultFontSize 11
+skinparam nodesep 60
+skinparam ranksep 130
+
+rectangle "Administrator" as Admin #E3F2FD
+rectangle "Petugas Gerbang\n& Kasir POS" as Petugas #E8F8F5
+rectangle "Owner / Pemilik" as Owner #F3E5F5
+
+usecase "0.0\nSistem Pengelolaan Parkir\nTerpadu ParkSpot\n(Laravel, Flutter, Firebase RTDB)" as SYS #FFFFFF
+
+rectangle "Pelanggan Member\n(Flutter Mobile)" as Member #FEF9E7
+rectangle "Pengunjung Tamu\n(Guest Web Mobile)" as Guest #FEF9E7
+rectangle "Midtrans Sandbox\n(Payment Gateway)" as Midtrans #FDEBD0
+
+' Kiri -> Tengah (Admin, Petugas, Owner)
+Admin --> SYS : Master Lokasi, User, Tarif,\nArea/Zona/Slot, Jadwal Shift, Reset Plat
+SYS --> Admin : Status Denah 3 Warna,\nLog Aktivitas, Alert Selisih Kasir
+
+Petugas --> SYS : Absensi Shift (NFC/Barcode/PIN),\nInput Plat, Validasi Keluar, Blind Closing
+SYS --> Petugas : Slot Terdekat, Karcis & Struk 58mm\n(Direct/PDF), Struk Tutup Shift
+
+Owner --> SYS : Filter Lokasi Mall & Periode,\nPermintaan Ekspor Laporan
+SYS --> Owner : Dashboard Multi-Mall,\nRekap Tunai vs QRIS, Audit Selisih Kas
+
+' Tengah -> Kanan (Member, Guest, Midtrans)
+Member --> SYS : Daftar Kendaraan (Kode Keluarga),\nPilih Mall, Booking (+Buffer 30m)
+SYS --> Member : Info Slot Kosong, QR Booking,\nNotifikasi Relokasi, Status Tagihan
+
+Guest --> SYS : Scan URL QR Karcis\n(Token Anti-IDOR), Konfirmasi Bayar
+SYS --> Guest : Info Lokasi Slot, Argo Real-time,\nQRIS Tagihan & Status Lunas
+
+SYS --> Midtrans : Request Snap Token & Nominal
+Midtrans --> SYS : Kode QRIS & Webhook Settlement
+
+@enduml

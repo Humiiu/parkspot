@@ -1,0 +1,65 @@
+@startuml Activity_Masuk_Gate_In
+!theme plain
+skinparam roundCorner 8
+skinparam shadowing false
+
+|Pengendara Tamu / Member|
+start
+:Tiba di Gerbang Masuk Mall;
+:Menekan Tombol Karcis Masuk / Menghadap Kamera Petugas;
+
+|Petugas Gerbang (Web POS)|
+:Input Nomor Plat Kendaraan & Pilih Jenis Kendaraan;
+
+|Sistem Backend (Laravel)|
+:Cek Status Kendaraan di database:
+Apakah plat nomor sedang parkir aktif? (idx_active_plate);
+
+if (Plat Nomor Sudah Sedang Parkir Aktif?) then (Ya)
+    :Tolak Transaksi Masuk (Peringatan: Plat Sedang Parkir);
+    stop
+else (Tidak (Plat Bersih))
+    :Cari Data Kendaraan di master_kendaraan;
+    if (Kendaraan Belum Terdaftar?) then (Ya)
+        :Simpan ke master_kendaraan (sebagai Tamu);
+    endif
+endif
+
+:Jalankan Algoritma Pemilihan Slot Terdekat:
+skor = (prioritas_jarak_lobby * 100) + urutan_jarak_slot;
+:Pilih Slot Status 'hijau' dengan Skor Terendah;
+
+if (Apakah Tersedia Slot Kosong?) then (Ya)
+    :Generate guest_token acak 32 karakter (Anti-IDOR);
+    :Simpan Transaksi Baru ke trx_parkir:
+    - id_parkir, id_lokasi, id_slot, plat_nomor
+    - waktu_masuk = NOW()
+    - status_parkir = 'parkir'
+    - id_shift_masuk = id_shift aktif petugas;
+    :Ubah Status Slot Menjadi 'merah';
+    :Update plat_nomor_terisi di master_slot_parkir;
+else (Penuh)
+    :Tampilkan Notifikasi "Parkir Penuh";
+    stop
+endif
+
+|Sistem Frontend Web Kasir|
+:Kirim Perintah Direct Print Karcis 58mm ke Printer Thermal;
+note right
+Format Karcis 58mm:
+- Header Nama Mall & Alamat
+- Waktu Masuk & Plat Nomor
+- Alokasi Lantai, Zona, & Kode Slot
+- QR Code Berisi URL Tamu + Token Anti-IDOR
+end note
+
+|Petugas Gerbang (Web POS)|
+:Serahkan Karcis Parkir ke Pengendara;
+:Buka Palang Pintu Masuk;
+
+|Pengendara Tamu / Member|
+:Ambil Karcis & Memasuki Gedung Parkir;
+:Parkir pada Slot yang Tertera di Karcis;
+stop
+
+@enduml

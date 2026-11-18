@@ -1,0 +1,67 @@
+@startuml Activity_Keluar_Struk_58mm
+!theme plain
+skinparam roundCorner 8
+skinparam shadowing false
+
+|Pengendara / Tamu|
+start
+:Tiba di Palang Pintu Keluar;
+:Serahkan Karcis QR Masuk / Tunjukkan QR Mobile;
+
+|Petugas Kasir (Web POS)|
+:Scan QR Karcis / Ketik Nomor Plat di Web POS;
+
+|Sistem Backend (Laravel)|
+:Cari Data trx_parkir Berdasarkan ID & Token Anti-IDOR;
+:Hitung Durasi Parkir (waktu_keluar - waktu_masuk);
+:Kalkulasi Biaya Pokok + Denda Overstay (jika ada);
+:Tampilkan Ringkasan Tagihan ke Layar Kasir;
+
+|Petugas Kasir (Web POS)|
+if (Status Pembayaran?) then (Sudah Lunas via QRIS Mobile)
+    :Sistem Verifikasi Status Lunas Midtrans;
+else (Bayar Tunai di Tempat)
+    :Petugas Input Jumlah Uang Diterima;
+    :Sistem Hitung Uang Kembalian;
+    :Konfirmasi Pembayaran Tunai;
+endif
+
+|Sistem Backend (Laravel)|
+:KUNCI SNAPSHOT HARGA (Anti-Kecurangan):
+- is_snapshot_locked = TRUE
+- biaya_total dikunci permanen
+- denda_overstay dikunci permanen
+- status_bayar = 'lunas'
+- waktu_keluar = NOW()
+- id_shift_keluar = id_shift aktif kasir;
+:Ubah Status Slot Parkir Menjadi HIJAU (Kosong);
+:Trigger Buka Palang Keluar Otomatis;
+
+|Petugas Kasir (Web POS)|
+if (Pilihan Cetak Struk 58mm?) then (Opsi 1: Tombol "Cetak Struk" (Direct Thermal))
+    |Sistem Frontend Web Kasir|
+    :Muat URL /receipt/{id}/print ke <iframe hidden>;
+    :Render CSS @page { size: 58mm auto; margin: 0; };
+    :Eksekusi iframe.contentWindow.print();
+    :Printer Thermal Langsung Mencetak Kertas 58mm;
+else (Opsi 2: Tombol "Unduh PDF")
+    |Sistem Backend (Laravel)|
+    :Generate PDF 58mm Dinamis via DomPDF
+    (Lebar 164.41 pt, tinggi auto sesuai baris teks);
+    :Stream File PDF ke Browser Kasir / Download;
+endif
+
+|Sistem Backend (Laravel)|
+note right
+Jika kasir menekan cetak ulang:
+reprint_count bertambah (+1)
+dan otomatis dicap watermark
+"[CETAK ULANG]"
+end note
+
+|Pengendara / Tamu|
+:Terima Struk Parkir 58mm Fisik/Digital;
+:Kendaraan Keluar Melewati Palang;
+stop
+
+@enduml

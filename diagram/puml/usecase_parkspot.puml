@@ -1,0 +1,75 @@
+@startuml UseCase_ParkSpot
+!theme plain
+left to right direction
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam defaultFontName "Segoe UI"
+skinparam defaultFontSize 11
+skinparam nodesep 12
+skinparam ranksep 140
+
+rectangle "ParkSpot (Web & Mobile)" {
+    usecase "CRUD Master Lokasi\n(Multi-Mall)" as UC_Lokasi
+    usecase "CRUD Data User" as UC_User
+    usecase "CRUD Tarif Parkir\n(Reguler, Booking & Overstay)" as UC_Tarif
+    usecase "CRUD Area, Zona & Slot Parkir\n(Indikator 3 Warna, Maks 12 Slot/Zona)" as UC_AreaSlot
+    usecase "CRUD Master Jadwal Shift" as UC_JadwalShift
+    usecase "Akses Log Aktivitas" as UC_Log
+    usecase "Buka & Tutup Shift Kasir\n(NFC/Barcode/PIN & Blind Closing)" as UC_Shift
+    usecase "Input Pelat Nomor Masuk &\nPenempatan Slot Terdekat" as UC_Masuk
+    usecase "Cetak Struk Parkir 58mm\n(Direct Print & Unduh PDF)" as UC_Cetak
+    usecase "Jaga Slot Booking (Oranye) &\nRelokasi Overstay" as UC_JagaSlot
+    usecase "Transaksi Palang Keluar\n(Scan QR & Snapshot Biaya)" as UC_Keluar
+    usecase "Login dan Logout" as UC_Login
+    usecase "CRUD Data Kendaraan\n(Kode Keluarga & Reset Plat)" as UC_Kendaraan
+    usecase "Rekap Transaksi Sesuai\nWaktu & Lokasi Mall" as UC_Rekap
+    usecase "Audit Rekap & Selisih\nShift Kasir" as UC_AuditShift
+    usecase "Pilih Lokasi Mall Aktif" as UC_PilihMall
+    usecase "Booking Slot Parkir\n(Time-First + Buffer 30 Menit)" as UC_Booking
+    usecase "Lihat Lokasi Slot &\nCek Total Tagihan Berjalan" as UC_CekTagihan
+    usecase "Bayar Parkir Non-Tunai\n(QRIS)" as UC_BayarQRIS
+}
+
+actor "Admin" as Admin
+actor "Petugas" as Petugas
+actor "Owner" as Owner
+actor "Pelanggan" as Pelanggan
+actor "Guest" as Guest
+
+' Relasi Admin
+UC_Lokasi <-- Admin
+UC_User <-- Admin
+UC_Tarif <-- Admin
+UC_AreaSlot <-- Admin
+UC_JadwalShift <-- Admin
+UC_Log <-- Admin
+UC_Login <-- Admin
+UC_Kendaraan <-- Admin
+UC_AuditShift <-- Admin
+
+' Relasi Petugas
+UC_Shift <-- Petugas
+UC_Masuk <-- Petugas
+UC_Cetak <-- Petugas
+UC_JagaSlot <-- Petugas
+UC_Keluar <-- Petugas
+UC_Login <-- Petugas
+
+' Relasi Owner
+UC_Login <-- Owner
+UC_Rekap <-- Owner
+UC_AuditShift <-- Owner
+
+' Relasi Pelanggan
+UC_Login <-- Pelanggan
+UC_Kendaraan <-- Pelanggan
+UC_PilihMall <-- Pelanggan
+UC_Booking <-- Pelanggan
+UC_CekTagihan <-- Pelanggan
+UC_BayarQRIS <-- Pelanggan
+
+' Relasi Guest (Tanpa Login)
+UC_CekTagihan <-- Guest : Scan QR Karcis\n(Token Anti-IDOR)
+UC_BayarQRIS <-- Guest
+
+@enduml

@@ -1,0 +1,97 @@
+@startuml Sequence_Shift_Kasir
+!theme plain
+autonumber
+skinparam roundCorner 8
+skinparam shadowing false
+skinparam responseMessageBelowArrow true
+
+actor "Petugas Kasir" as Kasir
+boundary "Web POS Kasir (Blade)" as WebPOS
+control "ShiftController" as Controller
+entity "ShiftService" as Service
+database "Firebase RTDB" as DB
+boundary "Printer Thermal" as Printer
+
+Kasir -> WebPOS: Tempel Kartu NFC (HP A54) / Scan Barcode / Ketik PIN
+activate WebPOS
+
+WebPOS -> Controller: openShift(credential, id_lokasi)
+activate Controller
+
+Controller -> DB: query /master_user & /master_jadwal_shift
+activate DB
+DB --> Controller: userProfile & activeSchedule
+deactivate DB
+
+Controller -> Service: validateShiftEligibility(userProfile, activeSchedule)
+activate Service
+Service --> Controller: eligible=true
+deactivate Service
+
+Controller -> DB: create /trx_shift_petugas (waktu_buka=NOW, status='aktif', tunai=0, qris=0)
+activate DB
+DB --> Controller: shiftIdCreated
+deactivate DB
+
+Controller --> WebPOS: sessionOpen(shiftId)
+deactivate Controller
+WebPOS --> Kasir: Tampilkan Dashboard POS Siap Melayani
+deactivate WebPOS
+
+Kasir -> WebPOS: Layani Transaksi Keluar (Tiket Selesai)
+activate WebPOS
+WebPOS -> Controller: recordExitTransaction(idParkir, nominal, metodeBayar)
+activate Controller
+Controller -> DB: update /trx_shift_petugas (increment tunai / qris & count)
+activate DB
+DB --> Controller: success
+deactivate DB
+Controller --> WebPOS: transaksiTercatat
+deactivate Controller
+WebPOS --> Kasir: Tampilkan Sukses & Palang Terbuka
+deactivate WebPOS
+
+Kasir -> WebPOS: Klik "Tutup Shift" di Akhir Jam Kerja
+activate WebPOS
+WebPOS --> Kasir: Tampilkan Dialog Blind Cash Closing (Nominal Sistem Disembunyikan)
+deactivate WebPOS
+
+Kasir -> WebPOS: Input uang_fisik_setor (Hitung Fisik Laci) & Berita Acara
+activate WebPOS
+
+WebPOS -> Controller: closeShift(shiftId, uang_fisik_setor, catatan)
+activate Controller
+
+Controller -> DB: get /trx_shift_petugas/{shiftId}
+activate DB
+DB --> Controller: shiftData (total_tunai_sistem)
+deactivate DB
+
+Controller -> Service: calculateDiscrepancy(uang_fisik_setor, total_tunai_sistem)
+activate Service
+Service --> Controller: selisih_kas, flagStatus
+deactivate Service
+
+Controller -> DB: update /trx_shift_petugas (waktu_tutup=NOW, uang_fisik_setor, selisih_kas, status_shift)
+activate DB
+DB --> Controller: updated
+deactivate DB
+
+alt selisih_kas != 0
+    Controller -> DB: write /log_aktivitas (DISCREPANCY_ALERT, selisih_kas, shiftId)
+    activate DB
+    DB --> Controller: logged
+    deactivate DB
+end
+
+Controller --> WebPOS: returnShiftSummary(receiptHtml)
+deactivate Controller
+
+WebPOS -> Printer: Direct Print Struk Rekap Shift Kasir
+activate Printer
+Printer --> Kasir: Kertas Struk Rekap Shift Selesai
+deactivate Printer
+WebPOS --> Kasir: Logout & Tampilkan Notifikasi Selesai
+deactivate WebPOS
+
+@enduml

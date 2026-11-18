@@ -1,0 +1,74 @@
+@startuml Sequence_Booking_Buffer
+!theme plain
+autonumber
+skinparam roundCorner 8
+skinparam shadowing false
+skinparam responseMessageBelowArrow true
+
+actor "Pelanggan Member" as Member
+boundary "Aplikasi Mobile (Flutter)" as Mobile
+control "BookingController" as Controller
+entity "BookingService" as Service
+database "Firebase RTDB" as DB
+boundary "Midtrans Snap (QRIS)" as PaymentGate
+
+Member -> Mobile: Buka Menu Booking & Pilih Mall
+activate Mobile
+
+Mobile -> Controller: getAvailableSlots(id_lokasi, jam_datang, durasi)
+activate Controller
+
+Controller -> Service: calculateBufferWindow(jam_datang, durasi)
+activate Service
+note over Service
+Hitung Jendela Waktu:
+mulai = jam_datang
+selesai = jam_datang + durasi
+buffer_selesai = selesai + 30 Menit
+end note
+Service --> Controller: return timeWindowWithBuffer
+deactivate Service
+
+Controller -> DB: query /master_slot_parkir/{id_lokasi} & /trx_parkir/{id_lokasi}
+activate DB
+DB --> Controller: return activeBookings & slots
+deactivate DB
+
+Controller -> Controller: Filter Slot Tanpa Konflik Waktu & Skor Jarak Lobby
+Controller --> Mobile: render 12 Slot / Zona (Grid 2x6)
+deactivate Controller
+
+Member -> Mobile: Pilih Slot (atau 1-Klik Rekomendasi) & Bayar
+Mobile -> Controller: createBooking(plat_nomor, slot_id, timeWindow)
+activate Controller
+
+Controller -> PaymentGate: generateSnapToken(biaya_awal)
+activate PaymentGate
+PaymentGate --> Controller: return snapToken / QRIS URL
+deactivate PaymentGate
+
+Controller --> Mobile: render QRIS Payment Modal
+deactivate Controller
+
+Member -> PaymentGate: Selesaikan Pembayaran QRIS
+activate PaymentGate
+PaymentGate -> Controller: webhookPaymentNotification(status='settlement')
+deactivate PaymentGate
+activate Controller
+
+Controller -> DB: write /trx_parkir (status='booked', buffer_selesai, token anti-IDOR)
+activate DB
+DB --> Controller: success
+deactivate DB
+
+Controller -> DB: update /master_slot_parkir (status_lampu='oranye_booked')
+activate DB
+DB --> Controller: success
+deactivate DB
+
+Controller --> Mobile: pushNotificationBookingSuccess(qrTicket)
+deactivate Controller
+Mobile --> Member: Tampilkan Tiket QR Booking & Detail Slot
+deactivate Mobile
+
+@enduml

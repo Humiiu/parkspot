@@ -1,0 +1,69 @@
+@startuml Activity_Booking_Buffer
+!theme plain
+skinparam roundCorner 8
+skinparam shadowing false
+
+|Pelanggan Member (Flutter)|
+start
+:Buka Aplikasi & Pilih Cabang Mall;
+:Pilih Menu "Booking Slot";
+:Input Tanggal, Jam Datang, & Durasi Parkir;
+note right: Alur Time-First
+
+|Sistem / Backend (Laravel & Firebase)|
+:Hitung Jendela Waktu Booking:
+waktu_booking_mulai s/d waktu_booking_selesai;
+:Tambahkan Buffer Pengaman Otomatis:
+buffer_selesai = waktu_booking_selesai + 30 menit;
+:Query Slot Kosong di Mall Terpilih yang
+tidak bertabrakan dengan jendela + buffer;
+
+|Pelanggan Member (Flutter)|
+:Tampilkan Denah Zona (Maks 12 Slot / Zona);
+if (Ingin Memilih Manual?) then (Ya)
+    :Pilih Slot Hijau yang Tersedia di Denah;
+else (Tidak (1-Klik Rekomendasi))
+    :Sistem Pilihkan Otomatis Slot
+    dengan Skor Jarak Lobby Terendah;
+endif
+
+:Pilih Kendaraan Terdaftar (Plat Nomor);
+:Konfirmasi Rincian Booking & Biaya Jam Pertama;
+:Lakukan Pembayaran DP via QRIS Midtrans;
+
+|Sistem / Backend (Laravel & Firebase)|
+if (Status Pembayaran QRIS Sukses?) then (Ya)
+    :Kunci Slot (Status: 'booked');
+    :Simpan trx_parkir dengan parameter:
+    - waktu_booking_mulai
+    - waktu_booking_selesai
+    - buffer_selesai (+30m)
+    - guest_token anti-IDOR;
+    :Terbitkan Tiket Digital QR Booking;
+else (Gagal / Expired)
+    :Batalkan Transaksi Booking;
+    :Lepas Kunci Slot;
+    stop
+endif
+
+|Pelanggan Member (Flutter)|
+:Terima QR Tiket Booking di Aplikasi;
+
+|Gerbang Masuk (Hari H Kedatangan)|
+:Pelanggan Tiba di Gerbang Masuk & Scan QR Booking;
+
+|Sistem / Backend (Laravel & Firebase)|
+if (Apakah Slot Booking Masih Ditempati Mobil Sebelumnya (Overstay)?) then (Ya (Kasus Overstay Ekstrem))
+    :Jalankan Algoritma Auto-Relokasi;
+    :Pindahkan Tiket ke Slot Kosong Terdekat Lain di Zona Sama;
+    :Kirim Notifikasi Slot Baru ke Ponsel Member;
+else (Tidak (Slot Bersih))
+    :Tetap di Slot yang Dipesan;
+endif
+
+:Buka Palang Pintu Masuk;
+:Ubah Status Lampu Slot Fisik Menjadi MERAH;
+:Ubah status_parkir = 'parkir';
+stop
+
+@enduml

@@ -1,0 +1,193 @@
+@startuml ERD_ParkSpot
+!theme plain
+skinparam linetype ortho
+skinparam roundCorner 8
+skinparam shadowing false
+skinparam classFontSize 11
+skinparam classFontName "Segoe UI", Arial, sans-serif
+
+' Palet Warna 3 Zona
+' Zona Master: Biru Muda (#E3F2FD / border #1565C0)
+' Zona Transaksi: Hijau Muda (#E8F8F5 / border #27AE60)
+' Zona Audit Log: Ungu Muda / Abu (#F3E5F5 / border #8E24AA)
+
+package "ZONA MASTER DATA (Sistem & Master Mall)" as ZoneMaster #E3F2FD {
+    entity "master_lokasi" as master_lokasi #BBDEFB {
+        * **id_lokasi** : VARCHAR(20) <<PK>>
+        --
+        * nama_lokasi : VARCHAR(100)
+        * alamat : TEXT
+        * buffer_booking_menit : INT = 30
+        * status_aktif : BOOLEAN
+    }
+
+    entity "master_user" as master_user #BBDEFB {
+        * **id_user** : VARCHAR(36) <<PK>>
+        --
+        * nama_lengkap : VARCHAR(100)
+        * email : VARCHAR(100) <<Candidate Key / IDX>>
+        * username : VARCHAR(50)
+        * password_hash : VARCHAR(255)
+        * pin_kasir : VARCHAR(6)
+        * kartu_uid_nfc : VARCHAR(32)
+        * role : ENUM('admin', 'petugas', 'owner', 'member')
+        * assigned_id_lokasi : VARCHAR(20) <<FK>>
+        * status_aktif : BOOLEAN
+    }
+
+    entity "master_area_parkir" as master_area_parkir #BBDEFB {
+        * **id_area** : VARCHAR(20) <<PK>>
+        --
+        * id_lokasi : VARCHAR(20) <<FK>>
+        * nama_area : VARCHAR(50)
+        * status_aktif : BOOLEAN
+    }
+
+    entity "master_zona_parkir" as master_zona_parkir #BBDEFB {
+        * **id_zona** : VARCHAR(20) <<PK>>
+        --
+        * id_area : VARCHAR(20) <<FK>>
+        * nama_zona : VARCHAR(50)
+        * prioritas_jarak_lobby : INT
+        * maks_slot : INT = 12
+        * status_aktif : BOOLEAN
+    }
+
+    entity "master_slot_parkir" as master_slot_parkir #BBDEFB {
+        * **id_slot** : VARCHAR(20) <<PK>>
+        --
+        * id_zona : VARCHAR(20) <<FK>>
+        * kode_slot : VARCHAR(10)
+        * posisi_grid : INT [1..12]
+        * urutan_jarak : INT [1..12]
+        * status_lampu : ENUM('hijau', 'oranye', 'merah')
+        * plat_nomor_terisi : VARCHAR(15)
+        * status_aktif : BOOLEAN
+    }
+
+    entity "master_tarif" as master_tarif #BBDEFB {
+        * **id_tarif** : VARCHAR(20) <<PK>>
+        --
+        * id_lokasi : VARCHAR(20) <<FK>>
+        * jenis_kendaraan : ENUM('mobil', 'motor')
+        * tarif_per_jam : DECIMAL(10,2)
+        * tarif_booking_awal : DECIMAL(10,2)
+        * tarif_overstay_per_jam : DECIMAL(10,2)
+        * status_aktif : BOOLEAN
+    }
+
+    entity "master_kendaraan" as master_kendaraan #BBDEFB {
+        * **plat_nomor_clean** : VARCHAR(15) <<PK>>
+        --
+        * jenis_kendaraan : ENUM('mobil', 'motor')
+        * warna : VARCHAR(30)
+        * id_owner_utama : VARCHAR(36) <<FK>>
+        * kode_keluarga : VARCHAR(6)
+    }
+
+    entity "master_user_kendaraan" as master_user_kendaraan #BBDEFB {
+        * **id_user** : VARCHAR(36) <<PK, FK>>
+        * **plat_nomor_clean** : VARCHAR(15) <<PK, FK>>
+        --
+        * peran_akses : ENUM('owner', 'family')
+        * status_aktif : BOOLEAN
+    }
+
+    entity "master_jadwal_shift" as master_jadwal_shift #BBDEFB {
+        * **id_jadwal** : VARCHAR(20) <<PK>>
+        --
+        * id_lokasi : VARCHAR(20) <<FK>>
+        * id_petugas : VARCHAR(36) <<FK>>
+        * nama_shift : VARCHAR(50)
+        * jam_mulai : TIME
+        * jam_selesai : TIME
+        * tanggal_tugas : DATE
+        * status_aktif : BOOLEAN
+    }
+}
+
+package "ZONA TRANSAKSI (Operasional Kasir & Parkir)" as ZoneTransaksi #E8F8F5 {
+    entity "trx_shift_petugas" as trx_shift_petugas #A3E4D7 {
+        * **id_shift** : VARCHAR(36) <<PK>>
+        --
+        * id_jadwal : VARCHAR(20) <<FK, Nullable>>
+        * id_petugas : VARCHAR(36) <<FK>>
+        * id_lokasi : VARCHAR(20) <<FK>>
+        * waktu_buka : DATETIME
+        * metode_absen_buka : ENUM('nfc', 'barcode', 'pin')
+        * waktu_tutup : DATETIME
+        * metode_absen_tutup : ENUM('nfc', 'barcode', 'pin')
+        * total_transaksi_keluar : INT
+        * total_tunai_sistem : DECIMAL(12,2)
+        * total_qris_sistem : DECIMAL(12,2)
+        * uang_fisik_setor : DECIMAL(12,2) <<Blind Closing>>
+        * selisih_kas : DECIMAL(12,2)
+        * catatan_berita_acara : TEXT
+        * status_shift : ENUM('aktif', 'selesai', 'flag_selisih')
+    }
+
+    entity "trx_parkir" as trx_parkir #A3E4D7 {
+        * **id_parkir** : VARCHAR(36) <<PK>>
+        --
+        * id_lokasi : VARCHAR(20) <<FK>>
+        * id_slot : VARCHAR(20) <<FK>>
+        * plat_nomor_clean : VARCHAR(15) <<FK>>
+        * guest_token : VARCHAR(32) <<Anti-IDOR>>
+        * waktu_booking_mulai : DATETIME
+        * waktu_booking_selesai : DATETIME
+        * buffer_selesai : DATETIME <<+30 Menit>>
+        * waktu_masuk : DATETIME
+        * waktu_keluar : DATETIME
+        * durasi_jam : INT
+        * biaya_total : DECIMAL(12,2) <<Snapshot>>
+        * denda_overstay : DECIMAL(12,2) <<Snapshot>>
+        * status_bayar : ENUM('belum_bayar', 'lunas_qris', 'lunas_tunai')
+        * metode_bayar : ENUM('tunai', 'qris', 'booking_qris')
+        * id_shift_masuk : VARCHAR(36) <<FK>>
+        * id_shift_keluar : VARCHAR(36) <<FK>>
+        * status_parkir : ENUM('booked', 'parkir', 'selesai', 'batal')
+        * reprint_count : INT = 0
+        * is_snapshot_locked : BOOLEAN = FALSE
+    }
+}
+
+package "ZONA AUDIT LOG (Keamanan & Pelacakan)" as ZoneAudit #F3E5F5 {
+    entity "log_aktivitas" as log_aktivitas #E1BEE7 {
+        * **id_log** : VARCHAR(36) <<PK>>
+        --
+        * id_lokasi : VARCHAR(20) <<FK>>
+        * id_user : VARCHAR(36) <<FK, Nullable>>
+        * jenis_aksi : ENUM('LOGIN', 'GATE_IN', 'GATE_OUT', 'CLOSE_SHIFT', 'RESET_PLAT', 'DISCREPANCY_ALERT')
+        * detail_payload : TEXT
+        * ip_address : VARCHAR(45)
+        * created_at : DATETIME
+    }
+}
+
+' Relasi Antar Entitas (Kardinalitas)
+master_lokasi ||--o{ master_area_parkir : "memiliki area"
+master_lokasi ||--o{ master_tarif : "memiliki skema tarif"
+master_lokasi ||--o{ master_user : "menugaskan user"
+master_lokasi ||--o{ master_jadwal_shift : "jadwal shift mall"
+master_lokasi ||--o{ trx_shift_petugas : "shift operasional"
+master_lokasi ||--o{ trx_parkir : "transaksi mall"
+master_lokasi ||--o{ log_aktivitas : "audit mall"
+
+master_area_parkir ||--o{ master_zona_parkir : "membagi lantai ke zona"
+master_zona_parkir ||--|{ master_slot_parkir : "maks 12 slot fisik"
+
+master_user ||--o{ master_user_kendaraan : "relasi kepemilikan"
+master_kendaraan ||--o{ master_user_kendaraan : "composite key"
+master_user ||--o{ master_kendaraan : "owner utama pendaftar"
+
+master_user ||--o{ master_jadwal_shift : "ditugaskan ke jadwal"
+master_user ||--o{ trx_shift_petugas : "petugas bertugas"
+master_jadwal_shift ||--o| trx_shift_petugas : "dasar jadwal buka shift"
+
+master_slot_parkir ||--o{ trx_parkir : "ditempati transaksi"
+master_kendaraan ||--o{ trx_parkir : "kendaraan bertransaksi"
+trx_shift_petugas ||--o{ trx_parkir : "shift kasir keluar"
+
+master_user ||--o{ log_aktivitas : "aktor aktivitas"
+
+@enduml

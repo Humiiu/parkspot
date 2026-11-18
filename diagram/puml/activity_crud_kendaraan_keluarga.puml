@@ -1,0 +1,56 @@
+@startuml Activity_CRUD_Kendaraan_Keluarga
+!theme plain
+skinparam roundCorner 8
+skinparam shadowing false
+
+|Pelanggan Member (Flutter)|
+start
+:Buka Menu "Kelola Kendaraan";
+:Pilih Tombol "Tambah Kendaraan";
+:Input Plat Nomor, Jenis, & Warna Kendaraan;
+
+|Sistem Backend (Laravel)|
+:Normalisasi Plat Nomor (Hapus Spasi, Huruf Kapital);
+:Cek Keberadaan Plat di master_kendaraan;
+
+if (Plat Nomor Sudah Pernah Didaftarkan?) then (Ya)
+    |Pelanggan Member (Flutter)|
+    :Sistem Meminta Input "Kode Keluarga (6 Digit)";
+    :Member Input Kode Keluarga dari Pemilik Utama;
+
+    |Sistem Backend (Laravel)|
+    :Validasi Kode Keluarga & Cek Jumlah Akun Terhubung;
+    if (Kode Valid & Anggota Terdaftar < 2 Akun?) then (Ya)
+        :Buat Relasi Baru di master_user_kendaraan:
+        - id_user = id_user member kedua
+        - plat_nomor_clean = plat
+        - peran_akses = 'family' (Komposit Key: {id_user}__{plat});
+        :Kirim Notifikasi Sukses ke Member;
+    else (Kode Salah / Kuota Penuh)
+        :Tolak Registrasi & Tampilkan Pesan Error;
+        stop
+    endif
+else (Belum Pernah (Pendaftar Pertama))
+    |Sistem Backend (Laravel)|
+    :Generate Kode Keluarga Acak 6 Digit Unik;
+    :Simpan ke master_kendaraan:
+    - plat_nomor_clean
+    - id_owner_utama = id_user
+    - kode_keluarga;
+    :Buat Relasi di master_user_kendaraan:
+    - id_user = id_user
+    - plat_nomor_clean = plat
+    - peran_akses = 'owner';
+endif
+
+|Pelanggan Member (Flutter)|
+:Tampilkan Kendaraan di Daftar Mobil Saya;
+if (Peran = 'owner') then (Pemilik Utama)
+    :Tampilkan Badge "Pemilik Utama" & "Kode Keluarga: XXXXXX";
+    :Tersedia Tombol "Salin Kode untuk Keluarga";
+else (Keluarga)
+    :Tampilkan Badge "Mobil Keluarga";
+endif
+stop
+
+@enduml

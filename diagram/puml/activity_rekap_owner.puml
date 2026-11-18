@@ -1,0 +1,51 @@
+@startuml Activity_Rekap_Owner
+!theme plain
+skinparam roundCorner 8
+skinparam shadowing false
+
+|Owner / Pemilik Mall|
+start
+:Buka Halaman Web Dashboard Owner;
+:Pilih Filter:
+- Cabang Mall (Semua Mall / Mall Tertentu)
+- Rentang Tanggal (Hari Ini / Mingguan / Bulanan);
+
+|Sistem Backend (Laravel)|
+:Query trx_parkir & trx_shift_petugas Sesuai Filter;
+:Agregasi Total Pendapatan:
+- total_tunai_sistem (Uang Fisik Kasir)
+- total_qris_sistem (Rekening Digital Owner)
+- total_omzet_keseluruhan;
+:Hitung Statistik Okupansi Slot Real-Time;
+:Periksa Status Shift di trx_shift_petugas:
+Cari shift dengan status 'flag_selisih' (selisih_kas != 0);
+
+|Owner / Pemilik Mall|
+:Tampilkan Dashboard Metrik Finansial & Grafik;
+
+if (Apakah Ada Shift Kasir dengan Status 'flag_selisih'?) then (Ya)
+    :Tampilkan Baris Shift Kasir Menyala MERAH (Alert);
+    :Klik Detail Audit Shift Kasir;
+    |Sistem Backend (Laravel)|
+    :Tampilkan Rincian Audit:
+    - Nama Kasir & Tanggal Tugas
+    - Jam Buka s/d Jam Tutup Shift
+    - Uang Sistem vs Uang Fisik Setor Kasir
+    - Nilai Selisih Kas (Minus / Plus)
+    - Daftar Seluruh Tiket yang Dilayani Kasir
+    - Catatan Berita Acara Kasir;
+    |Owner / Pemilik Mall|
+    :Lakukan Verifikasi / Pemanggilan Kasir untuk Klarifikasi;
+else (Tidak Ada (Semua Klop))
+    :Semua Baris Shift Berwarna Hijau / Normal;
+endif
+
+:Pilih Opsi "Ekspor Laporan";
+if (Format Ekspor?) then (CSV)
+    :Unduh Laporan Format CSV;
+else (JSON / PDF)
+    :Unduh Laporan Format JSON / PDF;
+endif
+stop
+
+@enduml
