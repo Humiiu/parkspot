@@ -31,10 +31,10 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 | :---: | :--- | :---: | :---: | :---: | :--- |
 | **1** | `Diagram ParkSpot UKK-DFD LEVEL 0 (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | 5 entitas persis asli, Opsi B NFC/Password Darurat, ekspor PDF/Excel, Auditor v2 PASS |
 | **2** | `Diagram ParkSpot UKK-Activity Buka & Tutup Shift Kasir` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | 2 cabang Opsi B (NFC HP & Password Darurat), hapus Barcode & PIN, Auditor v2 PASS |
-| **3** | `Diagram ParkSpot UKK-Sequence Buka & Tutup Shift Kasir` | 🟢 Selesai | 🟢 Selesai | 🟡 **Menunggu Review/ACC** | Opsi B NFC/Password Darurat, 0 PIN/Barcode, Dark Mode friendly, Auditor v2 PASS |
+| **3** | `Diagram ParkSpot UKK-Sequence Buka & Tutup Shift Kasir` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | Opsi B NFC/Password Darurat, 0 PIN/Barcode, Dark Mode friendly, Auditor v2 PASS |
 | **4** | `Diagram ParkSpot UKK-Activity CRUD Area & Slot (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | Struktur 3 cabang `Pilih Aksi?` persis milik pengguna, XML bersih & sinkron |
-| **5** | `Diagram ParkSpot UKK-Sequence CRUD Area & Slot (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟡 **Menunggu Review/ACC** | 4 lifeline, validasi maks 12 slot/zona (alt), XML bersih & sinkron |
-| **6** | `Diagram ParkSpot UKK-Activity CRUD Data Kendaraan (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Struktur 3 cabang (Tambah kode keluarga, edit, reset plat) |
+| **5** | `Diagram ParkSpot UKK-Sequence CRUD Area & Slot (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | 4 lifeline, validasi maks 12 slot/zona (alt), XML bersih & sinkron |
+| **6** | `Diagram ParkSpot UKK-Activity CRUD Data Kendaraan (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟡 **Menunggu Review/ACC** | 3 cabang (Tambah kode keluarga, edit, reset plat), Dark Mode friendly, Auditor v2 PASS |
 | **7** | `Diagram ParkSpot UKK-Sequence CRUD Kendaraan (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Menunggu Diagram 6 di-ACC |
 | **8** | `Diagram ParkSpot UKK-Activity CRUD Master Lokasi & Jadwal Shift` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Struktur 3 cabang (Tambah, edit, nonaktifkan shift/mall) |
 | **9** | `Diagram ParkSpot UKK-Sequence CRUD Master Lokasi & Jadwal Shift` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Menunggu Diagram 8 di-ACC |
