@@ -13,14 +13,14 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 
 | No | Poin Revisi Penguji | Status Diskusi / Konsep | Status Proposal | Status Kode Web (Laravel) | Status Kode Mobile (Flutter) |
 | :---: | :--- | :---: | :---: | :---: | :---: |
-| **1** | Format Cetak Struk PDF 58mm & Direct Print | 🟢 Disepakati (Konsensus Final) | 🟡 Teks/Tabel/Pseudocode Selesai (Tinggal Tempel Diagram) | 🔴 Pending | 🔴 Pending |
-| **2** | Pematangan Fitur Cetak Struk (Backend & Frontend) | 🟢 Disepakati (Konsensus Final) | 🟡 Teks/Tabel/Pseudocode Selesai (Tinggal Tempel Diagram) | 🔴 Pending | 🔴 Pending |
-| **3** | Antisipasi Bentrok Booking Slot (Buffer Time 30 Menit) | 🟢 Disepakati (Konsensus Final) | 🟡 Teks/Tabel/Pseudocode Selesai (Tinggal Tempel Diagram) | 🔴 Pending | 🔴 Pending |
-| **4** | Layout Parkir Statis Konsisten (Maksimal 12 Slot / Zona) | 🟢 Disepakati (Konsensus Final) | 🟡 Teks/Tabel/Pseudocode Selesai (Tinggal Tempel Diagram) | 🔴 Pending | 🔴 Pending |
-| **5** | Registrasi Member, Composite Key & Anti-Troll | 🟢 Disepakati (Konsensus Final) | 🟡 Teks/Tabel/Pseudocode Selesai (Tinggal Tempel Diagram) | 🔴 Pending | 🔴 Pending |
-| **6** | Rekap Shift Petugas, Master Jadwal, Absensi Kartu & Audit Kas | 🟢 Disepakati (Konsensus Final) | 🟡 Teks/Tabel/Pseudocode Selesai (Tinggal Tempel Diagram) | 🔴 Pending | 🔴 Pending |
-| **7** | Final Logical ERD (12 Entitas) & Sinkronisasi Diagram | 🟢 Disepakati (Konsensus Final) | 🟡 ERD Final Tertempel (Tinggal Tempel Diagram UML) | 🔴 Pending | 🔴 Pending |
-| **8** | Arsitektur Multi-Lokasi / Multi-Mall | 🟢 Disepakati (Konsensus Final) | 🟡 Teks/Tabel/Pseudocode Selesai (Tinggal Tempel Diagram) | 🔴 Pending | 🔴 Pending |
+| **1** | Format Cetak Struk PDF 58mm & Direct Print | 🟢 Disepakati (Konsensus Final) | 🟢 Selesai 100% (Diagram & Halaman Sinkron) | 🔴 Pending | 🔴 Pending |
+| **2** | Pematangan Fitur Cetak Struk (Backend & Frontend) | 🟢 Disepakati (Konsensus Final) | 🟢 Selesai 100% (Diagram & Halaman Sinkron) | 🔴 Pending | 🔴 Pending |
+| **3** | Antisipasi Bentrok Booking Slot (Buffer Time 30 Menit) | 🟢 Disepakati (Konsensus Final) | 🟢 Selesai 100% (Diagram & Halaman Sinkron) | 🔴 Pending | 🔴 Pending |
+| **4** | Layout Parkir Statis Konsisten (Maksimal 12 Slot / Zona) | 🟢 Disepakati (Konsensus Final) | 🟢 Selesai 100% (Diagram & Halaman Sinkron) | 🔴 Pending | 🔴 Pending |
+| **5** | Registrasi Member, Composite Key & Anti-Troll | 🟢 Disepakati (Konsensus Final) | 🟢 Selesai 100% (Diagram & Halaman Sinkron) | 🔴 Pending | 🔴 Pending |
+| **6** | Rekap Shift Petugas, Master Jadwal, Absensi Kartu & Audit Kas | 🟢 Disepakati (Konsensus Final) | 🟢 Selesai 100% (Diagram & Halaman Sinkron) | 🔴 Pending | 🔴 Pending |
+| **7** | Final Logical ERD (12 Entitas) & Sinkronisasi Diagram | 🟢 Disepakati (Konsensus Final) | 🟢 Selesai 100% (Diagram & Halaman Sinkron) | 🔴 Pending | 🔴 Pending |
+| **8** | Arsitektur Multi-Lokasi / Multi-Mall | 🟢 Disepakati (Konsensus Final) | 🟢 Selesai 100% (Diagram & Halaman Sinkron) | 🔴 Pending | 🔴 Pending |
 
 ---
 
@@ -50,19 +50,24 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 ---
 
 ## Catatan Subagent & Safety State
-- Seluruh **17/17 diagram revisi** (`.drawio` + `.png`) di folder `diagram/revisi/` telah **SELESAI 100%**, lulus audit independen **`diagram-auditor-v2`** (Anti-Improvisasi, Uji Tolak-Belakang *"Jika X... Solusi untuk Y Gimana?"*, XML `compressed="false"`, Dark Mode friendly, & sinkronisasi 1:1 `.drawio` vs `.png`), serta telah di-**commit & push satu per satu ke GitHub**.
+- Seluruh **17/17 diagram revisi** (`.drawio` + `.png`) di folder `diagram/revisi/` telah **SELESAI 100%**, lulus audit independen **`diagram-auditor-v2`**, serta telah di-commit & push ke GitHub.
 - File asli milik pengguna di folder `diagram/` tetap utuh 100% dan terisolasi dari folder `diagram/revisi/`.
-- Langkah berikutnya siap dilanjutkan ke penempelan 17 gambar diagram revisi ke `PROPOSAL PARKSPOT UKK.docx` & pembersihan sisa field `pin_kasir` / `barcode` di `diagram/erd_parkspot.dbml` bila diperlukan, lalu masuk Tahap 2 (Backend Laravel & Mobile Flutter).
+- **Dokumen Proposal (`PROPOSAL PARKSPOT UKK.docx`)**: Seluruh 18 diagram (17 revisi + 1 Use Case) telah **DITEMPEL SEMPURNA** ke naskah Word. Seluruh penanda placeholder kuning telah dihapus bersih.
+- **Sinkronisasi Daftar & Nomor Halaman**: `DAFTAR TABEL` (7 tabel), `DAFTAR GAMBAR` (43 gambar), `DAFTAR LAMPIRAN`, dan `DAFTAR ISI` telah **diperbarui dan diverifikasi menggunakan Word COM** dengan **0 error bookmark (`Error! Bookmark not defined.`)**.
+- **Skema DBML**: Field `pin_kasir` dan `barcode` telah dibersihkan dari `diagram/erd_parkspot.dbml`, 100% sinkron dengan Opsi B (NFC + Password Darurat).
+- **Status Tahap 1**: 🟢 **100% SELESAI & TUNTAS**. Siap melangkah ke **Tahap 2 (Backend Web Laravel)**.
 
 ---
 
 ## Rencana Tahapan Eksekusi Bertahap (Next Steps)
 Sesuai aturan di [`AGENTS.md`](file:///c:/xampp/htdocs/parkspot/AGENTS.md), eksekusi dilakukan secara bertahap satu per satu:
 
-1. **Tahap 1: Sinkronisasi Dokumen Proposal UKK (Bab III)**
-   - Perbarui penamaan entitas menjadi `master_*`, `trx_*`, dan `log_*`.
-   - Perbarui Diagram Use Case, Activity, Sequence, dan Pseudocode (Struk 58mm, Shift, Buffer Booking, Multi-Mall).
-   - Buat Skema ERD 3 Zona Warna + Tabel Pemetaan ke Firebase RTDB.
+1. **Tahap 1: Sinkronisasi Dokumen Proposal UKK (Bab III)** 🟢 **(SELESAI 100%)**
+   - [x] Perbarui penamaan entitas menjadi `master_*`, `trx_*`, dan `log_*`.
+   - [x] Perbarui Diagram Use Case, Activity, Sequence, dan Pseudocode (Struk 58mm, Shift, Buffer Booking, Multi-Mall).
+   - [x] Buat Skema ERD 3 Zona Warna + Tabel Pemetaan ke Firebase RTDB.
+   - [x] Tempel seluruh 18 gambar diagram revisi ke dalam `PROPOSAL PARKSPOT UKK.docx`.
+   - [x] Perbarui Daftar Isi, Daftar Tabel (7 tabel), Daftar Gambar (43 gambar), dan Daftar Lampiran beserta nomor halamannya.
 2. **Tahap 2: Refactor Database & Backend Web Laravel (`parkspot_web`)**
    - Refactor model/service ke 12 entitas standar.
    - Implementasi generator PDF 58mm dinamis (`barryvdh/laravel-dompdf`) & cetak iframe kasir.
