@@ -1,0 +1,161 @@
+<mxfile host="app.diagrams.net" agent="ParkSpot" version="24.0.0" compressed="false">
+  <diagram id="d15_seq_gate_out" name="Diagram ParkSpot UKK-Sequence Keluar Gerbang &amp; Cetak Struk (Revisi)">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="alt_bayar" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=50;height=25;fillColor=none;" value="alt" vertex="1">
+          <mxGeometry x="40" y="485" width="1510" height="340" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_struk" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=50;height=25;fillColor=none;" value="alt" vertex="1">
+          <mxGeometry x="40" y="1010" width="1510" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_pengguna" parent="1" style="shape=umlLifeline;participant=umlActor;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Pengguna&lt;br&gt;(Member / Guest)" vertex="1">
+          <mxGeometry x="170" y="60" width="20" height="1345" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_petugas" parent="1" style="shape=umlLifeline;participant=umlActor;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Petugas" vertex="1">
+          <mxGeometry x="490" y="60" width="20" height="1345" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_halaman" parent="1" style="shape=umlLifeline;participant=umlBoundary;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Halaman Kasir&lt;br&gt;Keluar" vertex="1">
+          <mxGeometry x="795" y="60" width="50" height="1345" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_sistem" parent="1" style="shape=umlLifeline;participant=umlControl;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Sistem" vertex="1">
+          <mxGeometry x="1120" y="60" width="40" height="1345" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_firebase" parent="1" style="shape=umlLifeline;whiteSpace=wrap;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=50;" value="Firebase" vertex="1">
+          <mxGeometry x="1400" y="60" width="120" height="1345" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_bayar_guard_0" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Status Bayar Belum &quot;lunas_qris&quot;]" vertex="1">
+          <mxGeometry x="102" y="488" width="240" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_bayar_div_1" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="40" y="725" as="sourcePoint"/>
+            <mxPoint x="1550" y="725" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt_bayar_guard_1" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Sudah &quot;lunas_qris&quot;]" vertex="1">
+          <mxGeometry x="52" y="730" width="160" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_struk_guard_0" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Pilih Cetak Langsung 58mm]" vertex="1">
+          <mxGeometry x="102" y="1013" width="210" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_struk_div_1" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="40" y="1130" as="sourcePoint"/>
+            <mxPoint x="1550" y="1130" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt_struk_guard_1" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Pilih Unduh PDF 58mm]" vertex="1">
+          <mxGeometry x="52" y="1135" width="180" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="msg_1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="1. Tiba di Palang Keluar &amp; Tunjukkan QR / Pelat">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="185" as="sourcePoint"/>
+            <mxPoint x="500" y="185" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="2. Scan Kode QR atau Input Pelat (Karcis Hilang)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="232" as="sourcePoint"/>
+            <mxPoint x="820" y="232" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_3" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="3. Proses Keluar, Validasi&lt;br&gt;guest_token / Pelat &amp; id_lokasi">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="820" y="290" as="sourcePoint"/>
+            <mxPoint x="1140" y="290" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_4" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="4. Ambil Data dari &quot;trx_parkir/{id_lokasi}&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="338" as="sourcePoint"/>
+            <mxPoint x="1460" y="338" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_5" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="5. Data Transaksi Parkir">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1460" y="385" as="sourcePoint"/>
+            <mxPoint x="1140" y="385" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_6" edge="1" parent="1" style="html=1;align=left;spacingLeft=4;endArrow=block;rounded=0;curved=0;labelBackgroundColor=default;" value="6. Hitung Durasi, Biaya Pokok&lt;br&gt;&amp; Denda Overstay">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1180" y="410"/>
+              <mxPoint x="1180" y="455"/>
+            </Array>
+            <mxPoint x="1140" y="410" as="sourcePoint"/>
+            <mxPoint x="1140" y="455" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_7" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="7. Tampilkan Nominal Tagihan Tunai">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="550" as="sourcePoint"/>
+            <mxPoint x="820" y="550" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_8" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="8. Membayar Tagihan Tunai">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="598" as="sourcePoint"/>
+            <mxPoint x="500" y="598" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_9" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="9. Terima Pembayaran &amp; Klik Konfirmasi Lunas">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="645" as="sourcePoint"/>
+            <mxPoint x="820" y="645" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_10" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="10. Kirim Konfirmasi Lunas Tunai">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="820" y="692" as="sourcePoint"/>
+            <mxPoint x="1140" y="692" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_11" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="11. Tampilkan Status &quot;Sudah Lunas via QRIS&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="795" as="sourcePoint"/>
+            <mxPoint x="820" y="795" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_12" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="12. Kunci Biaya (is_snapshot_locked=true) &amp;&lt;br&gt;Update &quot;trx_parkir&quot; (id_shift_keluar)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="895" as="sourcePoint"/>
+            <mxPoint x="1460" y="895" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_13" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="13. Update Slot -&gt; &quot;hijau&quot;, Lepas&lt;br&gt;&quot;idx_active_plate&quot;, Tambah Omzet&lt;br&gt;&quot;trx_shift_petugas&quot; &amp; &quot;log_aktivitas&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="975" as="sourcePoint"/>
+            <mxPoint x="1460" y="975" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_14" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="14. Muat Struk 58mm di Iframe &amp; Panggil print()&lt;br&gt;(+ Cap [CETAK ULANG] Jika Reprint)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="1095" as="sourcePoint"/>
+            <mxPoint x="820" y="1095" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_15" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="15. Generate &amp; Unduh Berkas PDF 58mm&lt;br&gt;(+ Cap [CETAK ULANG] Jika Reprint)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="1220" as="sourcePoint"/>
+            <mxPoint x="820" y="1220" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_16" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="16. Struk Tercetak / Terunduh &amp; Buka Palang Keluar">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="820" y="1310" as="sourcePoint"/>
+            <mxPoint x="500" y="1310" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_17" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="17. Menerima Struk Bukti Bayar &amp; Keluar Area Parkir">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="1360" as="sourcePoint"/>
+            <mxPoint x="180" y="1360" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
