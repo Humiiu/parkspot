@@ -16,7 +16,7 @@ Seluruh proposal, diagram, dan kode program menggunakan penamaan 12 entitas stan
 7. **`master_kendaraan`**: Data fisik kendaraan unik (`plat_nomor_clean`, `jenis_kendaraan`, `warna`, `id_owner_utama`, `kode_keluarga`).
 8. **`master_user_kendaraan`**: Relasi kepemilikan berbasis **Composite Key** (`{id_user}__{plat_nomor_clean}`, `peran_akses` [owner/family], `status_aktif`).
 9. **`master_jadwal_shift`**: Pengaturan master jam kerja oleh Admin/Owner (`id_jadwal`, `id_lokasi`, `id_petugas`, `nama_shift` [Pagi/Siang], `jam_mulai`, `jam_selesai`, `tanggal_tugas`).
-10. **`trx_shift_petugas`**: Siklus buka/tutup shift kasir, metode absensi (NFC/PIN/Barcode), rekonsiliasi kas (Blind Closing), dan audit selisih.
+10. **`trx_shift_petugas`**: Siklus buka/tutup shift kasir, metode absensi (`nfc` / `password_darurat` + alasan darurat), rekonsiliasi kas (Blind Closing), dan audit selisih.
 11. **`trx_parkir`**: Transaksi siklus hidup parkir (`id_parkir`, `id_lokasi`, `id_slot`, `plat_nomor_clean`, `guest_token`, `waktu_booking_mulai`, `waktu_booking_selesai`, `waktu_masuk`, `waktu_keluar`, `durasi_jam`, `biaya_total`, `status_bayar`, `metode_bayar`, `id_shift_keluar`, `reprint_count`).
 12. **`log_aktivitas`**: Catatan jejak audit (*append-only*): login, gate in/out, tutup paksa shift, reset plat, selisih kas.
 
@@ -30,7 +30,7 @@ Seluruh proposal, diagram, dan kode program menggunakan penamaan 12 entitas stan
   1. **Tombol "Cetak Struk" (Direct Print via Hidden Iframe)**: Memuat route `/receipt/{type}/{idLokasi}/{idParkir}/print` dengan CSS `@page { size: 58mm auto; margin: 0; }` ke `<iframe class="hidden">` lalu memanggil `iframe.contentWindow.print()`. Thermal printer langsung menyemburkan kertas tanpa navbar browser.
   2. **Tombol "Unduh PDF" (DomPDF 58mm Dinamis)**: Menggunakan `barryvdh/laravel-dompdf` dengan lebar tetap `164.41 pt` (58mm) dan **tinggi kertas dihitung dinamis** dari jumlah baris struk ditambah ruang QR Base64 PNG, sehingga struk pendek tidak boros kertas dan struk panjang tidak terpotong.
   3. **Kunci Snapshot Harga (Anti-Kecurangan)**: Saat transaksi keluar berstatus `selesai`, nominal dan durasi dikunci permanen. Cetak ulang dilarang menghitung ulang argo tarif dan otomatis diberi cap **`[CETAK ULANG]`**.
-  4. **Keamanan URL Tamu (Anti-IDOR)**: URL QR karcis masuk memuat parameter acak `?t={guest_token}` agar pengunjung lain tidak bisa menebak ID tiket untuk mengintip argo orang lain.
+  4. **Keamanan URL Tamu (Anti-IDOR) & Cadangan Karcis Hilang**: URL QR karcis masuk memuat parameter acak `?t={guest_token}` agar pengunjung lain tidak bisa menebak ID tiket untuk mengintip argo orang lain. Jika karcis kertas 58mm hilang/basah/rusak saat akan keluar, petugas dapat memproses kendaraan keluar lewat jalur cadangan **Input Pelat Nomor Keluar** di pos kasir.
 
 ---
 
@@ -73,13 +73,18 @@ Seluruh proposal, diagram, dan kode program menggunakan penamaan 12 entitas stan
 ### Poin 6: Rekap Shift Petugas, Master Jadwal Shift, Absensi Kartu & Audit Kas
 * **Latar Belakang**: Audit jika grafik sistem mencatat Rp 12 juta tapi uang fisik hanya Rp 10 juta, serta pencegahan abuse buka-tutup shift liar oleh kasir.
 * **Solusi Terstruktur**:
-  1. **Master Jadwal Shift (Admin & Owner)**:
-     - Jam kerja ditentukan oleh Admin: **Shift 1 (Pagi: 07:00–15:00)** dan **Shift 2 (Siang: 15:00–23:00)**.
-     - Petugas hanya bisa bertugas sesuai jadwal yang di-plot oleh Admin.
-  2. **Absensi Buka Shift Tanpa Beli Alat Mahal (3 Pilihan)**:
-     - **Opsi Utama (Pamer NFC via HP)**: Petugas menempelkan Kartu Identitas Siswa ke sensor NFC di HP Samsung Galaxy A54 milik pengguna $\rightarrow$ Web kasir di komputer otomatis terbuka (*clock-in*).
-     - **Opsi Cadangan 1 (Scan Barcode/QR Kartu Siswa)**: Menggunakan kamera/webcam laptop untuk memindai kartu pelajar.
-     - **Opsi Cadangan 2 (PIN Cepat Kasir)**: Input 6 digit PIN kasir jika kartu tertinggal.
+  1. **Master Jadwal Shift & Tutup Paksa Shift (Admin & Owner)**:
+     - Jam kerja ditentukan oleh Admin maupun Owner (hak kelola shift Owner disamakan dengan Admin): **Shift 1 (Pagi: 07:00–15:00)** dan **Shift 2 (Siang: 15:00–23:00)**.
+     - Petugas hanya bisa bertugas sesuai jadwal yang di-plot oleh Admin/Owner.
+     - Jika petugas lupa/mendadak tidak klik Tutup Shift, Admin maupun Owner dapat melakukan **Tutup Paksa Shift** (dicatat ke `log_aktivitas`) agar shift berikutnya tidak macet.
+     - Format ekspor laporan rekap Owner: **PDF & Excel** (standar industri).
+  2. **Absensi Buka Shift Tanpa Beli Alat Mahal (2 Pilihan Resmi — Opsi B Anti-Abuse)**:
+     - **Opsi Utama (Tap Kartu NFC via HP)**: Petugas menempelkan Kartu Identitas ke sensor NFC di HP Samsung Galaxy A54 milik pengguna $\rightarrow$ Web kasir di komputer otomatis terbuka (*clock-in*, `metode_absen = "nfc"`).
+     - **Opsi Cadangan Darurat (Password Akun Petugas + 3 Pengaman Anti-Abuse)**: Jika kartu tertinggal atau NFC bermasalah, petugas dapat memakai **password akun petugasnya sendiri** dengan 3 kunci pengaman wajib:
+       1. Tetap divalidasi harus sesuai **Master Jadwal Shift** (`master_jadwal_shift`) & cabang tugas (`assigned_id_lokasi`).
+       2. Wajib mengisi **alasan darurat** $\rightarrow$ ditandai `metode_absen = "password_darurat"` dan dicatat otomatis ke `log_aktivitas` (notifikasi ke Admin/Owner).
+       3. Hanya dapat dibuka dari **perangkat komputer Pos Kasir** (sesi perangkat pos terdaftar, mencegah titip absen dari HP pribadi di rumah).
+     - *(Catatan: Opsi Barcode/QR Kartu Siswa dan 6 Digit PIN Kasir dihapus sesuai keputusan pengguna.)*
   3. **Pemisahan Kas Tunai vs QRIS**:
      - Sistem memisahkan `total_tunai_sistem` (wajib disetor fisik ke laci) dari `total_qris_sistem` (langsung masuk ke rekening bank owner).
   4. **Blind Cash Closing**:
@@ -95,7 +100,7 @@ Seluruh proposal, diagram, dan kode program menggunakan penamaan 12 entitas stan
      - **Zona Master (Biru)**: `master_lokasi`, `master_user`, `master_area_parkir`, `master_zona_parkir`, `master_slot_parkir`, `master_tarif`, `master_kendaraan`, `master_user_kendaraan`, `master_jadwal_shift`.
      - **Zona Transaksi (Hijau)**: `trx_shift_petugas`, `trx_parkir`.
      - **Zona Audit (Abu-abu)**: `log_aktivitas`.
-  2. **Aturan Soft Delete (`status_aktif = 0`)**: Menggantikan ketiadaan `ON DELETE RESTRICT` di Firebase NoSQL agar riwayat transaksi dan audit lama tidak pernah korup saat data master dinonaktifkan.
+  2. **Aturan Soft Delete (`status_aktif = false`)**: Menggantikan ketiadaan `ON DELETE RESTRICT` di Firebase NoSQL agar riwayat transaksi dan audit lama tidak pernah korup saat data master dinonaktifkan (selaras dengan tipe `boolean` di ERD & JSON Proposal).
   3. **Pembaruan Diagram**: Use Case, Activity Diagram, dan Sequence Diagram di Proposal UKK Bab III ditambahkan alur Rekap Shift, Jadwal Shift, Pemilihan Mall, dan Buffer Booking.
 
 ---

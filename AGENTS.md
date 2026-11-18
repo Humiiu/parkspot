@@ -54,12 +54,12 @@ Rules ini berlaku untuk seluruh proses pengerjaan dan pengembangan proyek **Park
   - **Wajib dicatat dan diperbarui** statusnya di [`docs/PROGRESS.md`](file:///c:/xampp/htdocs/parkspot/docs/PROGRESS.md) dan [`docs/REVISI.md`](file:///c:/xampp/htdocs/parkspot/docs/REVISI.md).
   - Pastikan daftar ceklis selalu mencerminkan kondisi riil sistem saat ini.
 
-### G. Protokol Git Commit Antar-Perangkat (Sync & Backup)
+### G. Protokol Git Commit & Push Antar-Perangkat (Sync & Backup)
+- **Aturan Wajib per 1 Diagram**: Setiap kali selesai membuat/merevisi **1 diagram** (baik DFD, Activity, maupun Sequence, termasuk file `.drawio`, `.png`, dan pembaruan `docs/PROGRESS.md`), **wajib langsung lakukan `git commit` dan `git push` ke GitHub** agar progres aman tersinkronisasi antar-perangkat (PC Desktop & Laptop Vivobook).
 - Setiap kali suatu milestone, tugas revisi, atau fitur selesai dan terverifikasi:
   - **Wajib lakukan Git Commit** dengan gaya pesan: **Bahasa Indonesia santai/gaul, huruf kecil semua di awal (tanpa huruf kapital), yang penting ada inti informasinya** (contoh: `revisi cetak struk pdf`, `benerin tabel master_user`, `pindah device lagi`, `tambah jeda buffer booking`).
   - *Catatan*: Gaya santai dan huruf kecil ini KHUSUS untuk pesan `git commit` saja. Respons chat asisten TETAP rapi, profesional, dan terstruktur.
-  - Untuk tweak kecil/minor: biarkan terakumulasi atau tanyakan ke pengguna sebelum commit.
-  - Berikan pengingat push git agar riwayat pengerjaan aman tersinkronisasi antar-perangkat (PC Desktop & Laptop Vivobook).
+  - Untuk tweak kecil/minor di luar pengerjaan diagram: biarkan terakumulasi atau tanyakan ke pengguna sebelum commit.
 
 ### H. Pemisahan Spesifikasi Teknis & Progres
 - File `AGENTS.md` dijaga tetap ringkas dan tidak membengkak agar hemat token. Seluruh detail teknis, skema revisi per nomor, dan status pengerjaan wajib didelegasikan ke folder `docs/`.

@@ -1,112 +1,95 @@
-<mxfile host="app.diagrams.net" agent="ParkSpot" version="24.0.0">
+<mxfile host="app.diagrams.net" agent="ParkSpot" version="24.0.0" compressed="false">
   <diagram id="parkspot-dfd-level-0-revisi" name="DFD LEVEL 0 (Revisi)">
     <mxGraphModel dx="1665" dy="953" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
-        <mxCell id="process_0" value="0.0&lt;br&gt;Sistem Pengelolaan Parkir&lt;br&gt;Terpadu ParkSpot&lt;br&gt;(Web Laravel, Mobile Flutter,&lt;br&gt;&amp;amp; Firebase RTDB)" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="760" y="400" width="300" height="300" as="geometry"/>
+        <mxCell id="process_0" value="0.0&lt;br&gt;Sistem Pengelolaan Parkir&lt;br&gt;Terpadu ParkSpot&lt;br&gt;(Web Laravel, Mobile Flutter,&lt;br&gt;&amp; Firebase RTDB)" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="765" y="385" width="310" height="310" as="geometry"/>
         </mxCell>
         <mxCell id="ent_admin" value="Admin" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="20" width="240" height="70" as="geometry"/>
+          <mxGeometry x="50" y="25" width="240" height="70" as="geometry"/>
         </mxCell>
         <mxCell id="ent_petugas" value="Petugas" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="1530" y="20" width="240" height="70" as="geometry"/>
+          <mxGeometry x="1550" y="25" width="240" height="70" as="geometry"/>
         </mxCell>
         <mxCell id="ent_owner" value="Owner" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="515" width="240" height="70" as="geometry"/>
+          <mxGeometry x="50" y="505" width="240" height="70" as="geometry"/>
         </mxCell>
         <mxCell id="ent_pelanggan" value="Pelanggan (Member)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="1530" y="515" width="240" height="70" as="geometry"/>
-        </mxCell>
-        <mxCell id="ent_midtrans" value="Midtrans Sandbox&lt;br&gt;(Payment Gateway)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="1010" width="240" height="70" as="geometry"/>
+          <mxGeometry x="1550" y="505" width="240" height="70" as="geometry"/>
         </mxCell>
         <mxCell id="ent_guest" value="Pengunjung Tamu (Guest)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="1530" y="1010" width="240" height="70" as="geometry"/>
+          <mxGeometry x="780" y="1030" width="280" height="70" as="geometry"/>
         </mxCell>
-        <mxCell id="flow_admin_in" value="Data Login, Data Lokasi Mal, Data User&lt;br&gt;(PIN Kasir &amp;amp; Kartu NFC), Data Tarif,&lt;br&gt;Data Area/Zona (Maks. 12 Slot)/Slot,&lt;br&gt;Data Jadwal Shift, Reset Kepemilikan Pelat" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
+        <mxCell id="flow_admin_in" value="Data Login, Data Lokasi Mal, Data User (Kartu NFC),&lt;br&gt;Data Tarif, Data Area/Zona (Maks. 12 Slot)/Slot,&lt;br&gt;Data Kendaraan &amp; Reset Kepemilikan Pelat,&lt;br&gt;Data Jadwal Shift, Tutup Paksa Shift" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="290" y="62" as="sourcePoint"/>
-            <mxPoint x="889" y="401" as="targetPoint"/>
-            <mxPoint x="30" y="-28" as="offset"/>
+            <mxPoint x="290" y="65" as="sourcePoint"/>
+            <mxPoint x="847" y="403" as="targetPoint"/>
+            <mxPoint x="40" y="-34" as="offset"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="flow_admin_out" value="Info Login, Denah Slot 3 Warna per Mal,&lt;br&gt;Daftar Data Master, Catatan Log Aktivitas,&lt;br&gt;Peringatan Selisih Kas Shift (Merah)" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
+        <mxCell id="flow_admin_out" value="Info Login, Denah Slot 3 Warna per Mal,&lt;br&gt;Daftar Data Master, Catatan Log Aktivitas,&lt;br&gt;Peringatan Selisih Kas (Merah) &amp; Absen Darurat" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="783" y="471" as="sourcePoint"/>
-            <mxPoint x="150" y="90" as="targetPoint"/>
-            <mxPoint x="-28" y="24" as="offset"/>
+            <mxPoint x="783" y="467" as="sourcePoint"/>
+            <mxPoint x="170" y="95" as="targetPoint"/>
+            <mxPoint x="-40" y="30" as="offset"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="flow_petugas_in" value="Data Login &amp;amp; Absensi Buka Shift (NFC HP /&lt;br&gt;Barcode / PIN Kasir), Input Pelat Masuk, Pembaruan&lt;br&gt;Status Slot Overstay, Pindai QR Karcis Keluar,&lt;br&gt;Pilih Cetak / Unduh PDF 58mm, Input Uang Fisik Setor" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
+        <mxCell id="flow_petugas_in" value="Data Login &amp; Absensi Buka Shift (NFC HP /&lt;br&gt;Password Darurat + Alasan), Input Pelat Masuk,&lt;br&gt;Pembaruan Status Slot Overstay, Pindai QR / Input Pelat Keluar,&lt;br&gt;Pilih Cetak / Unduh PDF 58mm, Input Uang Fisik Setor &amp; Berita Acara" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1670" y="90" as="sourcePoint"/>
-            <mxPoint x="1037" y="471" as="targetPoint"/>
-            <mxPoint x="30" y="28" as="offset"/>
+            <mxPoint x="1670" y="95" as="sourcePoint"/>
+            <mxPoint x="1057" y="467" as="targetPoint"/>
+            <mxPoint x="65" y="34" as="offset"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="flow_petugas_out" value="Akses Kasir Cabang Tugas, Lokasi Slot Terdekat,&lt;br&gt;Karcis Masuk 58mm ber-QR, Struk Keluar 58mm&lt;br&gt;(Cetak Langsung / Unduh PDF + Cap [CETAK ULANG]),&lt;br&gt;Ringkasan Tutup Shift" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="931" y="401" as="sourcePoint"/>
-            <mxPoint x="1530" y="62" as="targetPoint"/>
-            <mxPoint x="-30" y="-28" as="offset"/>
+            <mxPoint x="993" y="403" as="sourcePoint"/>
+            <mxPoint x="1550" y="65" as="targetPoint"/>
+            <mxPoint x="-40" y="-34" as="offset"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="flow_owner_in" value="Data Login, Filter Cabang Lokasi Mal&lt;br&gt;&amp;amp; Rentang Tanggal, Permintaan Ekspor&lt;br&gt;Laporan (CSV / JSON / PDF)" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
+        <mxCell id="flow_owner_in" value="Data Login, Data Jadwal Shift, Tutup Paksa Shift,&lt;br&gt;Filter Cabang Lokasi Mal &amp; Rentang Tanggal,&lt;br&gt;Permintaan Ekspor Laporan (PDF / Excel)" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="290" y="532" as="sourcePoint"/>
-            <mxPoint x="765" y="511" as="targetPoint"/>
-            <mxPoint x="0" y="-26" as="offset"/>
+            <mxPoint x="290" y="522" as="sourcePoint"/>
+            <mxPoint x="769" y="505" as="targetPoint"/>
+            <mxPoint x="0" y="-34" as="offset"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="flow_owner_out" value="Dashboard Multi-Mal, Rekap Omzet Terpisah&lt;br&gt;(Tunai vs QRIS), Daftar Audit Shift &amp;amp; Penanda&lt;br&gt;Selisih Kas (Merah), File Laporan Rekap" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
+        <mxCell id="flow_owner_out" value="Dashboard Multi-Mal, Rekap Omzet Terpisah&lt;br&gt;(Tunai vs QRIS), Daftar Audit Shift, Peringatan&lt;br&gt;Selisih Kas (Merah) &amp; Absen Darurat, File Laporan Rekap" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="765" y="589" as="sourcePoint"/>
-            <mxPoint x="290" y="568" as="targetPoint"/>
-            <mxPoint x="0" y="26" as="offset"/>
+            <mxPoint x="769" y="575" as="sourcePoint"/>
+            <mxPoint x="290" y="558" as="targetPoint"/>
+            <mxPoint x="0" y="34" as="offset"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="flow_pelanggan_in" value="Data Login/Registrasi, Data Kendaraan &amp;amp; Kode&lt;br&gt;Keluarga 6 Digit, Pilihan Cabang Mal, Tanggal/Jam&lt;br&gt;Datang/Durasi &amp;amp; Pilihan Slot Booking, Bayar DP QRIS" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
+        <mxCell id="flow_pelanggan_in" value="Data Login/Registrasi, Data Kendaraan &amp; Kode&lt;br&gt;Keluarga 6 Digit, Pilihan Cabang Mal, Tanggal/Jam&lt;br&gt;Datang/Durasi &amp; Pilihan Slot Booking,&lt;br&gt;Bayar QRIS (DP Booking &amp; Tagihan Parkir)" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1530" y="568" as="sourcePoint"/>
-            <mxPoint x="1055" y="589" as="targetPoint"/>
-            <mxPoint x="0" y="26" as="offset"/>
+            <mxPoint x="1550" y="558" as="sourcePoint"/>
+            <mxPoint x="1071" y="575" as="targetPoint"/>
+            <mxPoint x="0" y="40" as="offset"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="flow_pelanggan_out" value="Daftar Mobil Keluarga &amp;amp; Kode Keluarga,&lt;br&gt;Denah 12 Slot/Zona &amp;amp; Rekomendasi Terdekat,&lt;br&gt;Tiket QR Booking (+Jeda 30 Menit), Notifikasi&lt;br&gt;Pemindahan Slot (jika overstay), Info Lokasi &amp;amp;&lt;br&gt;Tagihan Berjalan, Bukti Lunas" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
+        <mxCell id="flow_pelanggan_out" value="Daftar Mobil Keluarga &amp; Kode Keluarga,&lt;br&gt;Denah 12 Slot/Zona &amp; Rekomendasi Terdekat,&lt;br&gt;Tiket QR Booking (+Jeda 30 Menit), Info Pemindahan&lt;br&gt;Slot (jika overstay), Info Lokasi &amp; Tagihan Berjalan, Bukti Lunas" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1055" y="511" as="sourcePoint"/>
-            <mxPoint x="1530" y="532" as="targetPoint"/>
-            <mxPoint x="0" y="-40" as="offset"/>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="flow_midtrans_in" value="Permintaan Token Transaksi &amp;amp; Nominal&lt;br&gt;Tagihan (DP Booking / Tagihan Parkir)" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="783" y="629" as="sourcePoint"/>
-            <mxPoint x="150" y="1010" as="targetPoint"/>
-            <mxPoint x="-22" y="-20" as="offset"/>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="flow_midtrans_out" value="Kode QRIS &amp;amp; Notifikasi Status&lt;br&gt;Pembayaran Lunas (Webhook)" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="290" y="1038" as="sourcePoint"/>
-            <mxPoint x="889" y="699" as="targetPoint"/>
-            <mxPoint x="22" y="20" as="offset"/>
+            <mxPoint x="1071" y="505" as="sourcePoint"/>
+            <mxPoint x="1550" y="522" as="targetPoint"/>
+            <mxPoint x="0" y="-42" as="offset"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="flow_guest_in" value="Pindai Tautan QR Karcis Masuk&lt;br&gt;(Token Pengaman), Konfirmasi Bayar QRIS" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1530" y="1038" as="sourcePoint"/>
-            <mxPoint x="931" y="699" as="targetPoint"/>
-            <mxPoint x="-22" y="20" as="offset"/>
+            <mxPoint x="840" y="1030" as="sourcePoint"/>
+            <mxPoint x="840" y="673" as="targetPoint"/>
+            <mxPoint x="-130" y="0" as="offset"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="flow_guest_out" value="Halaman Web Info Lokasi Slot, Tagihan&lt;br&gt;Parkir Berjalan, Kode QRIS &amp;amp; Status Lunas" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
+        <mxCell id="flow_guest_out" value="Halaman Web Info Lokasi Slot, Tagihan&lt;br&gt;Parkir Berjalan, Kode QRIS &amp; Status Lunas" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1037" y="629" as="sourcePoint"/>
-            <mxPoint x="1670" y="1010" as="targetPoint"/>
-            <mxPoint x="22" y="-20" as="offset"/>
+            <mxPoint x="1000" y="673" as="sourcePoint"/>
+            <mxPoint x="1000" y="1030" as="targetPoint"/>
+            <mxPoint x="132" y="0" as="offset"/>
           </mxGeometry>
         </mxCell>
       </root>
