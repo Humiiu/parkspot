@@ -1,0 +1,165 @@
+<mxfile host="app.diagrams.net" agent="ParkSpot" version="24.0.0" compressed="false">
+  <diagram id="d10_act_gate_in" name="Diagram ParkSpot UKK-Activity Input Pelat &amp; Pencarian Slot Terdekat (Revisi)">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="lane_pengguna" value="Pengguna (Member / Guest)" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="340" height="1870" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_petugas" value="Petugas" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="340" y="0" width="340" height="1870" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_sistem" value="Sistem" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="680" y="0" width="1040" height="1870" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_start" value="" style="ellipse;fillColor=strokeColor;html=1;" vertex="1" parent="lane_pengguna">
+          <mxGeometry x="155" y="65" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_user_arrive" value="Tiba di Gerbang Masuk &amp;&lt;br&gt;Menyebutkan / Menghadap&lt;br&gt;Pos Petugas" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_pengguna">
+          <mxGeometry x="35" y="135" width="270" height="74" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_petugas_input" value="Menginput Nomor Pelat &amp;&lt;br&gt;Jenis Kendaraan pada Pos Masuk" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_petugas">
+          <mxGeometry x="35" y="245" width="270" height="74" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_check" value="Mengecek &quot;idx_active_plate&quot; &amp;&lt;br&gt;Data Booking pada &quot;trx_parkir&quot;&lt;br&gt;(per id_lokasi)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="370" y="360" width="300" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="dec_active" value="Apakah Pelat Sedang&lt;br&gt;Parkir Aktif?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="365" y="485" width="310" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_active_err" value="Menampilkan Pesan&lt;br&gt;&quot;Pelat Sedang Parkir Aktif&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="710" y="620" width="300" height="74" as="geometry"/>
+        </mxCell>
+        <mxCell id="end_active" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="845" y="730" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="dec_booking" value="Apakah Punya&lt;br&gt;Booking Aktif?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="365" y="670" width="310" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_booking" value="Mengambil Slot Booking (&quot;oranye&quot;)&lt;br&gt;atau Relokasi Otomatis ke Slot&lt;br&gt;&quot;hijau&quot; Terdekat di Zona Sama&lt;br&gt;(jika Overstay)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="30" y="850" width="300" height="96" as="geometry"/>
+        </mxCell>
+        <mxCell id="dec_slot" value="Apakah Tersedia Slot&lt;br&gt;&quot;hijau&quot; Kosong?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="365" y="855" width="310" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_full" value="Menampilkan Pesan&lt;br&gt;&quot;Parkir Penuh&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="710" y="1020" width="300" height="74" as="geometry"/>
+        </mxCell>
+        <mxCell id="end_full" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="845" y="1130" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_score" value="Memilih Slot Skor Terendah:&lt;br&gt;(prioritas_jarak_lobby * 100) +&lt;br&gt;urutan_jarak_slot" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="370" y="1035" width="300" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_red" value="Mengubah Status Lampu Slot&lt;br&gt;Menjadi &quot;merah&quot; pada&lt;br&gt;&quot;master_slot_parkir&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="370" y="1165" width="300" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_save" value="Membuat &quot;guest_token&quot; (Tamu),&lt;br&gt;Menyimpan ke &quot;trx_parkir&quot;,&lt;br&gt;Mengunci &quot;idx_active_plate&quot; &amp;&lt;br&gt;Mencatat &quot;log_aktivitas&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="370" y="1285" width="300" height="92" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_ticket" value="Menyiapkan Karcis 58mm ber-QR&lt;br&gt;(Tamu) / Info Slot Real-Time&lt;br&gt;Aplikasi (Member)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="370" y="1420" width="300" height="86" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_petugas_print" value="Mencetak / Unduh PDF&lt;br&gt;Karcis 58mm (Tamu) &amp;&lt;br&gt;Membuka Palang Masuk" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_petugas">
+          <mxGeometry x="35" y="1545" width="270" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_user_park" value="Menerima Karcis / Info Aplikasi&lt;br&gt;&amp; Menuju Slot Parkir" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_pengguna">
+          <mxGeometry x="35" y="1670" width="270" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_end" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="lane_pengguna">
+          <mxGeometry x="155" y="1790" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_start" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="node_start" target="act_user_arrive">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_arrive_input" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_user_arrive" target="act_petugas_input">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="170" y="282"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_input_check" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_petugas_input" target="act_sys_check">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="510" y="401"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_check_active" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_check" target="dec_active">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_active_ya" value="Ya" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_active" target="act_sys_active_err">
+          <mxGeometry relative="1" as="geometry" x="0.69">
+            <Array as="points">
+              <mxPoint x="1540" y="540"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_active_end" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_active_err" target="end_active">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_active_tidak" value="Tidak" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_active" target="dec_booking">
+          <mxGeometry relative="1" as="geometry" x="0.0"/>
+        </mxCell>
+        <mxCell id="e_book_ya" value="Ya - Sudah Booking" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_booking" target="act_sys_booking">
+          <mxGeometry relative="1" as="geometry" x="0.597">
+            <Array as="points">
+              <mxPoint x="860" y="725"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_book_tidak" value="Tidak - Reguler" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_booking" target="dec_slot">
+          <mxGeometry relative="1" as="geometry" x="0.0"/>
+        </mxCell>
+        <mxCell id="e_slot_tidak" value="Tidak" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_slot" target="act_sys_full">
+          <mxGeometry relative="1" as="geometry" x="0.627">
+            <Array as="points">
+              <mxPoint x="1540" y="910"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_full_end" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_full" target="end_full">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_slot_ya" value="Ya" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_slot" target="act_sys_score">
+          <mxGeometry relative="1" as="geometry" x="0.0"/>
+        </mxCell>
+        <mxCell id="e_booking_red" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_booking" target="act_sys_red">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="860" y="1204"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_score_red" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_score" target="act_sys_red">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_red_save" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_red" target="act_sys_save">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_save_ticket" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_save" target="act_sys_ticket">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_ticket_print" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_ticket" target="act_petugas_print">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1200" y="1586"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_print_park" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_petugas_print" target="act_user_park">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="510" y="1709"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_park_end" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_user_park" target="node_end">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

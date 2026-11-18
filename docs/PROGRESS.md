@@ -38,8 +38,8 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 | **7** | `Diagram ParkSpot UKK-Sequence CRUD Kendaraan (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Auto-Lanjut) | 4 lifeline, 1..13 urut, soft delete & idx_active_plate, Dark Mode, Auditor v2 PASS |
 | **8** | `Diagram ParkSpot UKK-Activity CRUD Master Lokasi & Jadwal Shift` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Auto-Lanjut) | Admin/Owner kelola lokasi, jadwal shift & Tutup Paksa Shift, Dark Mode, Auditor v2 PASS |
 | **9** | `Diagram ParkSpot UKK-Sequence CRUD Master Lokasi & Jadwal Shift` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Auto-Lanjut) | 4 lifeline, 1..17 urut, 3 cabang alt (Lokasi/Jadwal/Tutup Paksa), Dark Mode, Auditor v2 PASS |
-| **10** | `Diagram ParkSpot UKK-Activity Input Pelat & Pencarian Slot Terdekat (Revisi)` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Sedang dibangun Subagent Builder & diaudit Auditor v2 |
-| **11** | `Diagram ParkSpot UKK-Sequence Input Pelat & Pencarian Slot (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **10** | `Diagram ParkSpot UKK-Activity Input Pelat & Pencarian Slot Terdekat (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Auto-Lanjut) | 3 swimlane, cabang booking + relokasi overstay + idx_active_plate, Dark Mode, Auditor v2 PASS |
+| **11** | `Diagram ParkSpot UKK-Sequence Input Pelat & Pencarian Slot (Revisi)` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Sedang dibangun Subagent Builder & diaudit Auditor v2 |
 | **12** | `Diagram ParkSpot UKK-Activity Pengecekan & Booking (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Antre giliran |
 | **13** | `Diagram ParkSpot UKK-Sequence Pengecekan & Booking (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Antre giliran |
 | **14** | `Diagram ParkSpot UKK-Activity Keluar Gerbang & Print Struk (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Antre giliran |
