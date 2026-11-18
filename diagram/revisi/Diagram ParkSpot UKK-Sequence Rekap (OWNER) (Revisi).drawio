@@ -1,0 +1,104 @@
+<mxfile host="app.diagrams.net" agent="ParkSpot" version="24.0.0" compressed="false">
+  <diagram id="d17_seq_rekap_owner" name="Diagram ParkSpot UKK-Sequence Rekap (OWNER) (Revisi)">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="ll_owner" parent="1" style="shape=umlLifeline;participant=umlActor;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Owner" vertex="1">
+          <mxGeometry x="180" y="60" width="20" height="860" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_halaman" parent="1" style="shape=umlLifeline;participant=umlBoundary;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Halaman Rekap&lt;br&gt;&amp; Audit Shift" vertex="1">
+          <mxGeometry x="525" y="60" width="50" height="860" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_sistem" parent="1" style="shape=umlLifeline;participant=umlControl;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Sistem" vertex="1">
+          <mxGeometry x="890" y="60" width="40" height="860" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_firebase" parent="1" style="shape=umlLifeline;whiteSpace=wrap;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=50;" value="Firebase" vertex="1">
+          <mxGeometry x="1210" y="60" width="120" height="860" as="geometry"/>
+        </mxCell>
+        <mxCell id="msg_1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="1. Pilih Lokasi Mal &amp; Rentang Tanggal">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="185" as="sourcePoint"/>
+            <mxPoint x="550" y="185" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="2. Request Laporan Rekap &amp; Audit Shift (id_lokasi)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="235" as="sourcePoint"/>
+            <mxPoint x="910" y="235" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_3" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="3. Ambil &quot;trx_parkir/{id_lokasi}&quot;,&lt;br&gt;&quot;trx_shift_petugas/{id_lokasi}&quot; &amp; &quot;log_aktivitas&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="910" y="295" as="sourcePoint"/>
+            <mxPoint x="1270" y="295" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_4" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="4. Data Transaksi, Shift &amp; Log Audit">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1270" y="345" as="sourcePoint"/>
+            <mxPoint x="910" y="345" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_5" edge="1" parent="1" style="html=1;align=left;spacingLeft=4;endArrow=block;rounded=0;curved=0;labelBackgroundColor=default;" value="5. Hitung Total Tunai vs QRIS &amp; Deteksi&lt;br&gt;Shift flag_selisih / Absen Darurat (Merah)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="955" y="372"/>
+              <mxPoint x="955" y="422"/>
+            </Array>
+            <mxPoint x="910" y="372" as="sourcePoint"/>
+            <mxPoint x="910" y="422" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_6" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="6. Kirim Ringkasan Omzet &amp; Tabel Audit Shift">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="910" y="472" as="sourcePoint"/>
+            <mxPoint x="550" y="472" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_7" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="7. Menampilkan Dashboard, Penanda&lt;br&gt;Selisih Merah &amp; Absen Darurat">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="530" as="sourcePoint"/>
+            <mxPoint x="190" y="530" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_8" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="8. Klik Detail Shift Bermasalah /&lt;br&gt;Klik Ekspor Laporan (PDF / Excel)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="595" as="sourcePoint"/>
+            <mxPoint x="550" y="595" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_9" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="9. Proses Detail Audit / Generate File (PDF / Excel)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="648" as="sourcePoint"/>
+            <mxPoint x="910" y="648" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_10" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="10. Ambil Rincian Tiket, Berita Acara&lt;br&gt;&amp; &quot;log_aktivitas&quot; Shift">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="910" y="705" as="sourcePoint"/>
+            <mxPoint x="1270" y="705" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_11" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="11. Data Rincian Audit Shift">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1270" y="755" as="sourcePoint"/>
+            <mxPoint x="910" y="755" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_12" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="12. Kirim Tampilan Detail Audit /&lt;br&gt;File Laporan (PDF / Excel)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="910" y="812" as="sourcePoint"/>
+            <mxPoint x="550" y="812" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_13" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="13. Menampilkan Detail Audit &amp;&lt;br&gt;Unduh File Laporan (PDF / Excel)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="875" as="sourcePoint"/>
+            <mxPoint x="190" y="875" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

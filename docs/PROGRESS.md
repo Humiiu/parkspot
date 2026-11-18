@@ -45,15 +45,14 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 | **14** | `Diagram ParkSpot UKK-Activity Keluar Gerbang & Print Struk (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Auto-Lanjut) | Scan QR / Input Pelat Hilang, Dual-Action 58mm, snapshot lock, lepas idx_active_plate, Auditor v2 PASS |
 | **15** | `Diagram ParkSpot UKK-Sequence Keluar Gerbang & Cetak Struk (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Auto-Lanjut) | 5 lifeline, 1..17 urut, 2 alt (Bayar + Dual-Action 58mm), Dark Mode, Auditor v2 PASS |
 | **16** | `Diagram ParkSpot UKK-Activity Rekap (OWNER) (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Auto-Lanjut) | Multi-mal, pisah Tunai/QRIS, audit selisih & absen darurat, ekspor PDF/Excel, Auditor v2 PASS |
-| **17** | `Diagram ParkSpot UKK-Sequence Rekap (OWNER) (Revisi)` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Sedang dibangun Subagent Builder & diaudit Auditor v2 |
+| **17** | `Diagram ParkSpot UKK-Sequence Rekap (OWNER) (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Auto-Lanjut) | 4 lifeline, 1..13 urut, ekspor PDF/Excel, audit selisih & absen darurat, Auditor v2 PASS |
 
 ---
 
 ## Catatan Subagent & Safety State
-- Subagent teamwork (`15741e8f-084c-4b8f-bf42-ef1787791374`) telah ditutup dengan aman setelah terkena kuota API.
-- Seluruh artefak, log transkrip, dan prompt pipeline tersimpan aman di direktori `.system_generated/logs/` dan brain session.
-- File asli milik pengguna di folder `diagram/` tetap utuh dan terisolasi dari folder `diagram/revisi/`.
-- Sesi dapat dilanjutkan kapan saja dengan fokus pertama: me-review Diagram 4 (`Diagram ParkSpot UKK-Activity CRUD Area & Slot (Revisi)`).
+- Seluruh **17/17 diagram revisi** (`.drawio` + `.png`) di folder `diagram/revisi/` telah **SELESAI 100%**, lulus audit independen **`diagram-auditor-v2`** (Anti-Improvisasi, Uji Tolak-Belakang *"Jika X... Solusi untuk Y Gimana?"*, XML `compressed="false"`, Dark Mode friendly, & sinkronisasi 1:1 `.drawio` vs `.png`), serta telah di-**commit & push satu per satu ke GitHub**.
+- File asli milik pengguna di folder `diagram/` tetap utuh 100% dan terisolasi dari folder `diagram/revisi/`.
+- Langkah berikutnya siap dilanjutkan ke penempelan 17 gambar diagram revisi ke `PROPOSAL PARKSPOT UKK.docx` & pembersihan sisa field `pin_kasir` / `barcode` di `diagram/erd_parkspot.dbml` bila diperlukan, lalu masuk Tahap 2 (Backend Laravel & Mobile Flutter).
 
 ---
 
@@ -65,9 +64,9 @@ Sesuai aturan di [`AGENTS.md`](file:///c:/xampp/htdocs/parkspot/AGENTS.md), ekse
    - Perbarui Diagram Use Case, Activity, Sequence, dan Pseudocode (Struk 58mm, Shift, Buffer Booking, Multi-Mall).
    - Buat Skema ERD 3 Zona Warna + Tabel Pemetaan ke Firebase RTDB.
 2. **Tahap 2: Refactor Database & Backend Web Laravel (`parkspot_web`)**
-   - Refactor model/service ke 11 entitas standar.
+   - Refactor model/service ke 12 entitas standar.
    - Implementasi generator PDF 58mm dinamis (`barryvdh/laravel-dompdf`) & cetak iframe kasir.
-   - Implementasi Master Jadwal Shift, Absensi Kasir (NFC/Barcode/PIN), & Blind Cash Closing.
+   - Implementasi Master Jadwal Shift, Tutup Paksa Shift, Absensi Kasir (NFC HP / Password Darurat Opsi B), & Blind Cash Closing.
    - Implementasi partisi data per mall di `database.rules.json` (`.indexOn`).
 3. **Tahap 3: Penyesuaian Aplikasi Mobile Flutter (`parkspot_mobile`)**
    - Tambah layar pemilih Mall (Multi-Mall Switcher).
