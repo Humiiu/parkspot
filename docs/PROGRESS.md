@@ -36,8 +36,8 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 | **5** | `Diagram ParkSpot UKK-Sequence CRUD Area & Slot (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | 4 lifeline, validasi maks 12 slot/zona (alt), XML bersih & sinkron |
 | **6** | `Diagram ParkSpot UKK-Activity CRUD Data Kendaraan (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | 3 cabang (Tambah kode keluarga, edit, reset plat), Dark Mode friendly, Auditor v2 PASS |
 | **7** | `Diagram ParkSpot UKK-Sequence CRUD Kendaraan (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Auto-Lanjut) | 4 lifeline, 1..13 urut, soft delete & idx_active_plate, Dark Mode, Auditor v2 PASS |
-| **8** | `Diagram ParkSpot UKK-Activity CRUD Master Lokasi & Jadwal Shift` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Admin & Owner kelola lokasi/jadwal shift + Tutup Paksa Shift |
-| **9** | `Diagram ParkSpot UKK-Sequence CRUD Master Lokasi & Jadwal Shift` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Menunggu Diagram 8 di-ACC |
+| **8** | `Diagram ParkSpot UKK-Activity CRUD Master Lokasi & Jadwal Shift` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Auto-Lanjut) | Admin/Owner kelola lokasi, jadwal shift & Tutup Paksa Shift, Dark Mode, Auditor v2 PASS |
+| **9** | `Diagram ParkSpot UKK-Sequence CRUD Master Lokasi & Jadwal Shift` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Sedang dibangun Subagent Builder & diaudit Auditor v2 |
 | **10** | `Diagram ParkSpot UKK-Activity Input Pelat & Pencarian Slot Terdekat (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Antre giliran |
 | **11** | `Diagram ParkSpot UKK-Sequence Input Pelat & Pencarian Slot (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Antre giliran |
 | **12** | `Diagram ParkSpot UKK-Activity Pengecekan & Booking (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Antre giliran |
