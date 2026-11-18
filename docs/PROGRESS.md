@@ -44,8 +44,8 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 | **13** | `Diagram ParkSpot UKK-Sequence Pengecekan & Booking (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Auto-Lanjut) | 5 lifeline, 1..17 urut, Webhook/Cek Status, Info Slot Pengganti, Dark Mode, Auditor v2 PASS |
 | **14** | `Diagram ParkSpot UKK-Activity Keluar Gerbang & Print Struk (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Auto-Lanjut) | Scan QR / Input Pelat Hilang, Dual-Action 58mm, snapshot lock, lepas idx_active_plate, Auditor v2 PASS |
 | **15** | `Diagram ParkSpot UKK-Sequence Keluar Gerbang & Cetak Struk (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Auto-Lanjut) | 5 lifeline, 1..17 urut, 2 alt (Bayar + Dual-Action 58mm), Dark Mode, Auditor v2 PASS |
-| **16** | `Diagram ParkSpot UKK-Activity Rekap (OWNER) (Revisi)` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Sedang dibangun Subagent Builder & diaudit Auditor v2 |
-| **17** | `Diagram ParkSpot UKK-Sequence Rekap (OWNER) (Revisi)` | 🟡 Draft Siap | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **16** | `Diagram ParkSpot UKK-Activity Rekap (OWNER) (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Auto-Lanjut) | Multi-mal, pisah Tunai/QRIS, audit selisih & absen darurat, ekspor PDF/Excel, Auditor v2 PASS |
+| **17** | `Diagram ParkSpot UKK-Sequence Rekap (OWNER) (Revisi)` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Sedang dibangun Subagent Builder & diaudit Auditor v2 |
 
 ---
 
