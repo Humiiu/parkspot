@@ -111,3 +111,12 @@ Seluruh proposal, diagram, dan kode program menggunakan penamaan 12 entitas stan
   2. **Optimasi `.indexOn`**: Menambahkan index pada `database.rules.json` agar query pembacaan data per lokasi super cepat dan tidak mengunduh data mall lain.
   3. **Middleware Otorisasi Kasir**: Akun Petugas dikunci di sisi server sesuai cabang tugasnya (`assigned_id_lokasi`), mencegah petugas mall A memproses tiket mall B.
   4. **Persistent Mall Switcher**: Member di mobile memilih lokasi mall di awal dengan tampilan kartu mall (nama, alamat, tarif, slot kosong *real-time*).
+
+---
+
+### Catatan Review Proposal (19 November 2026): Sinkronisasi Deskripsi Wireframe (Opsi A)
+* **Masalah**: Deskripsi Gambar 3.39 menyebut slot booking yang tidak didatangi dilepas manual oleh Petugas, dan Gambar 3.40 menyebut "toleransi 15 menit ke gerbang keluar" setelah bayar QRIS. Aturan itu tidak ada di Activity, Sequence, Pseudocode, maupun Rencana Pengujian.
+* **Keputusan (Opsi A)**: Gambar wireframe tetap (rancangan sementara), tapi kalimat deskripsinya disamakan dengan diagram:
+  1. **3.39**: Member memilih lokasi mal, jam kedatangan, dan durasi dulu, lalu memilih slot. Booking yang tidak didatangi lebih dari 15 menit **dibatalkan otomatis oleh sistem** dan slot kembali hijau (selaras UJI-08 & Poin 3 On-Demand Sync).
+  2. **3.40**: Aturan "toleransi 15 menit ke gerbang keluar" **dihapus**. Setelah bayar QRIS, status tagihan menjadi lunas dan Petugas cukup memindai QR lalu membuka palang.
+

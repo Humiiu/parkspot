@@ -49,6 +49,24 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 
 ---
 
+## Review & Perbaikan Format Proposal (19 November 2026)
+- [x] Review menyeluruh `PROPOSAL PARKSPOT UKK.docx` (margin, spasi, font, gambar, gaya bahasa).
+- [x] Cover disamakan ke ukuran A4 (sebelumnya Letter).
+- [x] Section break sebelum BAB I: halaman awal pakai nomor romawi (i, ii, ...), BAB I mulai dari halaman 1.
+- [x] Heading Activity/Sequence 13 & 14 dan Pseudocode 3 & 4 diganti dari Calibri ke Times New Roman bold; caption Gambar 3.14/3.15/3.28/3.29 ditebalkan.
+- [x] Pseudocode 1-4 diseragamkan ke Consolas 9pt spasi 1,15.
+- [x] Paragraf page-break diganti "page break before" (tidak ada halaman kosong), caption tidak lagi terpisah dari gambar (keep with next).
+- [x] Header tabel 1.1 & 3.1-3.6 diulang otomatis di halaman lanjutan, baris tabel tidak terpotong.
+- [x] Spasi Daftar Isi diseragamkan; Daftar Isi/Tabel/Gambar/Lampiran di-update.
+- [x] Daftar terima kasih Kata Pengantar rata kiri; Simpulan poin 4 disamakan formatnya.
+- [x] Tambah paragraf penjelas untuk 14 Diagram Sequence.
+- [x] Nama pembimbing ditulis lengkap: Santosa Wijayanto, S.T., M.Kom. (Kata Pengantar & Lembar Persetujuan).
+- [x] Deskripsi wireframe 3.39 & 3.40 disinkronkan dengan diagram (opsi A, lihat REVISI.md).
+- [ ] Saran (BAB IV B) masih dikosongkan sementara (keputusan pengguna).
+- [ ] Teks proposal masih menyebut absensi PIN/barcode, padahal REVISI Poin 6 memakai Opsi B (NFC + Password Darurat) -> menunggu keputusan pengguna.
+
+---
+
 ## Catatan Subagent & Safety State
 - Seluruh **17/17 diagram revisi** (`.drawio` + `.png`) di folder `diagram/revisi/` telah **SELESAI 100%**, lulus audit independen **`diagram-auditor-v2`**, serta telah di-commit & push ke GitHub.
 - File asli milik pengguna di folder `diagram/` tetap utuh 100% dan terisolasi dari folder `diagram/revisi/`.
