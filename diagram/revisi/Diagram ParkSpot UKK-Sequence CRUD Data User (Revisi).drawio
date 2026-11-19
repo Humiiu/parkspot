@@ -1,0 +1,254 @@
+<mxfile host="app.diagrams.net" agent="ParkSpot" version="24.0.0" compressed="false">
+  <diagram id="d19_seq_crud_user" name="Diagram ParkSpot UKK-Sequence CRUD Data User (Revisi)">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="alt_aksi" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=50;height=25;fillColor=none;" value="alt" vertex="1">
+          <mxGeometry x="30" y="420" width="1440" height="1620" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_add" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=50;height=25;fillColor=none;" value="alt" vertex="1">
+          <mxGeometry x="60" y="705" width="1380" height="245" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_edit" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=50;height=25;fillColor=none;" value="alt" vertex="1">
+          <mxGeometry x="60" y="1245" width="1380" height="245" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_del" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=50;height=25;fillColor=none;" value="alt" vertex="1">
+          <mxGeometry x="60" y="1775" width="1380" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_admin" parent="1" style="shape=umlLifeline;participant=umlActor;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Admin" vertex="1">
+          <mxGeometry x="180" y="60" width="20" height="2020" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_menu" parent="1" style="shape=umlLifeline;participant=umlBoundary;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Menu Kelola&lt;br&gt;Data User" vertex="1">
+          <mxGeometry x="555" y="60" width="50" height="2020" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_sistem" parent="1" style="shape=umlLifeline;participant=umlControl;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Sistem" vertex="1">
+          <mxGeometry x="950" y="60" width="40" height="2020" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_firebase" parent="1" style="shape=umlLifeline;whiteSpace=wrap;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=50;" value="Firebase" vertex="1">
+          <mxGeometry x="1300" y="60" width="120" height="2020" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="alt_aksi_g0" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Tambah User]" vertex="1">
+          <mxGeometry x="95" y="423" width="140" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_add_g0" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Email, Username &amp; UID NFC Belum Dipakai]" vertex="1">
+          <mxGeometry x="125" y="708" width="280" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_add_div" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="855" as="sourcePoint"/>
+            <mxPoint x="1440" y="855" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt_add_g1" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Data Sudah Dipakai]" vertex="1">
+          <mxGeometry x="75" y="860" width="180" height="22" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="alt_aksi_div1" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="30" y="975" as="sourcePoint"/>
+            <mxPoint x="1470" y="975" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt_aksi_g1" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Edit User]" vertex="1">
+          <mxGeometry x="45" y="980" width="120" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_edit_g0" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Belum Dipakai Akun Lain]" vertex="1">
+          <mxGeometry x="125" y="1248" width="200" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_edit_div" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="1395" as="sourcePoint"/>
+            <mxPoint x="1440" y="1395" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt_edit_g1" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Sudah Dipakai Akun Lain]" vertex="1">
+          <mxGeometry x="75" y="1400" width="200" height="22" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="alt_aksi_div2" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="30" y="1515" as="sourcePoint"/>
+            <mxPoint x="1470" y="1515" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt_aksi_g2" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Nonaktifkan User]" vertex="1">
+          <mxGeometry x="45" y="1520" width="160" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_del_g0" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Petugas Sedang Shift Aktif]" vertex="1">
+          <mxGeometry x="125" y="1778" width="210" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_del_div" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="1875" as="sourcePoint"/>
+            <mxPoint x="1440" y="1875" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt_del_g1" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Tidak Sedang Shift Aktif]" vertex="1">
+          <mxGeometry x="75" y="1880" width="200" height="22" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="msg_1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="1. Membuka Menu Kelola Data User">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="185" as="sourcePoint"/>
+            <mxPoint x="580" y="185" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="2. Ambil Daftar User &amp; Lokasi Mal">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="235" as="sourcePoint"/>
+            <mxPoint x="970" y="235" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_3" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="3. Mengambil Data &quot;master_user&quot;&lt;br&gt;&amp; &quot;master_lokasi&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="295" as="sourcePoint"/>
+            <mxPoint x="1360" y="295" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_4" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="4. Data User &amp; Lokasi Mal">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1360" y="345" as="sourcePoint"/>
+            <mxPoint x="970" y="345" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_5" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="5. Menampilkan Daftar User (Admin, Petugas,&lt;br&gt;Owner, Member)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="400" as="sourcePoint"/>
+            <mxPoint x="580" y="400" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg_6" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="6. Isi Form (Nama, Username, Email, Password,&lt;br&gt;Role, Cabang Tugas, UID NFC) &amp; Klik Simpan">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="505" as="sourcePoint"/>
+            <mxPoint x="580" y="505" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_7" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="7. Kirim Data User Baru">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="555" as="sourcePoint"/>
+            <mxPoint x="970" y="555" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_8" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="8. Cek Duplikasi Email (&quot;idx_email&quot;),&lt;br&gt;Username &amp; UID NFC pada &quot;master_user&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="620" as="sourcePoint"/>
+            <mxPoint x="1360" y="620" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_9" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="9. Status Ketersediaan Data">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1360" y="675" as="sourcePoint"/>
+            <mxPoint x="970" y="675" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_10" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="10. Simpan ke &quot;master_user&quot;, &quot;idx_email&quot;&lt;br&gt;(status_aktif = true) &amp; Catat &quot;log_aktivitas&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="780" as="sourcePoint"/>
+            <mxPoint x="1360" y="780" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_11" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="11. Tampilkan Pesan Berhasil &amp; Perbarui Tabel User">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="835" as="sourcePoint"/>
+            <mxPoint x="580" y="835" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_12" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="12. Tampilkan Pesan Gagal (Email / Username /&lt;br&gt;UID NFC Sudah Dipakai)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="930" as="sourcePoint"/>
+            <mxPoint x="580" y="930" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg_13" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="13. Pilih User, Ubah Data Akun / Role /&lt;br&gt;Cabang Tugas / UID NFC &amp; Klik Update">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="1055" as="sourcePoint"/>
+            <mxPoint x="580" y="1055" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_14" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="14. Kirim Perubahan Data User">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="1105" as="sourcePoint"/>
+            <mxPoint x="970" y="1105" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_15" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="15. Cek Duplikasi Email, Username &amp; UID NFC&lt;br&gt;(Kecuali Milik Akun Itu Sendiri)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="1165" as="sourcePoint"/>
+            <mxPoint x="1360" y="1165" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_16" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="16. Status Ketersediaan Data">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1360" y="1215" as="sourcePoint"/>
+            <mxPoint x="970" y="1215" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_17" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="17. Perbarui &quot;master_user&quot;, &quot;idx_email&quot;&lt;br&gt;(jika email diganti) &amp; Catat &quot;log_aktivitas&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="1320" as="sourcePoint"/>
+            <mxPoint x="1360" y="1320" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_18" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="18. Tampilkan Pesan Berhasil &amp; Perbarui Tabel User">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="1375" as="sourcePoint"/>
+            <mxPoint x="580" y="1375" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_19" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="19. Tampilkan Pesan Gagal (Email / Username /&lt;br&gt;UID NFC Sudah Dipakai Akun Lain)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="1470" as="sourcePoint"/>
+            <mxPoint x="580" y="1470" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg_20" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="20. Pilih Data User &amp; Konfirmasi Nonaktifkan">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="1585" as="sourcePoint"/>
+            <mxPoint x="580" y="1585" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_21" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="21. Proses Penonaktifan User">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="1635" as="sourcePoint"/>
+            <mxPoint x="970" y="1635" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_22" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="22. Cek Shift Aktif Petugas pada&lt;br&gt;&quot;trx_shift_petugas&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="1695" as="sourcePoint"/>
+            <mxPoint x="1360" y="1695" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_23" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="23. Status Shift Aktif Petugas">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1360" y="1745" as="sourcePoint"/>
+            <mxPoint x="970" y="1745" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_24" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="24. Tolak Penonaktifan &amp; Tampilkan Pesan Gagal&lt;br&gt;(Petugas Sedang Shift Aktif)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="1855" as="sourcePoint"/>
+            <mxPoint x="580" y="1855" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_25" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="25. Update &quot;master_user&quot; (status_aktif = false)&lt;br&gt;&amp; Catat &quot;log_aktivitas&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="1945" as="sourcePoint"/>
+            <mxPoint x="1360" y="1945" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_26" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="26. Tampilkan Pesan Berhasil &amp; Perbarui Tabel User">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="1995" as="sourcePoint"/>
+            <mxPoint x="580" y="1995" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
