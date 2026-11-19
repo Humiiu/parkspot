@@ -57,8 +57,8 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 | **1/13** | `Diagram ParkSpot UKK-Activity CRUD Data User (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | `master_user`, `master_lokasi`, `idx_email`, validasi duplikasi & shift aktif, tanpa PIN/barcode |
 | **2/13** | `Diagram ParkSpot UKK-Sequence CRUD Data User (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | 4 lifeline, 1..26 urut, nested alt validasi duplikasi & shift aktif, tanpa PIN/barcode |
 | **3/13** | `Diagram ParkSpot UKK-Activity Login-Logout (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | `master_user` & `idx_email`, cek `status_aktif == true`, `assigned_id_lokasi`, catat login/logout ke `log_aktivitas` |
-| **4/13** | `Diagram ParkSpot UKK-Sequence Login & Logout (Revisi)` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Sinkron 1:1 dengan Activity Login-Logout, logout hanya tutup sesi |
-| **5/13** | `Diagram ParkSpot UKK-Activity CRUD Tarif Parkir (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **4/13** | `Diagram ParkSpot UKK-Sequence Login & Logout (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | 4 lifeline, 1..17 urut, 3 cabang alt login, logout hanya tutup sesi |
+| **5/13** | `Diagram ParkSpot UKK-Activity CRUD Tarif Parkir (Revisi)` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Per lokasi mal, 4 field tarif, cegah tarif ganda, soft delete, log_aktivitas |
 | **6/13** | `Diagram ParkSpot UKK-Sequence CRUD Tarif Parkir (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
 | **7/13** | `Diagram ParkSpot UKK-Activity Log Aktivitas (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
 | **8/13** | `Diagram ParkSpot UKK-Sequence Log Aktivitas (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
