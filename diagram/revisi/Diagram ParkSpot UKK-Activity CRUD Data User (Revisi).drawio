@@ -1,0 +1,216 @@
+<mxfile host="app.diagrams.net" agent="ParkSpot" version="24.0.0" compressed="false">
+  <diagram id="d18_act_crud_user" name="Diagram ParkSpot UKK-Activity CRUD Data User (Revisi)">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="lane_admin" value="Admin" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="870" height="2040" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_sistem" value="Sistem" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="870" y="0" width="980" height="2040" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_start" value="" style="ellipse;fillColor=strokeColor;html=1;" vertex="1" parent="lane_admin">
+          <mxGeometry x="420" y="70" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_admin_open" value="Membuka Menu Kelola&lt;br&gt;Data User" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_admin">
+          <mxGeometry x="310" y="140" width="250" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_fetch" value="Mengambil Data &quot;master_user&quot;&lt;br&gt;&amp; &quot;master_lokasi&quot; dari Firebase" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="100" y="245" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_display" value="Menampilkan Daftar User&lt;br&gt;(Admin, Petugas, Owner, Member)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="100" y="355" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="dec_action" value="Pilih Aksi Kelola User?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lane_admin">
+          <mxGeometry x="295" y="460" width="280" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_admin_add" value="Mengisi Form User Baru (Nama Lengkap,&lt;br&gt;Username, Email, Password, Role,&lt;br&gt;Cabang Tugas Petugas &amp; UID Kartu NFC)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_admin">
+          <mxGeometry x="30" y="640" width="250" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_admin_save" value="Menekan Tombol Simpan" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_admin">
+          <mxGeometry x="30" y="760" width="250" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_admin_edit" value="Memilih Data User &amp; Mengubah&lt;br&gt;Data Akun, Role, Cabang Tugas&lt;br&gt;atau UID Kartu NFC" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_admin">
+          <mxGeometry x="310" y="640" width="250" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_admin_update" value="Menekan Tombol Update" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_admin">
+          <mxGeometry x="310" y="760" width="250" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_admin_del" value="Memilih Data User &amp; Konfirmasi&lt;br&gt;Nonaktifkan Akun" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_admin">
+          <mxGeometry x="590" y="640" width="250" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="dec_del_shift" value="Petugas sedang&lt;br&gt;shift aktif?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="90" y="835" width="280" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_del_fail" value="Menolak Penonaktifan &amp;&lt;br&gt;Menampilkan Pesan Gagal&lt;br&gt;(Petugas Sedang Shift Aktif)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="480" y="852" width="260" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="end_del_fail" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="795" y="875" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_del" value="Menonaktifkan User pada&lt;br&gt;&quot;master_user&quot; (status_aktif = false)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="100" y="995" width="260" height="76" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="dec_edit_valid" value="Email, username &amp;&lt;br&gt;UID NFC belum dipakai&lt;br&gt;akun lain?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="90" y="1135" width="280" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_edit_fail" value="Menampilkan Pesan Gagal&lt;br&gt;(Email / Username / UID NFC&lt;br&gt;Sudah Dipakai)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="480" y="1152" width="260" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="end_edit_fail" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="795" y="1175" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_update" value="Memperbarui &quot;master_user&quot; &amp;&lt;br&gt;&quot;idx_email&quot; (jika email diganti)&lt;br&gt;di Firebase" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="100" y="1295" width="260" height="76" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="dec_add_valid" value="Email, username &amp;&lt;br&gt;UID NFC belum dipakai?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="90" y="1435" width="280" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_add_fail" value="Menampilkan Pesan Gagal&lt;br&gt;(Email / Username / UID NFC&lt;br&gt;Sudah Dipakai)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="480" y="1452" width="260" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="end_add_fail" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="795" y="1475" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_save" value="Menyimpan ke &quot;master_user&quot;&lt;br&gt;&amp; &quot;idx_email&quot; (status_aktif = true)&lt;br&gt;di Firebase" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="100" y="1595" width="260" height="76" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="act_sys_log" value="Mencatat Aktivitas Admin ke&lt;br&gt;&quot;log_aktivitas&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="100" y="1730" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_refresh" value="Menampilkan Pesan Berhasil &amp;&lt;br&gt;Memperbarui Tabel User" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="100" y="1840" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_end" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="215" y="1955" width="30" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_start" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="node_start" target="act_admin_open">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_open_fetch" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_admin_open" target="act_sys_fetch">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="435" y="280"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_fetch_display" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_fetch" target="act_sys_display">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_display_dec" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_display" target="dec_action">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="435" y="390"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_dec_add" value="Tambah User" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_action" target="act_admin_add">
+          <mxGeometry relative="1" as="geometry" x="0.51">
+            <Array as="points">
+              <mxPoint x="155" y="515"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_dec_edit" value="Edit User" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_action" target="act_admin_edit">
+          <mxGeometry relative="1" as="geometry" x="0.0"/>
+        </mxCell>
+        <mxCell id="e_dec_del" value="Nonaktifkan User" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_action" target="act_admin_del">
+          <mxGeometry relative="1" as="geometry" x="0.51">
+            <Array as="points">
+              <mxPoint x="715" y="515"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_add_save" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_admin_add" target="act_admin_save">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_edit_update" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_admin_edit" target="act_admin_update">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_del_check" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_admin_del" target="dec_del_shift">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="715" y="890"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_del_fail" value="Ya" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_del_shift" target="act_sys_del_fail">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_del_fail_end" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_del_fail" target="end_del_fail">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_del_ok" value="Tidak" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_del_shift" target="act_sys_del">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_edit_check" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_admin_update" target="dec_edit_valid">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="435" y="1190"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_edit_fail" value="Tidak" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_edit_valid" target="act_sys_edit_fail">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_edit_fail_end" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_edit_fail" target="end_edit_fail">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_edit_ok" value="Ya" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_edit_valid" target="act_sys_update">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_add_check" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_admin_save" target="dec_add_valid">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="155" y="1490"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_add_fail" value="Tidak" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_add_valid" target="act_sys_add_fail">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_add_fail_end" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_add_fail" target="end_add_fail">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_add_ok" value="Ya" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_add_valid" target="act_sys_save">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_del_log" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_del" target="act_sys_log">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1780" y="1033"/>
+              <mxPoint x="1780" y="1765"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_update_log" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_update" target="act_sys_log">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1780" y="1333"/>
+              <mxPoint x="1780" y="1765"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_save_log" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_save" target="act_sys_log">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_log_refresh" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_log" target="act_sys_refresh">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_refresh_end" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_refresh" target="node_end">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -49,6 +49,28 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 
 ---
 
+## Status Pelacakan 13 Diagram Revisi Lanjutan + Revisi DFD (19 November 2026)
+*(Aturan: 1 diagram per giliran, WAJIB menunggu ACC pengguna, lalu update PROGRESS.md + commit & push)*
+
+| No | Nama Diagram (`diagram/revisi/`) | Status PNG | Status .drawio | Status ACC Pengguna | Keterangan |
+| :---: | :--- | :---: | :---: | :---: | :--- |
+| **1/13** | `Diagram ParkSpot UKK-Activity CRUD Data User (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | `master_user`, `master_lokasi`, `idx_email`, validasi duplikasi & shift aktif, tanpa PIN/barcode |
+| **2/13** | `Diagram ParkSpot UKK-Sequence CRUD Data User (Revisi)` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Menyelaraskan validasi duplikasi (kecuali akun sendiri saat edit) & shift aktif |
+| **3/13** | `Diagram ParkSpot UKK-Activity Login-Logout (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **4/13** | `Diagram ParkSpot UKK-Sequence Login & Logout (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **5/13** | `Diagram ParkSpot UKK-Activity CRUD Tarif Parkir (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **6/13** | `Diagram ParkSpot UKK-Sequence CRUD Tarif Parkir (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **7/13** | `Diagram ParkSpot UKK-Activity Log Aktivitas (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **8/13** | `Diagram ParkSpot UKK-Sequence Log Aktivitas (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **9/13** | `Diagram ParkSpot UKK-Activity Lihat Slot & Tagihan (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **10/13** | `Diagram ParkSpot UKK-Sequence Lihat Slot & Tagihan (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **11/13** | `Diagram ParkSpot UKK-Activity Pembayaran (QRIS) (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **12/13** | `Diagram ParkSpot UKK-Sequence Pembayaran (QRIS) (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **13/13** | `Diagram ParkSpot UKK-Use Case (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Opsi 1: Pindai QR Booking Member di Gerbang Masuk + fitur shift |
+| **Bonus** | `Diagram ParkSpot UKK-DFD LEVEL 0 (Revisi)` *(Update teks Petugas)* | 🔴 Belum | 🔴 Belum | 🔴 Antre | Ganti "Pembaruan Status Slot Overstay" $\rightarrow$ "Pindai QR Booking / Input Pelat Masuk" (ACC terpisah) |
+
+---
+
 ## Review & Perbaikan Format Proposal (19 November 2026)
 - [x] Review menyeluruh `PROPOSAL PARKSPOT UKK.docx` (margin, spasi, font, gambar, gaya bahasa).
 - [x] Cover disamakan ke ukuran A4 (sebelumnya Letter).
@@ -63,7 +85,17 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 - [x] Nama pembimbing ditulis lengkap: Santosa Wijayanto, S.T., M.Kom. (Kata Pengantar & Lembar Persetujuan).
 - [x] Deskripsi wireframe 3.39 & 3.40 disinkronkan dengan diagram (opsi A, lihat REVISI.md).
 - [ ] Saran (BAB IV B) masih dikosongkan sementara (keputusan pengguna).
-- [ ] Teks proposal masih menyebut absensi PIN/barcode, padahal REVISI Poin 6 memakai Opsi B (NFC + Password Darurat) -> menunggu keputusan pengguna.
+- [x] Absensi disamakan ke Opsi B (NFC + password darurat) di 10 tempat + Tabel 3.3 & Lampiran JSON (hapus pin_kasir, tambah metode_absen_tutup & alasan_absen_darurat sesuai erd_parkspot.dbml).
+
+### Tahap 2 Perbaikan Proposal (19 November 2026)
+- [x] Setiap subbab (Heading 2) mulai di halaman baru; setiap Diagram Activity mulai di halaman baru.
+- [x] Penjelasan diagram + gambar selalu satu halaman (Activity 8 = 80%, Activity 13 = 84%, Sequence 13 = 88%).
+- [x] Daftar Isi/Tabel/Gambar: baris kedua judul menjorok, nomor halaman tetap di kanan (diatur lewat gaya TOC 1-3).
+- [x] Isi dari diagram revisi ditambahkan: tutup paksa shift (Admin & Owner), jam shift, pengaman password darurat, karcis hilang (ketik pelat), 1 booking aktif/akun, lampu oranye H-30 menit, booking batal >15 menit, rumus slot terdekat, denah 2x6, tanda merah absen darurat.
+- [x] Tabel 3.2: Owner ikut kelola jadwal & tutup paksa shift. Tabel 3.5: tambah UJI-17 s.d. UJI-20.
+- [x] Istilah berat diganti (utility-first, payment gateway, Pre-Exit, Audit Trail, Billing, DP, omzet, istilah Tabel Jadwal); "A. Simpulan" & "B. Saran".
+- [ ] Menunggu Antigravity: revisi 12 diagram lama (nama tabel tb_* -> 12 entitas standar) + Use Case (fitur shift). Setelah selesai: tempel gambar baru & samakan teks penjelasan.
+- [ ] Belum diputuskan: use case Petugas "Jaga Slot Booking" (usulan: "Pindai QR Booking Member di Gerbang Masuk").
 
 ---
 
