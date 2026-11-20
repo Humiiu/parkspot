@@ -1,0 +1,268 @@
+<mxfile host="app.diagrams.net" agent="ParkSpot" version="24.0.0" compressed="false">
+  <diagram id="d23_seq_crud_tarif" name="Diagram ParkSpot UKK-Sequence CRUD Tarif Parkir (Revisi)">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="alt_aksi" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=50;height=25;fillColor=none;" value="alt" vertex="1">
+          <mxGeometry x="30" y="475" width="1440" height="1635" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_add" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=50;height=25;fillColor=none;" value="alt" vertex="1">
+          <mxGeometry x="60" y="765" width="1380" height="245" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_edit" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=50;height=25;fillColor=none;" value="alt" vertex="1">
+          <mxGeometry x="60" y="1305" width="1380" height="245" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_del" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=50;height=25;fillColor=none;" value="alt" vertex="1">
+          <mxGeometry x="60" y="1840" width="1380" height="245" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ll_admin" parent="1" style="shape=umlLifeline;participant=umlActor;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Admin" vertex="1">
+          <mxGeometry x="180" y="60" width="20" height="2165" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_menu" parent="1" style="shape=umlLifeline;participant=umlBoundary;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Menu Kelola&lt;br&gt;Tarif Parkir" vertex="1">
+          <mxGeometry x="555" y="60" width="50" height="2165" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_sistem" parent="1" style="shape=umlLifeline;participant=umlControl;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Sistem" vertex="1">
+          <mxGeometry x="950" y="60" width="40" height="2165" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_firebase" parent="1" style="shape=umlLifeline;whiteSpace=wrap;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=50;" value="Firebase" vertex="1">
+          <mxGeometry x="1300" y="60" width="120" height="2165" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="alt_aksi_g0" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Tambah Tarif]" vertex="1">
+          <mxGeometry x="95" y="478" width="140" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_add_g0" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Jenis Kendaraan Belum Ada di Lokasi Ini]" vertex="1">
+          <mxGeometry x="125" y="768" width="280" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_add_div" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="915" as="sourcePoint"/>
+            <mxPoint x="1440" y="915" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt_add_g1" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Jenis Kendaraan Sudah Ada]" vertex="1">
+          <mxGeometry x="75" y="920" width="220" height="22" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="alt_aksi_div1" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="30" y="1035" as="sourcePoint"/>
+            <mxPoint x="1470" y="1035" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt_aksi_g1" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Edit Tarif]" vertex="1">
+          <mxGeometry x="45" y="1040" width="120" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_edit_g0" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Belum Dipakai Tarif Lain di Lokasi Ini]" vertex="1">
+          <mxGeometry x="125" y="1308" width="270" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_edit_div" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="1455" as="sourcePoint"/>
+            <mxPoint x="1440" y="1455" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt_edit_g1" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Sudah Dipakai Tarif Lain]" vertex="1">
+          <mxGeometry x="75" y="1460" width="220" height="22" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="alt_aksi_div2" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="30" y="1575" as="sourcePoint"/>
+            <mxPoint x="1470" y="1575" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt_aksi_g2" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Nonaktifkan Tarif]" vertex="1">
+          <mxGeometry x="45" y="1580" width="160" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_del_g0" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Masih Ada Parkir / Booking Aktif]" vertex="1">
+          <mxGeometry x="125" y="1843" width="250" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_del_div" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="1940" as="sourcePoint"/>
+            <mxPoint x="1440" y="1940" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt_del_g1" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Tidak Ada Parkir / Booking Aktif]" vertex="1">
+          <mxGeometry x="75" y="1945" width="240" height="22" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="msg_1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="1. Pilih Lokasi Mal &amp; Buka Menu Kelola Tarif">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="185" as="sourcePoint"/>
+            <mxPoint x="580" y="185" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="2. Ambil Data Lokasi &amp; Tarif (id_lokasi)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="235" as="sourcePoint"/>
+            <mxPoint x="970" y="235" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_3" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="3. Ambil &quot;master_lokasi&quot; &amp;&lt;br&gt;&quot;master_tarif/{id_lokasi}&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="295" as="sourcePoint"/>
+            <mxPoint x="1360" y="295" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_4" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="4. Data Lokasi &amp; Daftar Tarif">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1360" y="345" as="sourcePoint"/>
+            <mxPoint x="970" y="345" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_5" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="5. Kirim Tabel Tarif per Lokasi&lt;br&gt;(Per Jam, Booking Awal, Overstay)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="400" as="sourcePoint"/>
+            <mxPoint x="580" y="400" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_6" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="6. Menampilkan Tabel Tarif ke Admin">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="450" as="sourcePoint"/>
+            <mxPoint x="190" y="450" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg_7" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="7. Input jenis_kendaraan, tarif_per_jam,&lt;br&gt;tarif_booking_awal, tarif_overstay_per_jam &amp; Simpan">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="560" as="sourcePoint"/>
+            <mxPoint x="580" y="560" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_8" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="8. Kirim Data Tarif Baru (id_lokasi)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="610" as="sourcePoint"/>
+            <mxPoint x="970" y="610" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_9" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="9. Cek Duplikasi jenis_kendaraan pada&lt;br&gt;&quot;master_tarif/{id_lokasi}&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="675" as="sourcePoint"/>
+            <mxPoint x="1360" y="675" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_10" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="10. Status Ketersediaan Jenis Kendaraan">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1360" y="730" as="sourcePoint"/>
+            <mxPoint x="970" y="730" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_11" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="11. Simpan ke &quot;master_tarif/{id_lokasi}&quot;&lt;br&gt;(status_aktif = true) &amp; Catat &quot;log_aktivitas&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="840" as="sourcePoint"/>
+            <mxPoint x="1360" y="840" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_12" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="12. Pesan Berhasil &amp; Data Tabel Tarif Terbaru">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="895" as="sourcePoint"/>
+            <mxPoint x="580" y="895" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_13" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="13. Pesan Gagal (Tarif Jenis Kendaraan Sudah Ada)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="985" as="sourcePoint"/>
+            <mxPoint x="580" y="985" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg_14" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="14. Pilih Tarif, Ubah Nominal / Jenis Kendaraan&lt;br&gt;&amp; Klik Update">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="1115" as="sourcePoint"/>
+            <mxPoint x="580" y="1115" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_15" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="15. Kirim Perubahan Tarif (id_lokasi)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="1165" as="sourcePoint"/>
+            <mxPoint x="970" y="1165" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_16" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="16. Cek Duplikasi jenis_kendaraan di &quot;master_tarif/{id_lokasi}&quot;&lt;br&gt;(Kecuali Tarif Itu Sendiri)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="1225" as="sourcePoint"/>
+            <mxPoint x="1360" y="1225" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_17" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="17. Status Ketersediaan Jenis Kendaraan">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1360" y="1275" as="sourcePoint"/>
+            <mxPoint x="970" y="1275" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_18" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="18. Perbarui &quot;master_tarif/{id_lokasi}&quot; (Berlaku Saat&lt;br&gt;Keluar) &amp; Catat &quot;log_aktivitas&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="1380" as="sourcePoint"/>
+            <mxPoint x="1360" y="1380" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_19" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="19. Pesan Berhasil &amp; Data Tabel Tarif Terbaru">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="1435" as="sourcePoint"/>
+            <mxPoint x="580" y="1435" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_20" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="20. Pesan Gagal (Tarif Jenis Kendaraan Sudah Ada)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="1525" as="sourcePoint"/>
+            <mxPoint x="580" y="1525" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg_21" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="21. Pilih Data Tarif &amp; Konfirmasi Nonaktifkan">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="1645" as="sourcePoint"/>
+            <mxPoint x="580" y="1645" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_22" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="22. Proses Penonaktifan Tarif (id_lokasi)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="1695" as="sourcePoint"/>
+            <mxPoint x="970" y="1695" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_23" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="23. Cek Parkir / Booking Aktif Jenis Ini pada&lt;br&gt;&quot;trx_parkir/{id_lokasi}&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="1760" as="sourcePoint"/>
+            <mxPoint x="1360" y="1760" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_24" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="24. Status Parkir / Booking Aktif">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1360" y="1810" as="sourcePoint"/>
+            <mxPoint x="970" y="1810" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_25" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="25. Tolak Penonaktifan &amp; Pesan Gagal&lt;br&gt;(Masih Ada Parkir / Booking Aktif)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="1920" as="sourcePoint"/>
+            <mxPoint x="580" y="1920" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_26" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="26. Update &quot;master_tarif/{id_lokasi}&quot; (status_aktif = false)&lt;br&gt;&amp; Catat &quot;log_aktivitas&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="2010" as="sourcePoint"/>
+            <mxPoint x="1360" y="2010" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_27" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="27. Pesan Berhasil &amp; Data Tabel Tarif Terbaru">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="2065" as="sourcePoint"/>
+            <mxPoint x="580" y="2065" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg_28" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="28. Menampilkan Hasil (Berhasil / Gagal)&lt;br&gt;&amp; Tabel Tarif di Layar Admin">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="2180" as="sourcePoint"/>
+            <mxPoint x="190" y="2180" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
