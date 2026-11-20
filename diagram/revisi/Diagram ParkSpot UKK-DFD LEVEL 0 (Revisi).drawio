@@ -36,7 +36,7 @@
             <mxPoint x="-40" y="30" as="offset"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="flow_petugas_in" value="Data Login &amp; Absensi Buka Shift (NFC HP /&lt;br&gt;Password Darurat + Alasan), Input Pelat Masuk,&lt;br&gt;Pembaruan Status Slot Overstay, Pindai QR / Input Pelat Keluar,&lt;br&gt;Pilih Cetak / Unduh PDF 58mm, Input Uang Fisik Setor &amp; Berita Acara" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
+        <mxCell id="flow_petugas_in" value="Data Login &amp; Absensi Buka Shift (NFC HP /&lt;br&gt;Password Darurat + Alasan), Pindai QR Booking /&lt;br&gt;Input Pelat Masuk, Pindai QR / Input Pelat Keluar,&lt;br&gt;Pilih Cetak / Unduh PDF 58mm, Input Uang Fisik Setor &amp; Berita Acara" style="html=1;endArrow=block;rounded=0;labelBackgroundColor=default;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1670" y="95" as="sourcePoint"/>
             <mxPoint x="1057" y="467" as="targetPoint"/>

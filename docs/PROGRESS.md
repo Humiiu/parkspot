@@ -67,8 +67,8 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 | **11/13** | `Diagram ParkSpot UKK-Activity Pembayaran (QRIS) (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Batch ACC) | 3 swimlane (Member/Guest, Sistem, Midtrans Sandbox), webhook/cek status, UJI-09 retry |
 | **12/13** | `Diagram ParkSpot UKK-Sequence Pembayaran (QRIS) (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Batch ACC) | 5 lifeline (termasuk Midtrans Sandbox), 1..16 urut, rasio H/W 0.70, kembali ke aktor |
 | **13/13** | `Diagram ParkSpot UKK-Use Case (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Batch ACC) | 6 aktor (termasuk Midtrans Sandbox), Opsi 1 Pindai QR Booking, fitur shift lengkap |
-| **Bonus 1** | `Diagram ParkSpot UKK-DFD LEVEL 0 (Revisi)` *(Update teks Petugas)* | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Ganti "Pembaruan Status Slot Overstay" $\rightarrow$ "Pindai QR Booking / Input Pelat Masuk" |
-| **Bonus 2** | `Diagram ParkSpot UKK-Activity Keluar Gerbang & Print Struk (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Tambah keputusan "Waktu keluar melewati jam yang sudah dibayar?" (tagih selisih tunai/QRIS) |
+| **Bonus 1** | `Diagram ParkSpot UKK-DFD LEVEL 0 (Revisi)` *(Update teks Petugas)* | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Batch ACC) | Ganti "Pembaruan Status Slot Overstay" $\rightarrow$ "Pindai QR Booking / Input Pelat Masuk" |
+| **Bonus 2** | `Diagram ParkSpot UKK-Activity Keluar Gerbang & Print Struk (Revisi)` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Tambah keputusan "Waktu keluar melewati jam yang sudah dibayar?" (tagih selisih tunai/QRIS) |
 | **Bonus 3** | `Diagram ParkSpot UKK-Sequence Keluar Gerbang & Cetak Struk (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Tambah alt "Waktu keluar melewati jam yang sudah dibayar?" (sinkron Activity) |
 
 ---
