@@ -1,0 +1,99 @@
+<mxfile host="app.diagrams.net" agent="ParkSpot" version="24.0.0" compressed="false">
+  <diagram id="d25_seq_log_aktivitas" name="Diagram ParkSpot UKK-Sequence Log Aktivitas (Revisi)">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="alt_log" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;recursiveResize=0;container=1;collapsible=0;width=50;height=25;fillColor=none;" value="alt" vertex="1">
+          <mxGeometry x="35" y="455" width="1420" height="315" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_admin" parent="1" style="shape=umlLifeline;participant=umlActor;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Admin" vertex="1">
+          <mxGeometry x="180" y="55" width="20" height="755" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_menu" parent="1" style="shape=umlLifeline;participant=umlBoundary;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Menu Log Aktivitas" vertex="1">
+          <mxGeometry x="555" y="55" width="50" height="755" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_sistem" parent="1" style="shape=umlLifeline;participant=umlControl;verticalAlign=top;spacingTop=36;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;labelBackgroundColor=default;" value="Sistem" vertex="1">
+          <mxGeometry x="950" y="55" width="40" height="755" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_firebase" parent="1" style="shape=umlLifeline;whiteSpace=wrap;perimeter=lifelinePerimeter;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=50;" value="Firebase" vertex="1">
+          <mxGeometry x="1300" y="55" width="120" height="755" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="alt_g0" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Data Aktivitas Ditemukan]" vertex="1">
+          <mxGeometry x="100" y="458" width="200" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_div1" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="35" y="625" as="sourcePoint"/>
+            <mxPoint x="1455" y="625" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt_g1" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=nowrap;labelBackgroundColor=default;" value="[Data Kosong]" vertex="1">
+          <mxGeometry x="50" y="630" width="140" height="22" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="msg_1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="1. Buka Menu &amp; Pilih Cabang Mal, Rentang Tanggal&lt;br&gt;&amp; Jenis Aktivitas (LOGIN, GATE, SHIFT, RESET_PELAT, dll.)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="185" as="sourcePoint"/>
+            <mxPoint x="580" y="185" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="2. Request Log Aktivitas (id_lokasi, rentang, jenis)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="235" as="sourcePoint"/>
+            <mxPoint x="970" y="235" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_3" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;labelBackgroundColor=default;" value="3. Baca &quot;log_aktivitas/{id_lokasi}&quot; &amp;&lt;br&gt;Nama User dari &quot;master_user&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="295" as="sourcePoint"/>
+            <mxPoint x="1360" y="295" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_4" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="4. Data Riwayat Log &amp; Nama User">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1360" y="345" as="sourcePoint"/>
+            <mxPoint x="970" y="345" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_5" edge="1" parent="1" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;curved=0;labelBackgroundColor=default;" value="5. Gabungkan Nama User &amp; Tandai Merah&lt;br&gt;(Selisih Kas, Tutup Paksa, Absen Darurat)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1020" y="375"/>
+              <mxPoint x="1020" y="425"/>
+            </Array>
+            <mxPoint x="970" y="375" as="sourcePoint"/>
+            <mxPoint x="970" y="425" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg_6" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="6. Kirim Tabel Log (Hanya Baca / Tanpa Ubah &amp; Hapus)&lt;br&gt;+ Sorotan Merah Aktivitas Penting">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="540" as="sourcePoint"/>
+            <mxPoint x="580" y="540" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_7" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="7. Menampilkan Tabel Log Aktivitas (Hanya Baca) ke Admin">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="595" as="sourcePoint"/>
+            <mxPoint x="190" y="595" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg_8" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="8. Kirim Pesan &quot;Tidak ada aktivitas&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="970" y="695" as="sourcePoint"/>
+            <mxPoint x="580" y="695" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg_9" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;labelBackgroundColor=default;" value="9. Menampilkan Pesan &quot;Tidak ada aktivitas&quot; ke Admin">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="745" as="sourcePoint"/>
+            <mxPoint x="190" y="745" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
