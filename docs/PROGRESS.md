@@ -60,14 +60,16 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 | **4/13** | `Diagram ParkSpot UKK-Sequence Login & Logout (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | 4 lifeline, 1..17 urut, 3 cabang alt login, logout hanya tutup sesi |
 | **5/13** | `Diagram ParkSpot UKK-Activity CRUD Tarif Parkir (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | Per lokasi mal, 4 field tarif, cegah tarif ganda & nonaktifkan saat ada parkir/booking aktif, log_aktivitas |
 | **6/13** | `Diagram ParkSpot UKK-Sequence CRUD Tarif Parkir (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | 4 lifeline, 1..28 urut, nested alt duplikasi & parkir/booking aktif, kembali ke Admin |
-| **7/13** | `Diagram ParkSpot UKK-Activity Log Aktivitas (Revisi)` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Filter mal/tanggal/jenis, baca log_aktivitas/{id_lokasi} + master_user, read-only, sorot merah |
-| **8/13** | `Diagram ParkSpot UKK-Sequence Log Aktivitas (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **7/13** | `Diagram ParkSpot UKK-Activity Log Aktivitas (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | Filter mal/tanggal/jenis, baca `log_aktivitas/{id_lokasi}` + `master_user`, read-only, sorot merah |
+| **8/13** | `Diagram ParkSpot UKK-Sequence Log Aktivitas (Revisi)` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Sinkron 1:1 dengan Activity Log Aktivitas, proporsi kompak <= 1.4x |
 | **9/13** | `Diagram ParkSpot UKK-Activity Lihat Slot & Tagihan (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
 | **10/13** | `Diagram ParkSpot UKK-Sequence Lihat Slot & Tagihan (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
 | **11/13** | `Diagram ParkSpot UKK-Activity Pembayaran (QRIS) (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
 | **12/13** | `Diagram ParkSpot UKK-Sequence Pembayaran (QRIS) (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
-| **13/13** | `Diagram ParkSpot UKK-Use Case (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Opsi 1: Pindai QR Booking Member di Gerbang Masuk + fitur shift |
-| **Bonus** | `Diagram ParkSpot UKK-DFD LEVEL 0 (Revisi)` *(Update teks Petugas)* | 🔴 Belum | 🔴 Belum | 🔴 Antre | Ganti "Pembaruan Status Slot Overstay" $\rightarrow$ "Pindai QR Booking / Input Pelat Masuk" (ACC terpisah) |
+| **13/13** | `Diagram ParkSpot UKK-Use Case (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Opsi 1: Pindai QR Booking Member di Gerbang Masuk + fitur shift + Midtrans |
+| **Bonus 1** | `Diagram ParkSpot UKK-DFD LEVEL 0 (Revisi)` *(Update teks Petugas)* | 🔴 Belum | 🔴 Belum | 🔴 Antre | Ganti "Pembaruan Status Slot Overstay" $\rightarrow$ "Pindai QR Booking / Input Pelat Masuk" |
+| **Bonus 2** | `Diagram ParkSpot UKK-Activity Keluar Gerbang & Print Struk (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Tambah keputusan "Waktu keluar melewati jam yang sudah dibayar?" (tagih selisih tunai/QRIS) |
+| **Bonus 3** | `Diagram ParkSpot UKK-Sequence Keluar Gerbang & Cetak Struk (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Tambah alt "Waktu keluar melewati jam yang sudah dibayar?" (sinkron Activity) |
 
 ---
 

@@ -1,0 +1,92 @@
+<mxfile host="app.diagrams.net" agent="ParkSpot" version="24.0.0" compressed="false">
+  <diagram id="d24_act_log_aktivitas" name="Diagram ParkSpot UKK-Activity Log Aktivitas (Revisi)">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="lane_admin" value="Admin" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="440" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_sistem" value="Sistem" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="440" y="0" width="760" height="1010" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_start" value="" style="ellipse;fillColor=strokeColor;html=1;" vertex="1" parent="lane_admin">
+          <mxGeometry x="205" y="65" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_admin_open" value="Membuka Menu Log Aktivitas" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_admin">
+          <mxGeometry x="70" y="130" width="300" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_admin_filter" value="Memilih Cabang Mal, Rentang Tanggal &amp;&lt;br&gt;Jenis Aktivitas (LOGIN, LOGOUT, GATE_IN,&lt;br&gt;GATE_OUT, CLOSE_SHIFT, DISCREPANCY_ALERT,&lt;br&gt;TUTUP_PAKSA, RESET_PELAT, Absen Darurat)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_admin">
+          <mxGeometry x="45" y="230" width="350" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="act_sys_fetch" value="Membaca &quot;log_aktivitas/{id_lokasi}&quot; Sesuai Filter&lt;br&gt;&amp; Mengambil Nama User dari &quot;master_user&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="220" y="325" width="320" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="dec_found" value="Apakah Data Aktivitas&lt;br&gt;Ditemukan?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="240" y="440" width="280" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_empty" value="Menampilkan Pesan&lt;br&gt;&quot;Tidak ada aktivitas&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="450" y="605" width="260" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="end_empty" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="565" y="725" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_sys_show" value="Menampilkan Tabel Log Aktivitas (Hanya Baca /&lt;br&gt;Tanpa Tombol Ubah &amp; Hapus) serta Menandai Merah&lt;br&gt;Aktivitas Penting (Selisih Kas, Tutup Paksa, Absen Darurat)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="30" y="605" width="370" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="act_admin_view" value="Melihat &amp; Memantau Riwayat&lt;br&gt;Log Aktivitas Audit (Hanya Baca)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_admin">
+          <mxGeometry x="70" y="785" width="300" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_end" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="lane_admin">
+          <mxGeometry x="205" y="910" width="30" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="node_start" target="act_admin_open">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_admin_open" target="act_admin_filter">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_admin_filter" target="act_sys_fetch">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="362"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_fetch" target="dec_found">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_5" value="Ya" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_found" target="act_sys_show">
+          <mxGeometry relative="1" as="geometry" x="-0.2">
+            <Array as="points">
+              <mxPoint x="655" y="495"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_6" value="Tidak" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_found" target="act_sys_empty">
+          <mxGeometry relative="1" as="geometry" x="-0.2">
+            <Array as="points">
+              <mxPoint x="1020" y="495"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_empty" target="end_empty">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_sys_show" target="act_admin_view">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="655" y="822"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_admin_view" target="node_end">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
