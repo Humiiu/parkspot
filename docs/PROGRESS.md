@@ -65,8 +65,8 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 | **9/13** | `Diagram ParkSpot UKK-Activity Lihat Slot & Tagihan (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Batch ACC) | 2 jalur Member/Guest, guest_token, durasi bulat ke atas + overstay, grid 2x6, status lunas |
 | **10/13** | `Diagram ParkSpot UKK-Sequence Lihat Slot & Tagihan (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Batch ACC) | 4 lifeline, 1..16 urut, rasio H/W 0.84, 2 jalur Member/Guest, kembali ke aktor |
 | **11/13** | `Diagram ParkSpot UKK-Activity Pembayaran (QRIS) (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Batch ACC) | 3 swimlane (Member/Guest, Sistem, Midtrans Sandbox), webhook/cek status, UJI-09 retry |
-| **12/13** | `Diagram ParkSpot UKK-Sequence Pembayaran (QRIS) (Revisi)` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | 5 lifeline (termasuk Midtrans Sandbox), proporsi kompak <= 1.4x, kembali ke aktor |
-| **13/13** | `Diagram ParkSpot UKK-Use Case (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Opsi 1: Pindai QR Booking Member di Gerbang Masuk + fitur shift + Midtrans |
+| **12/13** | `Diagram ParkSpot UKK-Sequence Pembayaran (QRIS) (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Batch ACC) | 5 lifeline (termasuk Midtrans Sandbox), 1..16 urut, rasio H/W 0.70, kembali ke aktor |
+| **13/13** | `Diagram ParkSpot UKK-Use Case (Revisi)` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Opsi 1: Pindai QR Booking Member di Gerbang Masuk + fitur shift + Midtrans Sandbox |
 | **Bonus 1** | `Diagram ParkSpot UKK-DFD LEVEL 0 (Revisi)` *(Update teks Petugas)* | 🔴 Belum | 🔴 Belum | 🔴 Antre | Ganti "Pembaruan Status Slot Overstay" $\rightarrow$ "Pindai QR Booking / Input Pelat Masuk" |
 | **Bonus 2** | `Diagram ParkSpot UKK-Activity Keluar Gerbang & Print Struk (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Tambah keputusan "Waktu keluar melewati jam yang sudah dibayar?" (tagih selisih tunai/QRIS) |
 | **Bonus 3** | `Diagram ParkSpot UKK-Sequence Keluar Gerbang & Cetak Struk (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Tambah alt "Waktu keluar melewati jam yang sudah dibayar?" (sinkron Activity) |
