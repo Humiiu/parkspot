@@ -144,6 +144,8 @@ Table trx_parkir [headercolor: #2E7D32] {
   status_parkir string [not null, note: 'booked | parkir | selesai | batal']
   reprint_count number [not null, default: 0, note: '>0 otomatis cap [CETAK ULANG]']
   is_snapshot_locked boolean [not null, default: false]
+  waktu_bayar_qris string [note: 'ISO-8601, kapan bayar QRIS']
+  nominal_bayar_qris number [note: 'Nominal yang sudah dibayar via QRIS']
 }
 
 // --- ZONA 3: AUDIT LOG (UNGU / ABU) ---

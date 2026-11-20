@@ -106,7 +106,7 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 - File asli milik pengguna di folder `diagram/` tetap utuh 100% dan terisolasi dari folder `diagram/revisi/`.
 - **Dokumen Proposal (`PROPOSAL PARKSPOT UKK.docx`)**: Seluruh 18 diagram (17 revisi + 1 Use Case) telah **DITEMPEL SEMPURNA** ke naskah Word. Seluruh penanda placeholder kuning telah dihapus bersih.
 - **Sinkronisasi Daftar & Nomor Halaman**: `DAFTAR TABEL` (7 tabel), `DAFTAR GAMBAR` (43 gambar), `DAFTAR LAMPIRAN`, dan `DAFTAR ISI` telah **diperbarui dan diverifikasi menggunakan Word COM** dengan **0 error bookmark (`Error! Bookmark not defined.`)**.
-- **Skema DBML**: Field `pin_kasir` dan `barcode` telah dibersihkan dari `diagram/erd_parkspot.dbml`, 100% sinkron dengan Opsi B (NFC + Password Darurat).
+- **Skema DBML & ERD (`diagram/erd_parkspot.dbml` & `diagram/erd.png`)**: Field `pin_kasir` dan `barcode` telah dibersihkan di DBML, serta ditambah 2 kolom baru di `trx_parkir`: `waktu_bayar_qris` (`string`, ISO-8601) dan `nominal_bayar_qris` (`number`) untuk sinkronisasi pembayaran QRIS & pengecekan selisih jam di Gerbang Keluar.
 - **Status Tahap 1**: 🟢 **100% SELESAI & TUNTAS**. Siap melangkah ke **Tahap 2 (Backend Web Laravel)**.
 
 ---
