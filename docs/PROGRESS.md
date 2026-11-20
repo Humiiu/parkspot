@@ -96,8 +96,15 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 - [x] Isi dari diagram revisi ditambahkan: tutup paksa shift (Admin & Owner), jam shift, pengaman password darurat, karcis hilang (ketik pelat), 1 booking aktif/akun, lampu oranye H-30 menit, booking batal >15 menit, rumus slot terdekat, denah 2x6, tanda merah absen darurat.
 - [x] Tabel 3.2: Owner ikut kelola jadwal & tutup paksa shift. Tabel 3.5: tambah UJI-17 s.d. UJI-20.
 - [x] Istilah berat diganti (utility-first, payment gateway, Pre-Exit, Audit Trail, Billing, DP, omzet, istilah Tabel Jadwal); "A. Simpulan" & "B. Saran".
-- [ ] Menunggu Antigravity: revisi 12 diagram lama (nama tabel tb_* -> 12 entitas standar) + Use Case (fitur shift). Setelah selesai: tempel gambar baru & samakan teks penjelasan.
-- [ ] Belum diputuskan: use case Petugas "Jaga Slot Booking" (usulan: "Pindai QR Booking Member di Gerbang Masuk").
+- [x] Antigravity menyelesaikan 12 diagram lama + Use Case + DFD + Keluar Gerbang (selisih jam QRIS) + 2 kolom ERD (waktu_bayar_qris, nominal_bayar_qris).
+- [x] Use case Petugas diganti "Pindai QR Booking Member di Gerbang Masuk" (Opsi 1), Tabel 3.2 ikut disesuaikan.
+
+### Tahap 3 Perbaikan Proposal (20 November 2026)
+- [x] 31 gambar (Gambar 3.1 s.d. 3.31, termasuk ERD) diganti dengan versi terbaru dari diagram/revisi/ dan diagram/erd.png.
+- [x] Teks penjelasan Activity/Sequence disamakan: validasi duplikasi user, logout tidak menutup shift, aturan tarif per lokasi, log hanya baca, penolakan guest_token, QRIS gagal/coba lagi, selisih jam QRIS di gerbang keluar.
+- [x] Tabel 3.3 & Lampiran JSON: tambah waktu_bayar_qris & nominal_bayar_qris. Pseudocode transaksi: tagih selisih jam QRIS. Tabel 3.5: tambah UJI-21 s.d. UJI-23.
+- [x] Semua gambar satu halaman dengan penjelasannya (terkecil: Activity 13 = 76%, Sequence CRUD Tarif = 75%).
+- [ ] Saran (BAB IV B) masih dikosongkan (keputusan pengguna).
 
 ---
 

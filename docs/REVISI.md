@@ -119,4 +119,10 @@ Seluruh proposal, diagram, dan kode program menggunakan penamaan 12 entitas stan
 * **Keputusan (Opsi A)**: Gambar wireframe tetap (rancangan sementara), tapi kalimat deskripsinya disamakan dengan diagram:
   1. **3.39**: Member memilih lokasi mal, jam kedatangan, dan durasi dulu, lalu memilih slot. Booking yang tidak didatangi lebih dari 15 menit **dibatalkan otomatis oleh sistem** dan slot kembali hijau (selaras UJI-08 & Poin 3 On-Demand Sync).
   2. **3.40**: Aturan "toleransi 15 menit ke gerbang keluar" **dihapus**. Setelah bayar QRIS, status tagihan menjadi lunas dan Petugas cukup memindai QR lalu membuka palang.
+* **Tambahan (Tahap 2, 19 November 2026)**: Teks proposal disamakan dengan 17 diagram revisi: lampu slot booking menyala oranye 30 menit sebelum jam kedatangan (bukan saat booking dibuat), tutup paksa shift oleh Admin/Owner otomatis ditandai merah, kendaraan dengan karcis hilang diproses dengan mengetik pelat nomor, dan kendaraan booking di gerbang masuk bisa diproses lewat pindai QR booking atau ketik pelat nomor.
+
+### Catatan Sinkronisasi Akhir (20 November 2026)
+* **Selisih jam setelah bayar QRIS**: Jika pengguna sudah bayar QRIS lalu keluar melewati jam yang sudah dibayar, sistem menagih selisihnya di gerbang keluar (tunai atau QRIS) sebelum palang dibuka. Didukung kolom baru `waktu_bayar_qris` & `nominal_bayar_qris` di `trx_parkir`.
+* **Logout vs Shift**: Logout hanya menutup sesi login; shift kasir tetap terbuka sampai Tutup Shift (blind closing) atau Tutup Paksa oleh Admin/Owner.
+* **Use Case Petugas**: "Jaga Slot Booking (Oranye) & Update Status Belum Keluar" diganti "Pindai QR Booking Member di Gerbang Masuk"; relokasi overstay dilakukan otomatis oleh sistem.
 
