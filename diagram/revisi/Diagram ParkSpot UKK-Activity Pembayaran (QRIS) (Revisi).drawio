@@ -1,0 +1,151 @@
+<mxfile host="app.diagrams.net" agent="ParkSpot" version="24.0.0" compressed="false">
+  <diagram id="d28_act_pembayaran_qris" name="Diagram ParkSpot UKK-Activity Pembayaran (QRIS) (Revisi)">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="lane_user" value="Member / Guest" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="460" height="1420" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_sistem" value="Sistem" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="460" y="0" width="760" height="1420" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_midtrans" value="Midtrans Sandbox" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="0" width="380" height="1420" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="node_start" value="" style="ellipse;fillColor=strokeColor;html=1;" vertex="1" parent="lane_user">
+          <mxGeometry x="215" y="65" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_u_click" value="Menekan Tombol &quot;Bayar QRIS&quot;&lt;br&gt;pada Halaman Tagihan" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_user">
+          <mxGeometry x="100" y="135" width="260" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_s_calc" value="Menghitung Total Tagihan Saat Itu&lt;br&gt;(&quot;trx_parkir/{id_lokasi}&quot; &amp; &quot;master_tarif/{id_lokasi}&quot;)&lt;br&gt;&amp; Mengirim Permintaan Transaksi QRIS" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="210" y="240" width="340" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_m_gen" value="Membuat Transaksi QRIS &amp;&lt;br&gt;Mengirimkan Kode QRIS Pembayaran" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_midtrans">
+          <mxGeometry x="50" y="246" width="280" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_s_show_qr" value="Menampilkan Kode QRIS &amp;&lt;br&gt;Batas Waktu Pembayaran ke Pengguna" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="210" y="370" width="340" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_u_pay" value="Memindai &amp; Menyelesaikan Pembayaran&lt;br&gt;QRIS via E-Wallet / M-Banking" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_user">
+          <mxGeometry x="100" y="475" width="260" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_m_proc" value="Memproses Pembayaran &amp;&lt;br&gt;Mengirim Konfirmasi Status&lt;br&gt;(Webhook / Cek Status)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_midtrans">
+          <mxGeometry x="50" y="585" width="280" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="dec_lunas" value="Pembayaran QRIS&lt;br&gt;Berhasil (Settlement)?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="240" y="695" width="280" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="act_s_fail" value="Status Tetap Belum Lunas &amp;&lt;br&gt;Menampilkan Pesan Gagal / Kedaluwarsa&lt;br&gt;(Boleh Coba Lagi)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="30" y="855" width="290" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="dec_retry" value="Coba Bayar&lt;br&gt;Lagi?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="lane_user">
+          <mxGeometry x="145" y="845" width="170" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="end_fail" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="lane_user">
+          <mxGeometry x="215" y="995" width="30" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="act_s_save" value="Update &quot;trx_parkir/{id_lokasi}&quot;&lt;br&gt;(status_bayar = &quot;lunas_qris&quot;, metode_bayar = &quot;qris&quot;,&lt;br&gt;waktu_bayar &amp; nominal) &amp; Catat &quot;log_aktivitas&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="370" y="855" width="360" height="88" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_s_bukti" value="Menampilkan Bukti Lunas&lt;br&gt;Pembayaran QRIS" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="410" y="1000" width="280" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_u_done" value="Menerima Bukti Lunas &amp;&lt;br&gt;Menuju Gerbang Keluar" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_user">
+          <mxGeometry x="100" y="1165" width="260" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_end" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="lane_user">
+          <mxGeometry x="215" y="1290" width="30" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="node_start" target="act_u_click">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_u_click" target="act_s_calc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="282"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_s_calc" target="act_m_gen">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_m_gen" target="act_s_show_qr">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1410" y="406"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_s_show_qr" target="act_u_pay">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="840" y="513"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_u_pay" target="act_m_proc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="626"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_m_proc" target="dec_lunas">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1410" y="680"/>
+              <mxPoint x="840" y="680"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_8" value="Gagal / Kedaluwarsa" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_lunas" target="act_s_fail">
+          <mxGeometry relative="1" as="geometry" x="-0.15">
+            <Array as="points">
+              <mxPoint x="635" y="750"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_s_fail" target="dec_retry">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_10" value="Ya" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_retry" target="act_u_click">
+          <mxGeometry relative="1" as="geometry" x="-0.85">
+            <Array as="points">
+              <mxPoint x="40" y="895"/>
+              <mxPoint x="40" y="171"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_11" value="Tidak" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_retry" target="end_fail">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_12" value="Berhasil" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dec_lunas" target="act_s_save">
+          <mxGeometry relative="1" as="geometry" x="-0.15">
+            <Array as="points">
+              <mxPoint x="1010" y="750"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_s_save" target="act_s_bukti">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_s_bukti" target="act_u_done">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1010" y="1201"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_u_done" target="node_end">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
