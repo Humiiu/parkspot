@@ -62,8 +62,8 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 | **6/13** | `Diagram ParkSpot UKK-Sequence CRUD Tarif Parkir (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | 4 lifeline, 1..28 urut, nested alt duplikasi & parkir/booking aktif, kembali ke Admin |
 | **7/13** | `Diagram ParkSpot UKK-Activity Log Aktivitas (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 Di-ACC | Filter mal/tanggal/jenis, baca `log_aktivitas/{id_lokasi}` + `master_user`, read-only, sorot merah |
 | **8/13** | `Diagram ParkSpot UKK-Sequence Log Aktivitas (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Batch ACC) | 4 lifeline, 1..9 urut, rasio H/W 0.58, read-only & sorot merah, kembali ke Admin |
-| **9/13** | `Diagram ParkSpot UKK-Activity Lihat Slot & Tagihan (Revisi)` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | 2 jalur Member/Guest, guest_token, durasi bulat ke atas + overstay, grid 2x6, status lunas |
-| **10/13** | `Diagram ParkSpot UKK-Sequence Lihat Slot & Tagihan (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
+| **9/13** | `Diagram ParkSpot UKK-Activity Lihat Slot & Tagihan (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Batch ACC) | 2 jalur Member/Guest, guest_token, durasi bulat ke atas + overstay, grid 2x6, status lunas |
+| **10/13** | `Diagram ParkSpot UKK-Sequence Lihat Slot & Tagihan (Revisi)` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Sinkron 1:1 dengan Activity Lihat Slot & Tagihan, proporsi kompak <= 1.4x |
 | **11/13** | `Diagram ParkSpot UKK-Activity Pembayaran (QRIS) (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
 | **12/13** | `Diagram ParkSpot UKK-Sequence Pembayaran (QRIS) (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Antre giliran |
 | **13/13** | `Diagram ParkSpot UKK-Use Case (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Opsi 1: Pindai QR Booking Member di Gerbang Masuk + fitur shift + Midtrans |
