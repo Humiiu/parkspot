@@ -66,8 +66,8 @@ Dokumen ini memantau status pengerjaan setiap butir revisi hasil sidang Quality 
 | **10/13** | `Diagram ParkSpot UKK-Sequence Lihat Slot & Tagihan (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Batch ACC) | 4 lifeline, 1..16 urut, rasio H/W 0.84, 2 jalur Member/Guest, kembali ke aktor |
 | **11/13** | `Diagram ParkSpot UKK-Activity Pembayaran (QRIS) (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Batch ACC) | 3 swimlane (Member/Guest, Sistem, Midtrans Sandbox), webhook/cek status, UJI-09 retry |
 | **12/13** | `Diagram ParkSpot UKK-Sequence Pembayaran (QRIS) (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Batch ACC) | 5 lifeline (termasuk Midtrans Sandbox), 1..16 urut, rasio H/W 0.70, kembali ke aktor |
-| **13/13** | `Diagram ParkSpot UKK-Use Case (Revisi)` | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Opsi 1: Pindai QR Booking Member di Gerbang Masuk + fitur shift + Midtrans Sandbox |
-| **Bonus 1** | `Diagram ParkSpot UKK-DFD LEVEL 0 (Revisi)` *(Update teks Petugas)* | 🔴 Belum | 🔴 Belum | 🔴 Antre | Ganti "Pembaruan Status Slot Overstay" $\rightarrow$ "Pindai QR Booking / Input Pelat Masuk" |
+| **13/13** | `Diagram ParkSpot UKK-Use Case (Revisi)` | 🟢 Selesai | 🟢 Selesai | 🟢 PASS (Batch ACC) | 6 aktor (termasuk Midtrans Sandbox), Opsi 1 Pindai QR Booking, fitur shift lengkap |
+| **Bonus 1** | `Diagram ParkSpot UKK-DFD LEVEL 0 (Revisi)` *(Update teks Petugas)* | 🟡 Sedang Dikerjakan | 🟡 Sedang Dikerjakan | 🔴 Antre | Ganti "Pembaruan Status Slot Overstay" $\rightarrow$ "Pindai QR Booking / Input Pelat Masuk" |
 | **Bonus 2** | `Diagram ParkSpot UKK-Activity Keluar Gerbang & Print Struk (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Tambah keputusan "Waktu keluar melewati jam yang sudah dibayar?" (tagih selisih tunai/QRIS) |
 | **Bonus 3** | `Diagram ParkSpot UKK-Sequence Keluar Gerbang & Cetak Struk (Revisi)` | 🔴 Belum | 🔴 Belum | 🔴 Antre | Tambah alt "Waktu keluar melewati jam yang sudah dibayar?" (sinkron Activity) |
 

@@ -1,0 +1,122 @@
+<mxfile host="app.diagrams.net" agent="ParkSpot" version="24.0.0" compressed="false">
+  <diagram id="d30_usecase_parkspot" name="Diagram ParkSpot UKK-Use Case (Revisi)">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="sys_box" value="ParkSpot (Web &amp; Mobile)" style="swimlane;whiteSpace=wrap;html=1;startSize=32;collapsible=0;recursiveResize=0;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="760" height="1230" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="act_admin" value="Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="190" width="40" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_owner" value="Owner" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="455" width="40" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_petugas" value="Petugas" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="725" width="40" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_member" value="Member" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="960" width="40" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_guest" value="Guest&lt;br&gt;(Tanpa Login)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1130" width="40" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_midtrans" value="Midtrans&lt;br&gt;Sandbox" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="1130" width="40" height="75" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="uc_user" value="CRUD Data User" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="70" width="260" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_tarif" value="CRUD Tarif Parkir (Per Lokasi)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="138" width="280" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_area" value="CRUD Area, Zona &amp; Slot Parkir&lt;br&gt;(Maks. 12 Slot/Zona)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="206" width="290" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_log" value="Akses Log Aktivitas (Hanya Baca)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="278" width="280" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_lokasi" value="Kelola Lokasi Mal" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="665" y="138" width="240" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_jadwal" value="Kelola Jadwal Shift" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="346" width="260" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_tutup_paksa" value="Tutup Paksa Shift" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="414" width="260" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_rekap" value="Rekap Transaksi, Audit Shift&lt;br&gt;&amp; Ekspor PDF / Excel" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="482" width="290" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_login" value="Login dan Logout" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="690" y="555" width="240" height="54" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="uc_shift" value="Buka &amp; Tutup Shift Kasir&lt;br&gt;(NFC / Password Darurat)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="560" width="290" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_gate_in" value="Input Pelat Masuk &amp;&lt;br&gt;Penempatan Slot Terdekat" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="632" width="290" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_scan_booking" value="Pindai QR Booking Member&lt;br&gt;di Gerbang Masuk" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="704" width="290" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_gate_out" value="Transaksi Palang Keluar&lt;br&gt;(Scan QR / Ketik Pelat)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="776" width="290" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_cetak" value="Cetak Karcis &amp; Struk 58mm&lt;br&gt;(Cetak Langsung / PDF)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="848" width="290" height="58" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="uc_kendaraan" value="Kelola Data Kendaraan&lt;br&gt;(Mobil Keluarga &amp; Reset Pelat)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="670" y="895" width="290" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_booking" value="Booking Slot Parkir&lt;br&gt;(Pilih Mal, Jam &amp; Durasi)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="950" width="290" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_lihat" value="Lihat Lokasi Slot &amp;&lt;br&gt;Cek Tagihan Berjalan" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="1045" width="290" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_qris" value="Bayar Parkir Non-Tunai&lt;br&gt;(QRIS)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="1140" width="290" height="58" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_adm_user" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_admin" target="uc_user"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_adm_tarif" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_admin" target="uc_tarif"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_adm_area" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_admin" target="uc_area"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_adm_log" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_admin" target="uc_log"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_adm_lokasi" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_admin" target="uc_lokasi"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_adm_jadwal" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_admin" target="uc_jadwal"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_adm_tutup" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_admin" target="uc_tutup_paksa"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_adm_kend" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_admin" target="uc_kendaraan"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_adm_login" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_admin" target="uc_login"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e_own_jadwal" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_owner" target="uc_jadwal"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_own_tutup" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_owner" target="uc_tutup_paksa"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_own_rekap" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_owner" target="uc_rekap"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_own_login" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_owner" target="uc_login"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e_ptg_shift" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_petugas" target="uc_shift"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_ptg_in" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_petugas" target="uc_gate_in"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_ptg_scan" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_petugas" target="uc_scan_booking"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_ptg_out" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_petugas" target="uc_gate_out"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_ptg_cetak" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_petugas" target="uc_cetak"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_ptg_login" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_petugas" target="uc_login"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e_mem_login" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_member" target="uc_login"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_mem_kend" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_member" target="uc_kendaraan"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_mem_book" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_member" target="uc_booking"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_mem_lihat" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_member" target="uc_lihat"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_mem_qris" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_member" target="uc_qris"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e_gst_lihat" value="Scan QR Karcis" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_guest" target="uc_lihat"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_gst_qris" value="" style="endArrow=block;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="act_guest" target="uc_qris"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e_qris_mid" value="" style="endArrow=none;html=1;labelBackgroundColor=default;" edge="1" parent="1" source="uc_qris" target="act_midtrans"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
